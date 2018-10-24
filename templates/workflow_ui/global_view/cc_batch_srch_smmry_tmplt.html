@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Lig: %(pdbid)s / %(identifier)s</title>
+<link rel="stylesheet" type="text/css" media="all" href="/ccmodule/styles/general.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/ccmodule/styles/oneColLiqCtrHdr.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/ccmodule/styles/superfish.css" />
+<!-- <link rel="stylesheet" type="text/css" media="all" href="/styles/themes/south-street/jquery-ui-1.8.2.custom.min.css" /> -->
+<link rel="stylesheet" type="text/css" media="all" href="/ccmodule/styles/themes/custom/jquery-ui-1.10.3.custom.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/ccmodule/styles/themes/custom/jquery-ui-1.10.3.custom.wwpdb.css" />
+<script type="text/javascript">
+	var sessionID = '%(sessionid)s';
+	var depId     = '%(identifier)s';
+    var pdbId     = '%(pdbid)s'; 
+	var sessPathPrefix = '%(session_url_prefix)s';
+	var fileSource = '%(filesource)s';
+	var instance = '%(instance)s';
+    var annotator = '%(annotator)s';
+</script>
+<script type="text/javascript" src="/js/jquery-11/core/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/js/jquery/plugins/jquery.form.min.js"></script>
+<script type="text/javascript" src="/ccmodule/js/cc-main.js"></script>
+</head>
+<body class="oneColLiqCtrHdr">
+<div id="container">
+<!-- begin #header-->
+	<div id="header">
+    	<div id="logo"><img src="/images/wwpdb_logo.gif" width="187" height="58" alt="logo" /> </div>
+    	<div id="headerCont">
+      		<h1>Chemical Component Editor Module</h1>
+      		<span id="help_batch_smmry_vw" class="ui-icon ui-icon-info fltrgt"></span>
+      		<div id="help_instnc_srch_vw" class="displaynone fltrgt"><span class="ui-icon ui-icon-info fltrgt"></span></div>
+		</div>
+    	<br class="clearfloat" /> 
+	</div>
+<!-- #header ends above-->
+    <br class="clearfloat" />
+	<br />
+<!-- #mainContent begins -->
+	<div id="mainContent">
+		<div id="batch_summary_vw">
+			<h2 class="fltlft">Chemical Component Assignments</h2>
+				<div class="fltrgt noprint">
+					<form id="load_smmry_frm" class="fltrgt">
+						<input type="hidden" name="sessionid" id="sessionid" value="%(sessionid)s" />
+		      			<input type="hidden" name="identifier" id="identifier" value="%(identifier)s" />
+		      			<input type="hidden" name="instance" id="instance" value="%(instance)s" />
+		      			<input type="hidden" name="filesource" id="filesource" value="%(filesource)s" />
+		      			<input type="hidden" name="caller" id="caller" value="%(caller)s" />
+		      			<input type="hidden" name="filePath" id="filePath" value="%(filepath)s" />
+		      			<input type="hidden" name="fileType" id="fileType" value="%(filetype)s" />
+					</form>
+					<input id="savedone" name="savedone" value="Finish" title="Complete LigMod step in workflow. Work is saved." class="fltrgt" type="button" disabled="disabled">
+					<input id="saveunfinished" name="saveunfinished" value="Exit" title="Remain at LigMod step in workflow. Current work is saved." class="fltrgt" type="button" disabled="disabled">
+					<input style="margin-right: 5px;" id="instance_search_ui_1" name="instance_search_ui" class="instance_search_ui fltrgt" value="Instance Search View" type="button" disabled="disabled" >
+				</div>
+				<div class="fltlft errmsg glblerr ui-state-error ui-corner-all noprint"></div>
+				<br class="clearfloat" />
+				<form name="hlprfrm" id="hlprfrm" method="post">
+					<input type="hidden" name="identifier" id="identifier" value="%(identifier)s" />
+					<input type="hidden" name="instance" id="instance" value="%(instance)s" />
+					<input type="hidden" name="classID" id="classid" value="%(classid)s" />
+					<input type="hidden" name="filesource" id="filesource" value="%(filesource)s" />
+				</form>
+				<h4>Batch Search Summary for Deposition Data Set : &nbsp;&nbsp;&nbsp;&nbsp; <span style="font-weight: normal;">%(identifier)s</span></h4>
+				<h4>Entry Title : &nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight: normal;">%(entry_title)s</span></h4>
+				<br class="clearfloat" />
+					<div id="helptxt">
+						<p class="fltlft">NOTE: Composite score " A / B / C / D / E " used for rating matches is defined as:<br />A = heavy atom match (%%), B = match of chiral centers present, independent of handness (%%), C = match of the handness of the chiral centers (%%), D = match of aromatic flags, E = match of bond order 
+						</p>
+						<div id="help_cmpst_scr" class="target ui-icon ui-icon-info fltlft" ></div>
+						<br class="clearfloat" />
+						<br />
+					</div>
+					<div id="rslts"><div class="loading_msg">&nbsp;&nbsp;<img src="/images/loading.gif" alt="loading..." />&nbsp;&nbsp;Data being processed. This may take a few minutes depending on size of deposition dataset.</div></div>
+				<br />
+				<div class="displaynone fltrgt noprint">
+					<label for="newparams">Input new parameters here:</label>
+					<input name="newparams" id="newparams" value="">
+					<br />
+					<label for="notes">Input notes here:</label>
+					<input name="notes" id="notes" value="">
+					<br />
+					<br class="clearfloat" />
+				</div>
+				<br />
+				<input style="display: inline;" id="instance_search_ui_2" name="instance_search_ui" class="instance_search_ui" value="Instance Search View" type="button" disabled="disabled">
+				<form name="inst_srch_frm" id="inst_srch_frm">
+	      			<input type="hidden" name="srchids" id="srchids" value="" />
+	      			<input type="hidden" name="sessionid" id="sessionid" value="%(sessionid)s" />
+	      			<input type="hidden" name="identifier" id="identifier" value="%(identifier)s" />
+	      			<input type="hidden" name="instance" id="instance" value="%(instance)s" />
+	      			<input type="hidden" name="filesource" id="filesource" value="%(filesource)s" />
+	    		</form>
+				<input id="rerun_batch" name="rerun_batch" value="Rerun Batch" class="displaynone" type="button">
+				<br />
+				<br />
+				<!-- <input type="submit" name="help" id="help" value="Help" />  -->
+				<br />
+				<br />
+		</div>
+		<!-- #batch_summary_vw ends above -->
+		<div id="instnc_srch_vw" class="displaynone">
+			<h2>Instance Search View for Deposition Data Set : &nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight: normal;">%(identifier)s</span></h2>
+			<h4>Entry Title : &nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight: normal;">%(entry_title)s</span></h4>
+				<div class="noprint">
+				<input id="backtobatchvw" name="backtobatchvw" value="Back to Batch View" class="fltrgt" type="button" disabled="disabled">
+				<input id="restart" name="restart" value="Restart" class="displaynone fltrgt" type="button">
+				<input type="hidden" name="srchids_inst_vw" id="srchids_inst_vw" value="" />
+				</div>
+				<br class="clearfloat" />
+					<div id="entity_browser_container">
+						<div class="loading_msg">&nbsp;&nbsp;<img src="/images/loading.gif" alt="loading..." />&nbsp;&nbsp;Data being processed.</div>
+					</div>
+					<br class="clearfloat" />
+					<br/>
+					<br/>
+					<br/>
+					<br/>
+					<br/>
+		</div>
+		<!-- #instnc_srch_vw ends above -->
+	</div>
+<!-- #mainContent ends above -->
+<!-- #footer begins -->
+	<br class="clearfloat" />
+	<div id="footer">
+   		<p>&copy; 2014 wwPDB Chemical Component Editor Module Editor</p>
+	</div>
+<!-- #footer ends above -->
+</div>
+<!-- #container ends above-->
+</body>
+</html>

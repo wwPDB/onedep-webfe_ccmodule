@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Chemical Component Editor Module</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" type="text/css" media="all" href="/ccmodule/styles/oneColLiqCtrHdr.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="/ccmodule/styles/superfish.css" />
+</head>
+<body class="oneColLiqCtrHdr">
+<div id="container">
+<!--#include virtual="styles/common/header_cc.txt"-->
+<div id="mainContent">
+<h1>Chemical Component Extractor</h1>
+<p>
+The chemical component extraction tool splits a coordinate file into constituent chemical components.
+Non-polymer and non-standard polymer components are retained for viewing and subsequence processing.
+Use the form below to identify your PDB or CIF format input data file.  
+</p>
+<form method="post" action="/service/cc/extract"  enctype="multipart/form-data"> 
+ <fieldset>
+   <legend>Component Extractor Options
+       <a href="help.html#extractor"><img src="images/qmark.gif" height=15 width=17></a>
+   </legend>
+        <INPUT id="formid" name="formid" TYPE="hidden" VALUE="ccextract"> 
+		<input type="hidden" id="caller"  name="caller" value="home">
+		<input type="hidden" id="bgcolor" name="bgcolor" value="white">
+	<label for="file">File name</label>
+          <input class="formInputText" type='file' size='60' name="file"/>
+	<select name="filetype" id="filetype">
+          <option value="cif" selected="selected">CIF</option>
+          <option value="cifeps">CIFEPS</option>
+          <option value="pdb" >PDB</option>
+        </select>
+	<br />
+        <label for="hydrogens">Ignore hydrogens</label>
+            <input id="hydrogensYes" type = 'radio' name = 'hydrogens' value = 'Yes' checked = 'checked'/>
+                <label class="fieldLabel" for="hydrogensYes">Yes</label>
+            <input id="hydrogensNo" type = 'radio' name = 'hydrogens' value = 'No'/>
+                <label class="fieldLabel" for="hydrogensNo">No</label>
+	<br />
+        <label >Include graphics</label>
+		<input id="shareYes" type = 'radio' name = 'graphics' value = 'Yes' checked = 'checked'/>
+                <label class="fieldLabel" for="shareYes">Yes</label>
+		<input id="shareNo" type = 'radio' name = 'graphics' value = 'No'/>
+                <label class="fieldLabel" for="shareNo">No</label>
+	<br />
+          <label >Bond order method</label>
+		<input id="bondopt1" type = 'radio' name = 'bondopt' value = 'type1' checked = 'checked'/>
+                <label class="fieldLabel" for="bondopt1">Type I</label>
+		<input id="bondopt2" type = 'radio' name = 'bondopt' value = 'type2'/>
+                <label class="fieldLabel" for="bondopt2">Type II</label>
+		<input id="bondopt3" type = 'radio' name = 'bondopt' value = 'type3'/>
+                <label class="fieldLabel" for="bondopt3">Type III</label>
+	<input class="formInputButton" type = 'submit' value = 'Go'><br>
+   </fieldset>
+</form>
+<!-- END TEXT HERE  -->
+</div>
+<!--#include virtual="styles/common/footer.txt"-->
+</div>
+</body>
+</html>

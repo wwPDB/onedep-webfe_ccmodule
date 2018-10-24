@@ -1,0 +1,149 @@
+		<div class="instance_profile">
+		<!-- #########################  content for the single instance below ################################################################### -->
+			<br />
+			<div class="cc_instnc_match_rslts_tbl_content fltlft">
+        		<table id="%(instanceid)s_t" name="%(instanceid)s_t" class="instnc_match_rslts c_%(auth_assgnd_grp)s">
+        		<tr><th colspan="4"><strong>Top Candidate Results for: %(instanceid)s </strong></th></tr>
+        		<tr><th class="entityid">Candidate ID</th><th class="assignas_rdio_btn">Assign as:</th><th class="score"><span class="target cmpst_scr">Composite Score</span></th><th class="vizcmp_chck_bx">Compare</th></tr>
+				%(cc_instnc_match_rslts_tbl)s
+				<tr class="add_new_candidate displaynone"><th colspan="4" style="background-color: #696969;"><strong>Other Candidates Added for Comparison</strong></th></tr>
+				</table>
+				<br />
+				<form name="add_new_candidate_frm_%(instanceid)s" id="add_new_candidate_frm_%(instanceid)s" class="add_new_candidate" method="post">
+					<span id="add_new_candidate" class="fltlft">Enter chem component ID to add other candidate to Comparison Panel below: <input type="text" size="3" name="ccid" id="ccid_add_new_candidate_%(instanceid)s" class="add_new_candidate c_%(auth_assgnd_grp)s" value="" style="text-transform: uppercase;"/></span>
+					<input type="hidden" name="instanceid" id="instanceid_add_new_candidate_%(instanceid)s" value="%(instanceid)s" />
+					<input type="hidden" name="sessionid" id="sessionid_add_new_candidate_%(instanceid)s" value="%(sessionid)s" />
+					<input type="hidden" name="identifier" id="identifier_add_new_candidate_%(instanceid)s" value="%(identifier)s" />
+					<input type="hidden" name="depositionid" id="depositionid_add_new_candidate_%(instanceid)s" value="%(depositionid)s" />
+					<input type="hidden" name="instance" id="instance_add_new_candidate_%(instanceid)s" value="%(instance)s" />
+					<input type="hidden" name="filesource" id="filesource_add_new_candidate_%(instanceid)s" value="%(filesource)s" />
+					<input style="display: inline;" id="add_new_candidate_btn_%(instanceid)s" name="add_new_candidate_btn_%(instanceid)s" value="Add" class="add_new_candidate c_%(auth_assgnd_grp)s fltlft" type="submit">
+					<span class="fltlft prcssng_msg displaynone">&nbsp;&nbsp;<img src="/images/loading.gif" alt="loading..." />&nbsp;&nbsp;Data being processed.</span>
+				</form>
+			</div>
+			<div class="instnc_actions fltlft c_%(auth_assgnd_grp)s">
+				<div class="forceassign strong">
+					Force Assign as: <input type="text" size="3" name="%(instanceid)s" id="frc_assgn_%(instanceid)s" class="frc_assgn c_%(auth_assgnd_grp)s" value="" %(disabled)s >
+				</div>
+				<br />
+				<form name="rerun_srch_frm_%(instanceid)s" id="rerun_srch_frm_%(instanceid)s" class="rerun_srch_frm" method="post">
+					<input type="hidden" name="instanceid" id="instanceid" value="%(instanceid)s" />
+					<input type="hidden" name="identifier" id="identifier" value="%(identifier)s" />
+					<input type="hidden" name="depositionid" id="depositionid" value="%(depositionid)s" />
+					<input type="hidden" name="instance" id="instance" value="%(instance)s" />
+					<input type="hidden" name="filesource" id="filesource" value="%(filesource)s" />
+					<input style="display: inline; width: 210px;" id="rerun_srch_%(instanceid)s" name="rerun_srch_%(instanceid)s" value="%(rerun_btn_lbl)s" class="rerun_srch c_%(auth_assgnd_grp)s" type="button" %(disabled)s >
+					<div id="adjst_params_%(instanceid)s" class="adjst_params %(rerun_display_class)s">
+						<span class="errmsg" id="adjst_params_errmsg_%(instanceid)s"></span>
+						<br/>
+						<span class="fltrgt strong">&#916 Link Radius: <input class="c_%(auth_assgnd_grp)s c_%(instanceid)s rerun_srch_param" type="text" size="5" name="linkradii_%(instanceid)s" id="linkradii_%(instanceid)s" value="%(link_radius_dlta)s"/>&#197<span class="errmsg" id="linkradii_errmsg_%(instanceid)s"></span></span>
+						<br class="clearfloat"/>
+						<span class="fltrgt strong">&#916 Bond Radius: <input class="c_%(auth_assgnd_grp)s c_%(instanceid)s rerun_srch_param" type="text" size="5" name="bondradii_%(instanceid)s" id="bondradii_%(instanceid)s" value="%(bond_radius_dlta)s"/>&#197<span class="errmsg" id="bondradii_errmsg_%(instanceid)s"></span></span>
+						<br class="clearfloat"/>
+						<span class="fltrgt"><input id="rerun_srch_go_%(instanceid)s" name="rerun_srch_go_%(instanceid)s" value="Submit" class="rerun_srch_go c_%(auth_assgnd_grp)s" type="button" %(disabled)s ></span>
+					</div>
+				</form>
+				<br class="clearfloat" />
+				<br />
+				<form name="create_new_lig_%(instanceid)s_frm" id="create_new_lig_%(instanceid)s_frm" class="create_new_lig_frm" target="_blank" method="post">
+					<input type="hidden" name="sessionid" id="sessionid" value="%(sessionid)s" />
+      				        <input type="hidden" name="instanceid" id="instance1" value="%(instanceid)s" />
+					<input type="hidden" name="depositionid" id="depositionid" value="%(depositionid)s" />
+					<input type="hidden" name="filesource" id="filesource" value="%(filesource)s" />
+					<input type="hidden" name="instance" id="instance" value="%(instance)s" />
+					<input type="hidden" name="identifier" id="identifier" value="%(identifier)s" />
+					<input style="display: inline;" id="edt_nw_lig_%(instanceid)s" name="edt_nw_lig_%(instanceid)s" value="Edit / Create New Ligand" class="edt_nw_lig create_new_lig_go c_%(auth_assgnd_grp)s" type="button" %(disabled)s />
+				</form>
+
+				<br class="clearfloat" />
+				<br />
+				<form name="rerun_comp_srch_frm_%(instanceid)s" id="rerun_comp_srch_frm_%(instanceid)s" method="post">
+					<input type="hidden" name="instanceid" id="instanceid" value="%(instanceid)s" />
+					<input type="hidden" name="identifier" id="identifier" value="%(identifier)s" />
+					<input type="hidden" name="depositionid" id="depositionid" value="%(depositionid)s" />
+					<input type="hidden" name="instance" id="instance" value="%(instance)s" />
+					<input type="hidden" name="filesource" id="filesource" value="%(filesource)s" />
+					<input id="rerun_comp_srch_go_%(instanceid)s" name="rerun_comp_srch_go_%(instanceid)s" value="Rerun Search with Edited Component" class="rerun_comp_srch_go c_%(auth_assgnd_grp)s" type="button" %(disabled)s />
+				</form>
+
+				<br class="clearfloat"/>
+				<br />
+				<form name="chop_lig_%(instanceid)s_frm" id="chop_lig_%(instanceid)s_frm" class="chop_lig_frm" target="_blank" method="post">
+					<input type="hidden" name="sessionid" id="sessionid1" value="%(sessionid)s" />
+      				        <input type="hidden" name="instanceid" id="instance2" value="%(instanceid)s" />
+					<input type="hidden" name="depositionid" id="depositionid1" value="%(depositionid)s" />
+					<input type="hidden" name="filesource" id="filesource1" value="%(filesource)s" />
+					<input type="hidden" name="instance" id="instance1" value="%(instance)s" />
+					<input type="hidden" name="identifier" id="identifier1" value="%(identifier)s" />
+					<input style="display: inline;" id="chop_lig_%(instanceid)s" name="chop_lig_%(instanceid)s" value="Chop Ligand" class="chop_lig_go c_%(auth_assgnd_grp)s" type="button" %(disabled)s />
+				</form>
+
+				<br class="clearfloat"/>
+				<br />
+				<div id="assgn_new_cc_def_%(instanceid)s" class="assgn_new_cc_def">
+					<form id="assgn_new_cc_def_%(instanceid)s_frm" >
+						<input type="hidden" name="sessionid" id="sessionid_assgn_new_cc" value="%(sessionid)s" />
+	      				<input type="hidden" name="instanceid" id="instance1_assgn_new_cc" value="%(instanceid)s" />
+						<input type="hidden" name="depositionid" id="depositionid_assgn_new_cc" value="%(depositionid)s" />
+						<input type="hidden" name="filesource" id="filesource_assgn_new_cc" value="%(filesource)s" />
+						<input type="hidden" name="instance" id="instance_assgn_new_cc" value="%(instance)s" />
+						<input type="hidden" name="identifier" id="identifier_assgn_new_cc" value="%(identifier)s" />
+						<br class="clearfloat"/>
+						<input id="get_new_cc_id_%(instanceid)s" name="get_new_cc_id_%(instanceid)s" value="Get New CC ID" class="get_new_cc_id c_%(auth_assgnd_grp)s c_%(instanceid)s fltrgt displaynone" type="button" >
+					</form>
+				</div>
+				<br class="clearfloat"/>
+				<br/>
+                                <div id="update_image_def_%(instanceid)s" class="update_image_def">
+                                        <input id="get_new_image_%(instanceid)s" name="get_new_image_%(instanceid)s" value="Reload Image" class="get_new_image c_%(auth_assgnd_grp)s c_%(instanceid)s fltrgt displaynone" type="button" >
+                                </div>
+                                <br class="clearfloat"/>
+				<br/>
+				<br/>
+				<input style="display: inline;" name="%(instanceid)s" id="commit_assgn_%(instanceid)s" value="%(assgn_lbl)s" class="commit_assgn c_%(auth_assgnd_grp)s fltrgt" type="button" %(assgn_disabled)s>
+			</div>
+			<br class="clearfloat" />
+			<br />
+			<br />
+			<br />
+			<div class="viz_compare" id="viz_compare_%(instanceid)s">
+				<div class="viz_compare_hdr">Comparison Panel<span class="%(dsplyvizopt)s" ><label for="twoD_chck_bx_%(instanceid)s">2D</label><input id="twoD_chck_bx_%(instanceid)s" checked="checked" name="%(instanceid)s" class="twoD_chck_bx" type="checkbox"></span><span class="%(dsplyvizopt)s" ><label for="threeD_chck_bx_%(instanceid)s">3D</label><input id="threeD_chck_bx_%(instanceid)s" name="%(instanceid)s" class="threeD_chck_bx" type="checkbox"></span><span class="%(dsplyvizopt)s" ><label for="atm_mp_chck_bx_%(instanceid)s">Atom Map</label><input id="atm_mp_chck_bx_%(instanceid)s" name="%(instanceid)s" class="atm_mp_chck_bx" type="checkbox"></span></div>
+				<ul id="instance_data_%(instanceid)s" class="viz_compare_ul_instnc">
+					<li id="vizcmp_%(instanceid)s" class="viz_cmp fltlft">
+						<div class="viz_compare_subhdr"><table><tr><td nowrap="nowrap">Auth Instance ID:</td><td nowrap="nowrap">%(instanceid)s</td></tr><tr><td nowrap="nowrap">Name:</td><td nowrap="nowrap">%(name)s</td></tr><tr><td nowrap="nowrap">Formula:</td><td nowrap="nowrap" title="%(formula)s">%(formula_displ)s</td></tr></table></div>
+						<div id="twoD_%(instanceid)s" class="twoDviz">
+								<div id="twoD_showLabeled_%(instanceid)s" style="border-style: none">
+									<input id="twoD_labld_vw_no_hy_%(instanceid)s" name="%(2dpath_labld_no_hy)s" value="See Labeled Diagram" class="twoD_labld_vw_btn fltlft" type="button" style="font-size: 0.75em" />
+<!--
+									<input id="twoD_labld_vw_w_hy_%(instanceid)s" name="%(2dpath_labld_w_hy)s" value="See Labeled Diagram - w/ Hydrogens" class="twoD_labld_vw_btn fltlft" type="button" style="font-size: 0.75em" />
+-->
+									<div id="twoD_labld_vwr_no_hy_%(instanceid)s" class="displaynone"></div>
+									<div id="twoD_labld_vwr_w_hy_%(instanceid)s" class="displaynone"></div>
+								</div>
+								<img id="image_%(instanceid)s" src="%(2dpath)s" />
+						</div>
+						<div id="atm_mp_%(instanceid)s" class="atm_mp exp %(instanceid)s" style="display: none;"><ul class="sngl_instnc">[ATOM LVL PLACEHOLDER]</ul></div>
+						<div id="threeD_%(instanceid)s" name="%(auth_assgnd_grp)s" class="threeDviz exp" style="display: none;">[JMOL PLACEHOLDER]</div>
+					</li>
+					<li id="vizcmp_%(instanceid)s_%(top_hit_ccid)s" class="viz_cmp fltlft top_hit cc_ref">
+						<div class="viz_compare_subhdr ref"><table><tr><td nowrap="nowrap">Top Dictionary Hit:</td><td nowrap="nowrap">%(top_hit_ccid)s</td></tr><tr><td nowrap="nowrap">Name:</td><td nowrap="nowrap" title="%(top_hit_ccname)s">%(top_hit_ccname_displ)s</td></tr><tr><td nowrap="nowrap">Formula:</td><td nowrap="nowrap" title="%(top_hit_ccformula)s">%(top_hit_ccformula_displ)s</td></tr></table></div>
+						<div id="twoD_%(top_hit_ccid)s" class="twoDviz ref">						
+								<div id="twoD_showLabeled_%(instanceid)s--%(top_hit_ccid)s" style="border-style: none">
+									<input id="twoD_labld_vw_no_hy_%(instanceid)s--%(top_hit_ccid)s" name="%(2dpath_labld_no_hy_ref)s" value="See Labeled Diagram" class="twoD_labld_vw_btn ref fltlft" type="button" style="font-size: 0.75em" />
+<!--
+									<input id="twoD_labld_vw_w_hy_%(instanceid)s--%(top_hit_ccid)s" name="%(2dpath_labld_w_hy_ref)s" value="See Labeled Diagram - w/ Hydrogens" class="twoD_labld_vw_btn ref fltlft" type="button" style="font-size: 0.75em" />
+-->
+									<div id="twoD_labld_vwr_no_hy_%(instanceid)s--%(top_hit_ccid)s" class="displaynone"></div>
+									<div id="twoD_labld_vwr_w_hy_%(instanceid)s--%(top_hit_ccid)s" class="displaynone"></div>
+								</div>						
+							<img id="image_%(instanceid)s_%(top_hit_ccid)s" src="%(2dpath_top_hit)s" />
+						</div>
+						<div id="atm_mp_%(instanceid)s_%(top_hit_ccid)s" name="%(top_hit_ccid)s" class="atm_mp ref %(instanceid)s" style="display: none;"><ul class="sngl_instnc">[ATOM LVL PLACEHOLDER]</ul></div>
+						<div id="threeD_%(instanceid)s_%(top_hit_ccid)s" name="%(top_hit_ccid)s" class="threeDviz ref" style="display: none;">[JMOL PLACEHOLDER]</div>
+					</li>
+				</ul>
+				<br class="clearfloat" />
+			</div>
+		<!-- #########################  content for the single instance above ################################################################### -->	
+		</div>
+		

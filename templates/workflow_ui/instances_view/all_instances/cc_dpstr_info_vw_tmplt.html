@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>%(identifier)s - Depositor Provided Info for: %(auth_assgnd_grp)s</title>
+<link rel="stylesheet" type="text/css" media="all" href="/ccmodule/styles/general.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/ccmodule/styles/oneColLiqCtrHdr.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/ccmodule/styles/themes/custom/jquery-ui-1.10.3.custom.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/ccmodule/styles/themes/custom/jquery-ui-1.10.3.custom.wwpdb.css" />
+<script type="text/javascript">
+var globalVar = "";
+</script>
+<!-- <script type="text/javascript" src="/js/jquery/core/jquery.min.js"></script> -->
+<script type="text/javascript" src="/js/jquery-10.2/core/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/js/jquery/plugins/jquery.form.min.js"></script>
+<script type="text/javascript" src="/ccmodule/js/cc-main.js"></script>
+<script type='text/javascript'>
+$(document).ready(function() {
+	//
+});
+</script>
+</head>
+<body class="oneColLiqCtrHdr">
+<div id="container">
+<!-- begin #header-->
+	<div id="header">
+    	<div id="logo"><img src="/images/wwpdb_logo.gif" width="187" height="58" alt="logo" /> </div>
+    	<div id="headerCont">
+      		<h1>Chemical Component Editor Module</h1>
+      		<!-- <span id="help" class="ui-icon ui-icon-info fltrgt"></span>  -->
+		</div>
+    	<br class="clearfloat" /> 
+	</div>
+<!-- #header ends above-->
+    <br class="clearfloat" />
+	<br />
+<!-- #mainContent begins -->
+	<div id="mainContent">
+			<br />
+			<br />
+			<div id="dpstr_info_%(auth_assgnd_grp)s" class="dpstr_info_vw">
+				<h2>Depositor Provided Info for: %(auth_assgnd_grp)s</h2>
+				<table id="allinst_dpstr_info_tbl_%(auth_assgnd_grp)s" class="all_instncs_dpstr_info %(display_dpstr_info)s"><tbody>
+				<tr>
+					<th class="" colspan="2" style="padding: 8px 2px;">Depositor Provided Information</th>
+				</tr>
+				<tr class="%(dpstr_info_alt_comp_id_displ)s">
+					<th class="dpstr_info_hdr_cll">Alternate ID</th><td title="%(dpstr_info_alt_comp_id)s">%(dpstr_info_alt_comp_id)s</td>
+				</tr>
+				<tr class="%(dpstr_info_name_displ)s">
+					<th class="dpstr_info_hdr_cll">Name</th><td title="%(dpstr_info_name)s">%(dpstr_info_name)s</td>
+				</tr>
+				<tr class="%(dpstr_info_frmla_displ)s">
+					<th class="dpstr_info_hdr_cll">Formula</th><td title="%(dpstr_info_frmla)s">%(dpstr_info_frmla)s</td>
+				</tr>
+				<tr class="dpstr_info_defn_%(auth_assgnd_grp)s %(dpstr_info_defn_displ)s">
+					<th class="dpstr_info_hdr_cll">CC Definition File</th><td title="%(dpstr_info_defn)s">%(dpstr_info_defn_lnk)s</td>
+				</tr>
+				<tr class="dpstr_info_sketch_sdf_%(auth_assgnd_grp)s %(dpstr_info_sketch_sdf_displ)s">
+					<th class="dpstr_info_hdr_cll">SDF/sketch file</th><td title="%(dpstr_info_sketch_sdf)s">%(dpstr_info_sketch_sdf_lnk)s &nbsp;&nbsp; <input id="sdf_vw_btn_%(auth_assgnd_grp)s" name="sdf_vw_btn_%(auth_assgnd_grp)s" value="View sdf as image" class="sdf_vw_btn" type="button" style="font-size: 0.75em" /></td>
+				</tr>
+				<tr class="dpstr_info_image_%(auth_assgnd_grp)s %(dpstr_info_image_displ)s">
+					<th class="dpstr_info_hdr_cll">Image</th><td title="%(dpstr_info_image)s">%(dpstr_info_image_lnk)s</td>
+				</tr>
+				<tr class="%(dpstr_info_dscrptr_displ)s">
+					<th class="dpstr_info_hdr_cll">Descriptor</th><td title="%(dpstr_info_dscrptr)s">%(dpstr_info_dscrptr)s &nbsp;&nbsp; <input id="dscrptr_vw_btn_%(auth_assgnd_grp)s" name="dscrptr_vw_btn_%(auth_assgnd_grp)s" value="View descriptor as image" class="dscrptr_vw_btn %(display_dscrptr_vw_btn)s" type="button" style="font-size: 0.75em" /></td>
+				</tr>
+				<tr class="%(dpstr_info_dscrptr_type_displ)s">
+					<th class="dpstr_info_hdr_cll">Descriptor Type</th><td title="%(dpstr_info_dscrptr_type)s">%(dpstr_info_dscrptr_type)s</td>
+				</tr>
+				<tr class="%(dpstr_info_type_displ)s">
+					<th class="dpstr_info_hdr_cll">Ligand Type</th><td title="%(dpstr_info_type)s">%(dpstr_info_type)s</td>
+				</tr>
+				<tr class="%(dpstr_info_details_displ)s">
+					<th class="dpstr_info_hdr_cll">Additional Info</th><td title="%(dpstr_info_details)s">%(dpstr_info_details)s</td>
+				</tr>
+			</tbody></table>
+			<div id="sdf_vwr_%(auth_assgnd_grp)s" class="displaynone" ><img src="%(dpstr_info_sketch_sdf_img_pth)s" height="600" width="600"></div>
+			<div id="dscrptr_vwr_%(auth_assgnd_grp)s" class="displaynone" ><img src="%(dpstr_info_dscrptr_img_pth)s" height="600" width="600"></div>
+			</div>
+			
+			<br />			
+	</div>
+<!-- #mainContent ends above -->
+<!-- #footer begins -->
+	<br class="clearfloat" />
+	<div id="footer">
+   		<p>&copy; 2013 wwPDB Chemical Component Editor Module Editor V0.01</p>
+	</div>
+<!-- #footer ends above -->
+</div>
+<!-- #container ends above-->
+</body>
+</html>

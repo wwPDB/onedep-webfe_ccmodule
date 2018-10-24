@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>%(identifier)s - 3D of %(instanceid)s in Full Structure View</title>
+<link rel="stylesheet" type="text/css" media="all" href="/ccmodule/styles/general.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/ccmodule/styles/oneColLiqCtrHdr.css" />
+<!--<link rel="stylesheet" type="text/css" media="all" href="/styles/themes/south-street/jquery-ui-1.8.2.custom.min.css" />  -->
+<link rel="stylesheet" type="text/css" media="all" href="/ccmodule/styles/themes/custom/jquery-ui-1.10.3.custom.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/ccmodule/styles/themes/custom/jquery-ui-1.10.3.custom.wwpdb.css" />
+<script type="text/javascript">
+var sessionID="%(sessionid)s";
+var residueNum = "%(residue_num)s"
+var chainId = "%(chain_id)s"
+</script>
+<script type="text/javascript" src="/js/jquery-11/core/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/js/jquery/plugins/jquery.form.min.js"></script>
+<script type='text/javascript'>
+var jsmolAppOpen={};
+var jsmolAppDict={};
+var JMOL_VRSN = 'jmol-latest';
+$.ajax({url: '/applets/'+JMOL_VRSN+'/jsmol/JSmol.min.nojq.js', async: false, dataType: 'script'});
+
+function initJsmolApp(appName, id) {
+	//alert("Beginning initJsmolApp");
+    var xSize=650;
+    var ySize=650;
+    Jmol._binaryTypes = [".map",".omap",".gz",".jpg",".png",".zip",".jmol",".bin",".smol",".spartan",".mrc",".pse"];
+    Info = {
+        j2sPath: "/assets/applets/"+JMOL_VRSN+"/jsmol/j2s",
+        serverURL: "/assets/applets/"+JMOL_VRSN+"/jsmol/php/jsmol.php",
+        width:  xSize,
+        height: ySize,
+        debug: false,
+        color: "0xD3D3D3",
+        disableJ2SLoadMonitor: true,
+        disableInitialConsole: true,
+        addSelectionOptions: false,
+        use: "HTML5",
+        readyFunction: null,
+        script: ""
+    };
+    Jmol.setDocument(0);
+    jsmolAppDict[appName]=Jmol.getApplet(appName,Info);
+
+
+    $('#'+id).html( Jmol.getAppletHtml(jsmolAppDict[appName]) );
+    jsmolAppOpen[appName]=true;
+    
+    //alert("Reached end of initJsmolApp and html is: "+Jmol.getAppletHtml(jsmolAppDict[appName]));
+}
+
+function loadFileJsmol(appName, id, filePath, jmolMode) {
+	//alert("in loadFileJsmol and filePath is: "+filePath);
+	if( jsmolAppOpen[appName] ) {
+		delete jsmolAppDict[appName];
+		jsmolAppOpen[appName]=false;
+    }
+	initJsmolApp(appName,id);
+	
+    var setupCmds = '';
+    if (jmolMode == 'wireframe') {
+    	setupCmds = "background black; wireframe only; wireframe 0.05; labels off; slab 100; depth 40; slab on;";
+    } else if (jmolMode == 'cpk') {
+    	setupCmds = "background white; wireframe off; spacefill on; color chain; labels off; slab 100; depth 40; slab on";
+    } else {
+    	setupCmds = "background [xD3D3D3]; wireframe only; wireframe 0.05; labels off; slab 100; depth 40; slab on; display within(6.0, %(residue_num)s:%(chain_id)s); zoomto (%(residue_num)s:%(chain_id)s) 800; select (%(residue_num)s:%(chain_id)s); wireframe only; wireframe 0.10; spacefill 15%%; label '%%a';";
+    }
+    var jmolCmds = "load " + filePath + "; " + setupCmds;
+    Jmol.script(jsmolAppDict[appName], jmolCmds);
+}
+
+$(document).ready(function() {
+	var instId = '%(instanceid)s';
+	var uniqeId = instId.split("_")[2]+instId.split("_")[3];
+	var jmolId = 'estndaln'+uniqeId;
+	var expThreeDdivId = 'auth_environ_jmol_%(instanceid)s';
+	var loadFilePath = '%(3dpath)s.cif';
+	//var jmolCmd = "load %(3dpath)s.cif; background [xD3D3D3]; wireframe only; wireframe 0.05; labels off; slab 100; depth 40; slab on; display within(6.0, %(residue_num)s:%(chain_id)s); zoomto (%(residue_num)s:%(chain_id)s) 800; select (%(residue_num)s:%(chain_id)s); wireframe only; wireframe 0.10; spacefill 15%%; label '%%a';";
+
+	loadFileJsmol(jmolId,expThreeDdivId,loadFilePath,"default");
+	
+	$('#btn_lbls_on_off').click(function() {
+		var cmd = $(this).attr('value');
+		var viewerCmd;
+		var jmolVwr = jsmolAppDict[jmolId];
+    	if( cmd == "Labels Off" ){
+    		$(this).attr('value','Labels On');
+    		viewerCmd = "label off;";
+    		Jmol.script( jmolVwr, viewerCmd );
+			//document.jmolApplet0.script(viewerCmd);
+    	}
+    	else{
+    		$(this).attr('value','Labels Off');
+    		viewerCmd = "select (%(residue_num)s:%(chain_id)s); label '%%a';";
+    		//document.jmolApplet0.script(viewerCmd);
+    		Jmol.script( jmolVwr, viewerCmd );
+    	}
+    });
+});
+</script>
+</head>
+<body class="oneColLiqCtrHdr">
+<div id="container">
+<!-- begin #header-->
+	<div id="header">
+    	<div id="logo"><img src="/images/wwpdb_logo.gif" width="187" height="58" alt="logo" /> </div>
+    	<div id="headerCont">
+      		<h1>Chemical Component Editor Module</h1>
+      		<!-- <span id="help" class="ui-icon ui-icon-info fltrgt"></span> -->
+		</div>
+    	<br class="clearfloat" /> 
+	</div>
+<!-- #header ends above-->
+    <br class="clearfloat" />
+	<br />
+<!-- #mainContent begins -->
+	<div id="mainContent">
+			<br />
+			<br />
+			<div style="width:650px; overflow:auto; margin-left: auto; margin-right: auto;"><h2>View of %(instanceid)s within 6&#197 of Deposition Structure Environment</h2></div>
+			<div id="auth_environ_jmol_%(instanceid)s" class="threeD_environ_vw">
+				
+			</div>
+			<div class="threeD_environ_vw_cntrls">
+				<br />
+				<input id="btn_lbls_on_off" name="btn_lbls_on_off" value="Labels Off" type="button" />
+			</div>
+			<br />			
+	</div>
+<!-- #mainContent ends above -->
+<!-- #footer begins -->
+	<br class="clearfloat" />
+	<div id="footer">
+   		<p>&copy; 2014 wwPDB Chemical Component Editor Module Editor</p>
+	</div>
+<!-- #footer ends above -->
+</div>
+<!-- #container ends above-->
+</body>
+</html>

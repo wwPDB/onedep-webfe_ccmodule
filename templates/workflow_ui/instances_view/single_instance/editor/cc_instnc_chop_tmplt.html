@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+ <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="Dimitris Dimitropoulos"/>
+	
+	<link rel="stylesheet" type="text/css" media="all" href="/ccmodule/styles/oneColLiqCtrHdr.css" />
+    <link href="/chemeditor/css/ui.jqgrid.css" rel="stylesheet" type="text/css"/> 
+    <link href="/chemeditor/css/redmond/jquery-ui-1.8.2.custom.css" rel="stylesheet" type="text/css"/>
+    <link href="/chemeditor/css/jquery.windows-engine.css" rel="stylesheet" type="text/css"/>
+    
+    <link href="/chemeditor/css/chemdiagram.css" rel="stylesheet" type="text/css"/>
+    <title>%(identifier)s - Editor (%(instanceid)s) - Chemical Component Editor Module</title>
+    
+    <script type="text/javascript" src="/js/jquery-10.2/core/jquery-1.10.2.min.js"></script>
+    <!--[if IE]><script type="text/javascript" src="excanvas.js"></script><![endif]-->
+    <script type="text/javascript" src="/chemeditor/canvas.text.js"></script>
+    <script type="text/javascript" src="/chemeditor/faces/optimer-normal-normal.js"></script>            
+
+    <script type="text/javascript" src="/chemeditor/js/jquery.jqGrid.min.js"></script>
+    <script type="text/javascript" src="/chemeditor/js/jquery.cookie.js"></script>  
+    <script type="text/javascript" src="/chemeditor/js/jquery.json-2.2.js"></script>      
+    <script type="text/javascript" src="/chemeditor/js/jquery.windows-engine.js"></script>   
+    <script type="text/javascript" src="/chemeditor/js/jquery.ajaxfileupload.js"></script>     
+    <script type="text/javascript" src="/chemeditor/js/jquery.tools.min.js"></script>      
+
+    <script type="text/javascript" src="/applets/jmol-dev/jsmol/JSmol.min.nojq.js"></script>
+    <script type="text/javascript" src="/ccmodule/editor/js/Jmol2.js"></script>
+    
+    <script type="text/javascript" src="/chemeditor/jquery.chem.js"></script>
+    <script type="text/javascript" src="/chemeditor/jquery.chemFormats.js"></script>
+    <script type="text/javascript" src="/chemeditor/jquery.chemUI.js"></script>
+    <script type="text/javascript" src="/chemeditor/jquery.objectEdit.js"> </script>
+
+    <script type="text/javascript" src="/chemeditor/jquery.chemViews.js"> </script>
+    <script type="text/javascript" src="/chemeditor/jquery.chemAjax.js"> </script>
+    <script type="text/javascript" src="/chemeditor/jquery.chemWin.js"> </script>
+    <script type="text/javascript" src="/chemeditor/jquery.cifEdit.js"> </script>
+    <script type="text/javascript" src="/chemeditor/jquery.chemChopper.js"> </script>
+    <script type="text/javascript" src="/chemeditor/jquery.pdbSplit.js"> </script>
+
+        
+    <style type="text/css"> 
+       .ui-jqgrid-title, .ui-jqgrid-sortable, .ui-jqgrid-btable {font-size:13px;font-family:Sans-serif}
+       .ui-jqgrid-btable {border:solid 1px gray}
+    </style>
+
+    <script type="text/javascript">
+       $(document).ready(function(){
+    	   jQuery.chemPath="/chemeditor/";
+           jQuery.cifEdit.pdbId = '%(pdbid)s';
+           jQuery.cifEdit.annotator = '%(annotator)s';
+           jQuery.cifEdit.ccModuleFlag = true;
+           	var sessionId 	= '%(sessionid)s';
+			var instanceId	= '%(instanceid)s';
+			var fileSource  = '%(filesource)s';
+	        var instance    = '%(instance)s'; //wf instance ID
+			var depDatasetId = '%(depositionid)s';
+			var sessPathPrefix = '%(session_url_prefix)s';
+			var cifUrl = '%(session_url_prefix)s/%(instanceid)s.cif';
+			$('#chemWin1').chemWin({edit:{posy:100,width:700},jmol:{posy:100,posx:715,width:600},
+                                  file:{posx:10,posy:645,width:1300,height:200/*hide:true*/},         	  
+                                      comp:{hide:true},
+         	                      atoms:{posx:10,posy:890,width:1300,height:200/*,hide:true*/},
+         	                      bonds:{posx:10,posy:1135,width:1300,height:200/*,hide:true*/},
+         	                      view:{diagram:{edit:{lock:true}/*CTM-51,readOnly:true*/},
+             	                      atomModel:jQuery.chemChopper.ccompAtomModel,
+             	                      bondModel:jQuery.chemChopper.ccompBondModel,
+             	                      defaultFileFormat:'mmCif'},
+         	                      control:{align2d:false,addhydro:false,align3d:false,load:true,upload:true},
+         	                      afterLoad:jQuery.chemChopper.autoSelectPeptide,
+         	                      afterInit:function(){
+                                                           jQuery.chemViews.cifEditControls('chemWin1',
+                                                               {NewCode:true,Update:true,CheckDuplicate:true,Audit:true});
+                                                           jQuery.chemDiagram.modeSelect('chemEdit_chemView_chemWin1');
+                                                           jQuery.chemWin.loadCifUrl('chemWin1',cifUrl,instanceId);
+                                                           jQuery.chemChopper.enableChop("chemWin1");
+         	                                           //$('#loadCifButton_chemWin1').click(function(){jQuery.chemChopper.enableChop("chemWin1")});
+         	                                           //$('#uploadCifButton_chemWin1').click(function(){jQuery.chemChopper.enableChop("chemWin1")});
+         	                                           }});      	      	  
+        });       
+    </script>
+ </head>
+ <body>
+<div id="container">   
+   <div id="chemWinSelector">
+      <span style="margin-right:10px">
+      <a href='javascript:window.location.reload()' style="text-decoration:none;border-bottom:solid 6px LightSlateGray;" 
+         onclick='window.location.reload();return false;'><img src="/chemeditor/logo.png" border="0" style="padding-bottom:0px"/>
+      <span style="font-family:sans-serif;color:DarkSlateGray;font-size:18px;font-weight:bold;text-decoration:none;">Chemical Chopper</span></a>
+      <a href="/chemeditor/help.html" style="text-decoration:none;vertical-align:bottom" target="_blank">
+          <span style="margin-left:40px;font-family:sans-serif;color:DarkRed;font-size:10px;font-weight:bold;">Chopper Help</span></a>
+      </span>
+      <span style="font-family: Sans-serif; color:gray; font-size:12px" id="chopExamples">Examples: 
+              <a href="http://ligand-expo.rcsb.org/reports/0/0Z9/0Z9.cif">0Z9</a> 
+              <a href="http://ligand-expo.rcsb.org/reports/X/X9A/X9A.cif">X9A</a> 
+              <a href="http://ligand-expo.rcsb.org/reports/0/0EZ/0EZ.cif">0EZ</a> 
+              <a href="http://ligand-expo.rcsb.org/reports/N/NFD/NFD.cif">NFD</a>
+       </span>
+      <span id="chopButton">
+              <input type="button" onclick="jQuery.chemChopper.selectBonds();" value="Select bonds"/>
+              <input type="button" onclick="jQuery.chemChopper.chopOnSelected();" value="Chop"/>
+      </span>
+<!--
+      <span style="display:none" id="applyToPDBDiv">
+                 <input type="file" name="data" id="pdbFileName"/> 
+                 <span style="font-family: Sans-serif; color:gray; font-size:12px"><a href="1MTR.pdb">1MTR</a>
+                 </span>
+                 <input type="button" id="applyToPdbButton" value="Apply to PDB" onclick="jQuery.pdbSplit.applyToPdb()"/>
+      </span>
+-->
+      <img style="visibility:hidden" src="/chemeditor/ajaxProgress.gif" id="ldmsg_chop"/>
+<!--
+      <span style="margin-left:20px"><input type="button" onclick="location.reload();" value="New Session"/></span>
+-->
+   </div>
+   <div id="chemContent" style="border-top:solid 1px black">
+   <div style="display:none;font-family:sans-serif" id="renameButton">      
+   <!--  The rename atoms functionality is disabled
+         <input type="button" onclick="jQuery.chemChopper.useSubNames();" value="Use Subcomponent Nomenclature"/>
+         Use letter suffix <input type="checkbox" id="renameUseLetters" value="true"/>                  
+   -->
+   </div>                        
+      <div class="chemWin" id="chemWin1"></div>
+   </div>   
+
+
+<!-- #footer begins -->
+	<br/>
+	<div style="margin-top:1700px" id="footer">
+   		<p>&copy; 2012 wwPDB Chemical Component Chopper Module V0.01</p>
+	</div>
+<!-- #footer ends above -->
+</div>
+<!-- #container ends above-->
+</body>
+</html>
+

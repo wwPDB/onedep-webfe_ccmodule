@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Chemical Component Editor Module</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <!--  <link rel="stylesheet" type="text/css" media="all" href="/ccmodule/styles/general.css" /> -->
+  <link rel="stylesheet" type="text/css" media="all" href="/ccmodule/styles/oneColLiqCtrHdr.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="/ccmodule/styles/superfish.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="/styles/themes/south-street/jquery-ui-1.8.2.custom.min.css" />
+</head>
+<body class="oneColLiqCtrHdr">
+	<!--#include virtual="cc_header.html"-->
+	<!--#include virtual="cc_topmenu.html"-->
+	<br class="clearfloat" />
+	<br />
+	<div id="mainContent">
+
+<h2>Chemical Component Search Tools</h2>
+
+<p>
+The forms below provide access to searches for: molecular name,  molecular formula, 2D substructures, and 
+instances of chemical components in PDB entries.
+</p>
+<br/>
+
+<form method="get" action="/service/cc/search/cc-index"  enctype="application/x-www-form-urlencoded" name="query"> 
+ <fieldset>
+   <legend><a href="help.html#searchNameFormula" class="ui-icon ui-icon-info fltrgt"></a>Molecular name and formula search options&nbsp;</legend>
+         <INPUT id="formid" name="formid" TYPE="hidden" VALUE="cc-index-search"> 
+
+   <label for="target">Search term</label>
+   <input class="formInputText" type="text" size="80" maxlength="200" name="target" id="target" value="">
+   <br />
+   <label for="operation">Search type</label> 
+     <select class="formSelect" name="operation" columns="3">
+            <option selected="selected"  value="formula-exact">Formula (all atom exact)</option>
+            <option                      value="formula-heavy-exact">Formula (heavy atom exact)</option>
+            <option                      value="formula-exact-subset">Formula (exact subset)</option>
+            <option                      value="formula-subset">Formula (subset)</option>
+            <option                      value="name-exact">Molecular name (exact) </option>
+            <option                      value="name-substring">Molecular name (exact sub-string) </option>
+            <option value="name-close">Molecular name (similar) </option>
+            <option value="smiles">SMILES</option>
+            <option value="fpsmi">Chemically similar to SMILES</option>
+            <option value="inchi-substring">InChI</option>
+            <option value="inchikey-substring">InChIKey</option>
+            <option value="subcomplist-substring">Subcomponent list (substring)</option>
+
+         </select>
+         <INPUT class="formInputButton"  TYPE="submit" VALUE="Go"> 
+   </fieldset>
+</form>
+
+
+<!-- Graph search -->
+<br/>
+<form method="post" action="/service/cc/search/cc-graph" enctype="multipart/form-data"> 
+   <fieldset>
+   <legend><a href="help.html#searchSubstructure" class="ui-icon ui-icon-info fltrgt"></a>Substructure search options&nbsp;</legend>
+   <INPUT id="formid" name="formid" TYPE="hidden" VALUE="cc-ss-search"> 
+
+    <label for="file">Component file name</label>
+        <input class="formInputText" type="file" name="file"  value="" size="60" /> 
+
+    <br />
+
+    <label for="operation">Search type</label> 
+         <select class="formSelect" name="operation" columns="3">
+            <option selected="selected"  value="prefilter-strict">Strict (all atom)</option>
+            <option                      value="prefilter-skip-h-strict">Strict (heavy atom)</option>
+            <option                      value="prefilter-relaxed" >Relaxed (all atom/connectivity only)</option>
+            <option                      value="prefilter-skip-h-relaxed">Relaxed (heavy atom/connectivity only)</option>
+            <option                      value="prefilter-skip-h-close">Close (close formula/connectivity only)</option>
+	</select>
+
+        <input class="formInputButton"  TYPE="submit" VALUE="Go"/> 
+   </fieldset>
+</form>
+
+
+<!-- PDB component search -->
+<br/>
+<form method="post" action="/service/cc/search/cc-db" >
+  <fieldset>
+  	<legend class="fltlft"><a href="help.html#searchInstance" class="ui-icon ui-icon-info fltrgt"></a>Component instance search options&nbsp;</legend>
+  	<br class="clearfloat" />
+	<INPUT id="formid" name="formid" TYPE="hidden" VALUE="cc-db-search"> 
+	<INPUT id="operation" name="operation" TYPE="hidden" VALUE="idsearch"> 
+    <label for="targetId">Component ID code</label>
+	 <input class="formInputText" type="text" size="10" 
+                     maxlength="200" name="targetId" id="targetId" value=""/>
+    <br />
+     <label for="searchOp">Search type</label> 
+	<select class="formSelect" name="searchOp" columns="3">
+            <option selected="selected"  value="EXACT">Exact</option>
+            <option                      value="LIKE">Like</option>
+	</select>
+
+        <input class="formInputButton"  TYPE="submit" VALUE="Go"/> 
+  </fieldset>
+</form>
+
+<p>
+<!-- 
+<form method="post" action="/service/cc/view_orig" enctype="multipart/form-data"> 
+ <fieldset>
+   <legend>Viewer options
+       <a href="help.html#viewer"><img src="images/qmark.gif" height=15 width=17></a>
+   </legend>
+    <INPUT id="formid" name="formid" TYPE="hidden" VALUE="ccview"> 
+
+	<label for="idcodes">ID Codes: </label>
+         <input  class="formInputText"  type="text" size="30" maxlength="30" name="idcodes">
+
+
+        <input type="hidden" name="bgcolor" value="white">
+
+  <INPUT class="formInputButton"  TYPE="submit" VALUE="Go"> 
+  </fieldset>
+</form>
+
+
+<form method="get" action="/service/cc/adminops"  enctype="application/x-www-form-urlencoded" name="query"> 
+ <fieldset>
+ <legend>Find Identifiers
+       <a href="help.html#adminDictOps"><img src="images/qmark.gif" height=15 width=17></a>
+    </legend>
+         <INPUT id="formid" name="formid" TYPE="hidden" VALUE="ccadminops"> 
+
+       <label for="operation">Options</label> 
+         <select class="formSelect"  name="operation" columns="3">
+            <option selected="selected"                     value="available-ids">Get available component ID list</option>
+         </select>
+         <INPUT class="formInputButton" TYPE="submit" VALUE="Go"> 
+
+  </fieldset>
+</form>
+ -->
+<br />
+
+<!-- END TEXT HERE  -->
+</div>
+	<!--#include virtual="cc_footer.html"-->
+</body>
+</html>
+

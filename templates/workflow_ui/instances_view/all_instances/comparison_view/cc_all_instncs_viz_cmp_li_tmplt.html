@@ -1,0 +1,18 @@
+<li id="vizcmp_%(auth_assgnd_grp)s_%(instanceid)s" class="viz_cmp fltlft">
+	<div class="viz_compare_subhdr">
+		<table><tr><td nowrap="nowrap">Auth Instance ID:</td><td nowrap="nowrap">%(instanceid)s</td></tr><tr><td>Name:</td><td>%(name)s</td></tr><tr><td nowrap="nowrap">Formula:</td><td nowrap="nowrap" title="%(formula)s">%(formula_displ)s</td></tr></table>
+	</div>
+	<div id="allinst_twoD_%(instanceid)s" class="twoDviz exp">
+		<div id="twoD_showLabeled_%(instanceid)s" style="border-style: none">
+			<input id="twoD_labld_vw_no_hy_%(instanceid)s" name="%(2dpath_labld_no_hy)s" value="See Labeled Diagram" class="twoD_labld_vw_btn fltlft" type="button" style="font-size: 0.75em" />
+<!--
+			<input id="twoD_labld_vw_w_hy_%(instanceid)s" name="%(2dpath_labld_w_hy)s" value="See Labeled Diagram - w/ Hydrogens" class="twoD_labld_vw_btn fltlft" type="button" style="font-size: 0.75em" />
+-->
+			<div id="twoD_labld_vwr_no_hy_%(instanceid)s" class="displaynone"></div>
+			<div id="twoD_labld_vwr_w_hy_%(instanceid)s" class="displaynone"></div>
+		</div>
+		<img id="image_%(instanceid)s" src="%(2dpath)s" />
+	</div>
+	<div id="allinst_atm_mp_%(instanceid)s" name="%(instanceid)s" class="atm_mp exp all_instncs %(auth_assgnd_grp)s" style="display: none;"><ul class="all_instncs">[ATOM LVL PLACEHOLDER]</ul></div>
+	<div id="allinst_threeD_%(instanceid)s" name="%(instanceid)s" class="threeDviz exp" style="display: none;">[JMOL PLACEHOLDER]</div>
+</li>

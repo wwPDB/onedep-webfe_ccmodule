@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Help : Chemical Component Module Editor</title>
+<link rel="stylesheet" type="text/css" media="all" href="/ccmodule/styles/general.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/ccmodule/styles/oneColLiqCtrHdr.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/ccmodule/styles/superfish.css" />
+</head>
+<body class="oneColLiqCtrHdr">
+<div id="container">
+<!-- begin #header-->
+	<div id="header">
+    	<div id="logo"><img src="/ccmodule/images/wwpdb_logo.gif" width="187" height="58" alt="logo" /> </div>
+    	<div id="headerCont">
+      		<h1>Help Page</h1>
+		</div>
+    	<br class="clearfloat" /> 
+	</div>
+<!-- #header ends above-->
+    <br class="clearfloat" />
+	<br />
+<!-- #mainContent begins -->
+	<div id="mainContent">
+	    <div id="summary">
+	    	<div class="fltrgt">
+	        	<a href="javascript:void($('#help_link').btOff());"><img src="/ccmodule/images/close.gif" alt="close" width="12" height="12" /></a>
+		</div>
+	    	<div id="load">
+	            <p><span style="color:#669966">"Load" button:</span> Load a dictionary (or a saved) ligand.
+	            </p>
+	        </div>
+			<div id="finish">
+	            <p><span style="color:#669966">"Browse" button:</span> Browse your desktop's file system for a chemComp mmCif file to upload.
+	            </p>
+			</div>
+			<div id="upload">
+	            <p><span style="color:#669966">"Upload" button:</span> Upload a chemComp mmCif file from your desktop's file system.
+	            </p>
+	        </div>
+	        <div id="align">
+	            <p><span style="color:#669966">"Align" button:</span> Realign the 2-D diagram to an optimal nice looking layout.
+	            </p>
+	        </div>
+	        <div id="addHydrogens">
+	            <p><span style="color:#669966">"Add Hydrogens" button:</span>
+	            Will add hydrogens to the model.</p>
+	        </div>
+	        <div id="reset">
+	            <p><span style="color:#669966">"Reset windows" button:</span>
+	            All sub-windows of this interface may be moved and resized. Pressing this button will redisplay all windows in their default location and size.</p>
+	        </div>
+	        <div id="newCode">
+	            <p><span style="color:#669966">"New code" button:</span>
+	            This will regenerate a new id code that is not currently in use.</p>
+	        </div>
+	        <div id="save">
+	            <p><span style="color:#669966">"Save" button:</span>This will save your current work in the server work-area. In following visits the use of the "Load" button will retrieve the saved work.`</p>
+	        </div>
+	        <div id="cleanUp">
+	            <p><span style="color:#669966">"Clean up" button:</span>
+	            Cleans up all saved ligands in the server work-area.</p>
+	        </div>
+	        <div id="commit">
+	            <p><span style="color:#669966">"Commit to CVS" button:</span>
+	            Adds a new ligand to the repository.</p>
+	        </div>
+                <p>More detailed documentation can be found <a href="/ccmodule/editor/helpEdit.html" target="_blank">here</a>.</p>
+    	</div>
+    	<div id="Edit">
+	    	<div class="fltrgt">
+	        	<a href="javascript:void($('#help_link_Edit').btOff());"><img src="/ccmodule/images/close.gif" alt="close" width="12" height="12" /></a>
+			</div>
+	    	<div id="diagram">
+	            <h4>"Chemical diagram" panel</h4>
+	            <p>Allows one to display/edit the ligand in 2D using the buttons at the bottom of the panel.</p>
+	        </div>
+	    	<div id="edit">
+	            <p><span style="color:#669966">"Edit" button:</span>
+	            Indicates that clicking on an atom or bond will either add a partular atom or change the bond type.</p>
+	        </div>
+	    	<div id="select">
+	            <p><span style="color:#669966">"Select" button:</span>
+	            Selects bonds/atoms so they can be moved in the 2D view.</p>
+	        </div>
+	    	<div id="delete">
+	            <p><span style="color:#669966">"Delete" button:</span>
+	            Clicking on this and then a particular atom/bond will delete it.</p>
+	        </div>
+	    	<div id="clear">
+	            <p><span style="color:#669966">"Clear" button:</span>
+	            Clears the work area.</p>
+	        </div>
+	    	<div id="bondsmenu">
+	            <p><span style="color:#669966">"Bonds" pulldown:</span>
+	            Indicates the type of bond to add.</p>
+	        </div>
+	    	<div id="elementmenu">
+	            <p><span style="color:#669966">"Element" pulldown:</span>
+	            Indicates the atom type to add.</p>
+	        </div>
+	    	<div id="labels">
+	            <p><span style="color:#669966">"Labels" toggle:</span>
+	            Turns on/off the display of atom names.</p>
+	        </div>
+	    	<div id="hydrogens">
+	            <p><span style="color:#669966">"Hydrogens" toggle:</span>
+	            Turns on/off the display of hydrogens</p>
+	        </div>
+	    	<div id="lock">
+	            <p><span style="color:#669966">"Lock" toggle:</span>
+                    Turns on/off the ability to grab and move atoms and bonds in the 2-D diagram (in order to avoid accidental changes).
+	            </p>
+	        </div>
+	    	<div id="undo">
+	            <p><span style="color:#669966">"Undo/Redo" buttons:</span>
+	            Undos (Redos) the last edit.  Can be pressed repeatedly.</p>
+	        </div>
+	</div>
+    	<div id="Comp">
+	    	<div class="fltrgt">
+	        	<a href="javascript:void($('#help_link_Comp').btOff());"><img src="/ccmodule/images/close.gif" alt="close" width="12" height="12" /></a>
+			</div>
+	    	<div id="molecule">
+	            <h4>Molecule Panel</h4>
+	            <p>Displays CIF header for a ligand.  May be edited.</p>
+	        </div>
+	</div>
+    	<div id="Jmolm">
+	    	<div class="fltrgt">
+	        	<a href="javascript:void($('#help_link_Jmolm').btOff());"><img src="/ccmodule/images/close.gif" alt="close" width="12" height="12" /></a>
+			</div>
+	    	<div id="jmolm">
+	            <h4>"3-D model" panel</h4>
+	            <p>Displays the 3D representation of the model in JMOL.  This is usually based on the model coordinates.</p>
+	        </div>
+	</div>
+    	<div id="Jmol">
+	    	<div class="fltrgt">
+	        	<a href="javascript:void($('#help_link_Jmol').btOff());"><img src="/ccmodule/images/close.gif" alt="close" width="12" height="12" /></a>
+			</div>
+	    	<div id="jmol">
+	            <h4>"3-D model" panel</h4>
+	            <p>Displays the ideal representation of the current model.  Geometry is optimized compared to the "3-D view"</p>
+	        </div>
+	</div>
+    	<div id="Atoms">
+	    	<div class="fltrgt">
+	        	<a href="javascript:void($('#help_link_Atoms').btOff());"><img src="/ccmodule/images/close.gif" alt="close" width="12" height="12" /></a>
+			</div>
+	    	<div id="atom">
+	            <h4>"Atoms" table</h4>
+	            <p>Displays the atoms present in the ligand.  One may change the values by pull down on each element.  Changes in ATOM_ID are reflected in the "Bonds" table.</p>
+	        </div>
+	</div>
+    	<div id="Bonds">
+	    	<div class="fltrgt">
+	        	<a href="javascript:void($('#help_link_Bonds').btOff());"><img src="/ccmodule/images/close.gif" alt="close" width="12" height="12" /></a>
+			</div>
+	    	<div id="bond">
+	            <h4>"Bonds" table</h4>
+	            <p>Displays the connectivity of individual atoms. One may change the bond order of the entity.</p>
+	        </div>
+	</div>
+    	<div id="File">
+	    	<div class="fltrgt">
+	        	<a href="javascript:void($('#help_link_File').btOff());"><img src="/ccmodule/images/close.gif" alt="close" width="12" height="12" /></a>
+			</div>
+	    	<div id="chemfile">
+	            <h4>"Chemical format" panel</h4>
+	            <p>Displays the current entry.</p>
+	        </div>
+	    	<div id="format">
+	            <p><span style="color:#669966">"Format" pulldown:</span>
+	            Selects the download and display format of the current entry.</p>
+	        </div>
+	    	<div id="download">
+	            <p><span style="color:#669966">"Download" button:</span>
+	            Will download the current entry in the selected format.</p>
+	        </div>
+	</div>
+<!-- #mainContent ends above -->
+<!-- #footer begins -->
+	<br class="clearfloat" />
+	<div id="footer">
+   		<p>&copy; 2010 wwPDB Chemical Component Editor Module Editor V0.01</p>
+	</div>
+<!-- #footer ends above -->
+</div>
+<!-- #container ends above-->
+</body>
+</html>

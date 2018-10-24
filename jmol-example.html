@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Chemical Component Viewer</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <link href="styles/general.css" rel="STYLESHEET" type="text/css">
+  <script src="/applets/jmol/Jmol.js"></script>	
+</head>
+<body>
+
+<!--#include virtual="styles/common/header_cc.txt"-->
+
+<!-- this dynamically builds the necessary number of tables -->
+<script>
+jmolInitialize("/applets/jmol"); //initialize *ONCE* and only once, this was removed from the python loop
+jmolSetAppletColor("<%=bgcolor%>"); //set bgcolor
+</script>
+
+<h2>Chemical Components Viewer</h2>
+<br/>
+<%
+i=0
+for cc in ccInfoList:
+	i+=1
+	id = cc['id']
+	cifFile = id + ".cif"
+	reportFile = id + "-v3.html"
+
+	if cc.has_key("sdfIdealPathRel"):
+		sdfPathRel=cc['sdfIdealPathRel']
+		label3d="Ideal Coordinates"
+	elif cc.has_key("sdfModelPathRel"):
+		sdfPathRel=cc['sdfModelPathRel']
+		label3d="Model Coordinates"
+        else:
+		label3d="Missing Coordinates"
+		sdfPathRel=""
+	#start for loop 1
+%>
+
+  <table border="1" style="border:1px solid #000000;border-collapse:collapse;" cellspacing="0" cellpadding="2">
+
+	<tr>
+	<td colspan=3 align=left>
+	  <table>
+		<tr><td><b>ID:            </b> </td><td colspan=3> <%=cc['id']%>            </td></tr>
+		<tr><td><b>Name:          </b> </td><td colspan=3> <%=cc['name']%>          </td></tr>
+		<tr><td><b>Synonyms:      </b> </td><td colspan=3> <%=cc['synonyms']%>      </td></tr>
+		<tr><td><b>Formula:       </b> </td><td colspan=3> <%=cc['formula']%>       </td></tr>
+		<tr><td><b>Formal Charge: </b> </td><td colspan=3> <%=cc['formal_charge']%> </td></tr>
+		<tr><td><b>Status:        </b> </td><td colspan=3> <%=cc['status']%>        </td></tr>
+		<tr><td><b>Replaced:      </b> </td><td colspan=3> <%=cc['replaced']%>      </td></tr>
+		<tr><td><b>Replaces:      </b> </td><td colspan=3> <%=cc['replaces']%>      </td></tr>
+<%
+	if cc.has_key("cifPathRel"):
+		#start if
+%>
+		<tr>
+                    <td><b>Component (mmCIF): </b> </td>
+    		    <td align=left colspan=3><a href="<%=cc['cifPathRel']%>" TARGET="_blank"><%=cifFile%></a></td>
+                </tr>
+<%
+	#end if
+%>
+
+<%
+	if cc.has_key("reportPathRel"):
+		#start if
+%>
+		<tr>
+                    <td><b>Report: </b> </td>
+    		    <td align=left colspan=3><a href="<%=cc['reportPathRel']%>" TARGET="_blank">(view)</a></td>
+                </tr>
+<%
+	#end if
+%>
+	  </table>
+	</td>
+	</tr>
+
+        <!-- display row  end -->
+	<tr>
+	  <td width=300 align="center"><img src="<%=cc['gifPathRel']%>"></td>
+	  <td width=300 align="center">
+  	    <script>
+	      jmolApplet(300, "load <%=sdfPathRel%>", <%=i%>);
+	    </script>
+	  </td>
+	  <td>
+	    <form>
+	       <script>
+	          jmolHtml("Hydrogens:<br/>&nbsp;&nbsp;&nbsp;");
+		  jmolRadioGroup([
+	   	     ["set showhydrogens on", "on", "checked"],
+ 	    	     ["set showhydrogens off", "off"]], 
+                     '<br/>&nbsp;&nbsp;&nbsp;', "Hydrogens");
+  	       </script>
+	     </form>
+	  </td>
+	</tr>
+	<tr>
+		<td align=center>Diagram</td>
+		<td align=center><%=label3d%></td> 
+		<td align=center>&nbsp</td>
+	</tr>
+
+        <!-- display row  end -->
+  </table>
+  <br/>
+<%
+#end for loop 1
+%>
+
+
+<!-- END TEXT HERE  -->
+
+<!--#include virtual="styles/common/footer.txt"-->
+
+</body>
+</html>

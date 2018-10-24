@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Chemical Component Editor Module</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<!--  <link rel="stylesheet" type="text/css" media="all" href="/ccmodule/styles/general.css" /> -->
+<link rel="stylesheet" type="text/css" media="all" href="/ccmodule/styles/oneColLiqCtrHdr.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/ccmodule/styles/superfish.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/ccmodule/styles/themes/custom/jquery-ui-1.10.3.custom.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/ccmodule/styles/themes/custom/jquery-ui-1.10.3.custom.wwpdb.css" />
+<script type="text/javascript" src="/js/jquery-11/core/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/js/jquery/plugins/jquery.form.min.js"></script>
+<script type="text/javascript" src="/ccmodule/js/ligmod_stndaln.js"></script>
+</head>
+<body class="oneColLiqHdr">
+<div id="container">
+	<!--#include virtual="cc_header.html"-->
+	<!--#include virtual="cc_topmenu.html"-->
+	<br class="clearfloat" />
+	<br />
+	<br />
+	<div id="mainContent">
+		<h2 class="fltlft">Chemical Component Viewer</h2><a href="help.html#viewer" class="ui-icon ui-icon-info"></a>
+		<br class="clearfloat" />
+		<div class="errmsg glblerr ui-state-error ui-corner-all"></div>
+		<br />
+		<div class="fltlft width59">
+       		<form name="add_chemcomp_frm" id="add_chemcomp_frm" class="add_chemcomp">
+				<span id="add_chemcomp" class="fltlft">Enter ID of chem component(s) to add to Comparison Panel below: <input type="text" size="20" name="ccid" id="ccid_add_chemcomp" class="add_chemcomp" value="" style="text-transform: uppercase;"/></span>
+				<input style="display: inline;" id="add_chemcomp_btn" name="add_chemcomp_btn" value="Add" class="add_chemcomp fltlft" type="submit">
+				<span class="fltlft prcssng_msg displaynone">&nbsp;&nbsp;<img src="/images/loading.gif" alt="loading..." />&nbsp;&nbsp;Data being processed.</span>
+			</form>
+			<br />
+			<br />
+			<table id="cc_view_tbl" name="cc_view_tbl" class="cc_view_tbl displaynone">
+       			<tbody>
+	       		<tr><th colspan="7"><strong>Chemical Component Compare List</strong></th></tr>
+	       		<tr><th class="ccid">ID</th><th colspan="4">Downloads</th><th class="vizcmp_chck_bx">Visual Compare</th><th class="rmv_chemcomp">Remove From Panel</th></tr>
+	       		</tbody>
+			</table>
+		</div>
+		<br class="clearfloat" />
+		<br />
+		<div class="viz_compare displaynone" id="viz_compare">
+			<div class="viz_compare_hdr">Visual Comparison Panel<span><label for="twoD_chck_bx">2D</label><input id="twoD_chck_bx" checked="checked" name="" class="twoD_chck_bx" type="checkbox"></span><span><label for="threeD_chck_bx">3D</label><input id="threeD_chck_bx" name="threeD_chck_bx" class="threeD_chck_bx" type="checkbox"></span></div>
+			<ul id="chemcomp_vwr_data" class="viz_compare_ul_chemcomp_vwr">
+			</ul>
+			<br class="clearfloat" />
+		</div>
+	</div>
+	<br class="clearfloat" />
+	<br />
+	<br />
+	<!--#include virtual="cc_footer.html"-->
+</div>
+</body>
+</html>

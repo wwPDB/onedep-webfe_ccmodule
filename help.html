@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Chemical Components Development Site</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" type="text/css" media="all" href="/ccmodule/styles/oneColLiqCtrHdr.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="/ccmodule/styles/superfish.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="/styles/themes/south-street/jquery-ui-1.8.2.custom.min.css" />
+</head>
+<body class="oneColLiqCtrHdr">
+	<!--#include virtual="cc_header.html"-->
+	<!--#include virtual="cc_topmenu.html"-->
+	<br class="clearfloat" />
+	<br />
+	<div id="mainContent">
+
+<h1>On-line Help for Chemical Components Toolbox</h1>
+<hr />
+<a id="viewer" ></a>
+<h2>Viewer Tool</h2>
+<p>
+The chemical component viewer provides summary profiles for components
+in the current component dictionary.  The input to this tool is 
+one or a collection of chemical component 3-letter-code identifiers (multiple identifiers may be separated by commas or just spaces).
+Multiple chemical components can be displayed for comparative viewing.
+</p>
+<hr />
+<h2>Edit Tool</h2>
+<a id="editor" ></a>
+<p>
+The chemical diagram editor provides the functionality to build new molecules or load and modify existing ones. 
+</p>
+<hr />
+<h2>Search Tool</h2>
+<a id="searchTool" ></a>
+<a id="searchNameFormula" ></a>
+<h3>Name and Formula Search</h3>
+<p>
+This form below provides access to searches for molecular name and molecular formula.  A number of 
+search types are supported.  
+</p>
+Molecular formula search options:
+<p>
+<ul>
+<li>Exact all atom formula matches</li>
+<li>Exact heavy atom formula matches</li>
+<li>Exact formula will match any dictionary component containing the partial query formula. For instance,
+    a query for <i>C6 N2</i> will match any formula containing exactly six carbons and two nitrogens.</li>
+<li>A formula subset query will find molecules with formula containing a minimum of the query formula composition.
+    For instance, <i>C6 H7 Hg N2 O2 S</i> will match  <i>C8 H10 Hg N2 O4 S</i>.
+</ul>
+</p>
+<p>
+Note: formulas must be entered with spaces like: <i>C6 H11 N2 O7 P</i>. 
+</p>
+
+<p>
+Molecular name search options:
+<ul>
+<li>Exact name matches.</li>
+<li>Exact substring name matches. These search will find cases where a query name is contained 
+   with the dictionary name.  For instance, pyridine will match 2-aminopyridine</li>
+
+<li>The similar name option will math names which are lexigraphically similar but not exact matches.
+In other words the names may differ in a small number of characters.  For instance, a search for 
+pyridine will match uridine and pyrimidine.  
+</ul> 
+</p>
+
+<a id="searchSubstructure"></a>
+<h3>Substructure Search</h3>
+<p>
+The substructure search will try to match the 2D chemical structure in uploaded chemical component
+definition file with components in the current chemical dictionary.    The following matching options
+are supported:
+</p>
+<p>
+<ul>
+<li>Strict (all atom) queries will match cases in which atom types, bond types, stereochemistry, and aromaticity
+    are the same. </li>
+<li>Strict (heavy atom) queries will match cases in which atom types, bond types, stereochemistry, and aromaticity
+    are the same among heavy atoms. </li>
+<li>Relaxed (all atom) queries will match atom types and connectivity (with any bond type) among all atoms.
+<li>Relaxed (heavy atom) queries will match atom types and connectivity (with any bond type) among only heavy atoms.
+<li>Close matching is similar to relaxed heavy atom matching except that a wider range of candidate molecules  
+    are compared.  This is a useful option if it is possible that the query molecule may be missing a few atoms. 
+</ul>
+</p>
+<p>
+Note:  Strict and relaxed matches are only performed on molecules with corresponding all/heavy formulas.  Close matches
+are performed on molecules that have similar but larger formulas (up to +3 in any element). 
+</p>
+
+<a id="searchInstance"></a>
+<h3>Instance Search</h3>
+<p>
+The input to an instance search is a 3-letter-code component identifier.   This search will produce a
+table containing the PDB entries containing the component.   The table is divided into sections for 
+released and unreleased entries.
+</p>
+<br />
+<br />
+<!-- END TEXT HERE  -->
+</div>
+	<!--#include virtual="cc_footer.html"-->
+</body>
+</html>

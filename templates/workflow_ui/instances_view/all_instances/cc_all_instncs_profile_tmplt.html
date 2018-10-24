@@ -1,0 +1,102 @@
+	<!-- #########################  content for all instances below ################################################################### -->
+	<div class="all_instncs_profile">
+		<br>
+		<div class="allinst_preproc_info c_%(auth_assgnd_grp)s fltlft" >
+			<table id="allinst_match_tbl_%(auth_assgnd_grp)s" class="all_instncs_match_rslts"><tbody>
+				<tr>
+					<th class="instanceid">Instance ID</th>
+					<th class="entityid">Top Hit</th>
+					<th class="status"><span class="match_status target">Match Status</span></th>
+					<th class="prcssng_status">Assignment Status</th>
+					<th class="compositescore"><span class="target cmpst_scr">Composite Score</span></th>
+					<th class="vizcmp_chck_bx">Compare</th>
+				</tr>
+				%(cc_batch_rslts_tbl)s
+			</tbody></table>
+			<br />
+			<br />
+			<table id="allinst_dpstr_info_tbl_%(auth_assgnd_grp)s" class="all_instncs_dpstr_info %(display_dpstr_info)s"><tbody>
+				<tr>
+					<th class="" colspan="2" style="padding: 8px 2px;">Depositor Provided Information&nbsp;&nbsp;&nbsp;<a target="_blank" href="/service/cc/assign/view/dpstr_info?auth_assgnd_grp=%(auth_assgnd_grp)s&identifier=%(depositionid)s&instance=%(instance)s&filesource=%(filesource)s&sessionid=%(sessionid)s">View in new window</a></th>
+				</tr>
+				<tr class="%(dpstr_info_alt_comp_id_displ)s">
+					<th class="dpstr_info_hdr_cll">Alternate ID</th><td title="%(dpstr_info_alt_comp_id)s">%(dpstr_info_alt_comp_id)s</td>
+				</tr>
+				<tr class="%(dpstr_info_name_displ)s">
+					<th class="dpstr_info_hdr_cll">Name</th><td title="%(dpstr_info_name)s">%(dpstr_info_name)s</td>
+				</tr>
+				<tr class="%(dpstr_info_frmla_displ)s">
+					<th class="dpstr_info_hdr_cll">Formula</th><td title="%(dpstr_info_frmla)s">%(dpstr_info_frmla)s</td>
+				</tr>
+				<tr class="dpstr_info_defn_%(auth_assgnd_grp)s %(dpstr_info_defn_displ)s">
+					<th class="dpstr_info_hdr_cll">CC Definition File</th><td title="%(dpstr_info_defn)s">%(dpstr_info_defn_lnk)s</td>
+				</tr>
+				<tr class="dpstr_info_sketch_sdf_%(auth_assgnd_grp)s %(dpstr_info_sketch_sdf_displ)s">
+					<th class="dpstr_info_hdr_cll">SDF/sketch file</th><td title="%(dpstr_info_sketch_sdf)s">%(dpstr_info_sketch_sdf_lnk)s &nbsp;&nbsp; <input id="sdf_vw_btn_%(auth_assgnd_grp)s" name="sdf_vw_btn_%(auth_assgnd_grp)s" value="View sdf as image" class="sdf_vw_btn" type="button" style="font-size: 0.75em" /></td>
+				</tr>
+				<tr class="dpstr_info_image_%(auth_assgnd_grp)s %(dpstr_info_image_displ)s">
+					<th class="dpstr_info_hdr_cll">Image</th><td title="%(dpstr_info_image)s">%(dpstr_info_image_lnk)s</td>
+				</tr>
+				<tr class="%(dpstr_info_dscrptr_displ)s">
+					<th class="dpstr_info_hdr_cll">Descriptor</th><td title="%(dpstr_info_dscrptr)s">%(dpstr_info_dscrptr)s &nbsp;&nbsp; <input id="dscrptr_vw_btn_%(auth_assgnd_grp)s" name="dscrptr_vw_btn_%(auth_assgnd_grp)s" value="View descriptor as image" class="dscrptr_vw_btn %(display_dscrptr_vw_btn)s" type="button" style="font-size: 0.75em" /></td>
+				</tr>
+				<tr class="%(dpstr_info_dscrptr_type_displ)s">
+					<th class="dpstr_info_hdr_cll">Descriptor Type</th><td title="%(dpstr_info_dscrptr_type)s">%(dpstr_info_dscrptr_type)s</td>
+				</tr>
+				<tr class="%(dpstr_info_type_displ)s">
+					<th class="dpstr_info_hdr_cll">Ligand Type</th><td title="%(dpstr_info_type)s">%(dpstr_info_type)s</td>
+				</tr>
+				<tr class="%(dpstr_info_details_displ)s">
+					<th class="dpstr_info_hdr_cll">Additional Info</th><td title="%(dpstr_info_details)s">%(dpstr_info_details)s</td>
+				</tr>
+			</tbody></table>
+			<div id="sdf_vwr_%(auth_assgnd_grp)s" class="displaynone" ><img src="%(dpstr_info_sketch_sdf_img_pth)s" height="600" width="600"></div>
+			<div id="dscrptr_vwr_%(auth_assgnd_grp)s" class="displaynone" ><img src="%(dpstr_info_dscrptr_img_pth)s" height="600" width="600"></div>
+		</div>
+		<div class="allinst_assgn_actions c_%(auth_assgnd_grp)s fltlft"><span id="%(auth_assgnd_grp)s_assgn_cnt" class="displaynone">%(assgn_cnt)s</span>
+			<table id="%(auth_assgnd_grp)s_t" class="allinst_assgn_tbl %(auth_assgnd_grp)s_c">
+				<tr>
+					<th>See Top Candidate<br/>IDs for:<br/>
+						<select class="allinst_select">
+							%(instncs_drpdwn_lst)s
+						</select>
+					</th>
+					<th>Assign All Instances<br/>of %(auth_assgnd_grp)s</th>
+				</tr>
+				%(instnc_candidate_rows)s
+			</table>
+			<br/>
+			<br/>
+			<div class="forceassign strong">
+					Force Assign as: <input type="text" size="3" name="%(auth_assgnd_grp)s" id="frc_assgn_%(auth_assgnd_grp)s" class="frc_assgn c_%(auth_assgnd_grp)s" value="" %(disabled)s >
+			</div>
+			<br/>
+			<form name="rerun_srch_frm_%(auth_assgnd_grp)s" id="rerun_srch_frm_%(auth_assgnd_grp)s" class="rerun_srch_frm" method="post">
+				<input type="hidden" name="auth_assgnd_grp" id="auth_assgnd_grp" value="%(auth_assgnd_grp)s" />
+				<input type="hidden" name="identifier" id="identifier" value="%(depositionid)s" />
+				<input type="hidden" name="instance" id="instance" value="%(instance)s" />
+				<input type="hidden" name="filesource" id="filesource" value="%(filesource)s" />
+				<input id="rerun_srch_%(auth_assgnd_grp)s" name="rerun_srch_%(auth_assgnd_grp)s" value="%(rerun_btn_lbl)s" class="rerun_srch c_%(auth_assgnd_grp)s" type="button" %(disabled)s >
+				<div id="adjst_params_%(auth_assgnd_grp)s" class="adjst_params %(rerun_display_class)s">
+					<span class="errmsg" id="adjst_params_errmsg_%(auth_assgnd_grp)s"></span>
+					<br/>
+					<span class="fltrgt strong">&#916 Link Radius: <input class="c_%(auth_assgnd_grp)s rerun_srch_param" type="text" size="5" name="linkradii_%(auth_assgnd_grp)s" id="linkradii_%(auth_assgnd_grp)s" value="%(link_radius_dlta)s"/>&#197<span class="errmsg" id="linkradii_errmsg_%(auth_assgnd_grp)s"></span></span>
+					<br class="clearfloat"/>
+					<span class="fltrgt strong">&#916 Bond Radius: <input class="c_%(auth_assgnd_grp)s rerun_srch_param" type="text" size="5" name="bondradii_%(auth_assgnd_grp)s" id="bondradii_%(auth_assgnd_grp)s" value="%(bond_radius_dlta)s"/>&#197<span class="errmsg" id="bondradii_errmsg_%(auth_assgnd_grp)s"></span></span>
+					<br class="clearfloat"/>
+					<span class="fltrgt"><input id="rerun_srch_go_%(auth_assgnd_grp)s" name="rerun_srch_go_%(auth_assgnd_grp)s" value="Submit" class="rerun_srch_go c_%(auth_assgnd_grp)s" type="button" %(disabled)s ></span>
+				</div>
+			</form>
+			<br class="clearfloat"/>
+			<p><input style="display: inline;" id="commit_assgn_%(auth_assgnd_grp)s" name="%(auth_assgnd_grp)s" value="%(assgn_lbl)s" class="commit_assgn c_%(auth_assgnd_grp)s fltrgt" type="submit" %(assgn_disabled)s></p>
+		</div>
+		<br class="clearfloat"/>
+		<br/>
+		<div class="viz_compare" id="viz_compare_%(auth_assgnd_grp)s" style="display: none;">
+				<div class="viz_compare_hdr">Comparison Panel<span class="%(dsplyvizopt)s"><label for="twoD_chck_bx_%(auth_assgnd_grp)s">2D</label><input id="twoD_chck_bx_%(auth_assgnd_grp)s" checked="checked" name="%(auth_assgnd_grp)s" class="twoD_chck_bx" type="checkbox"></span><span class="%(dsplyvizopt)s"><label for="threeD_chck_bx_%(auth_assgnd_grp)s">3D</label><input id="threeD_chck_bx_%(auth_assgnd_grp)s" name="%(auth_assgnd_grp)s" class="threeD_chck_bx" type="checkbox"></span><span class="%(dsplyvizopt)s"><label for="atm_mp_chck_bx_%(auth_assgnd_grp)s">Atom Map</label><input id="atm_mp_chck_bx_%(auth_assgnd_grp)s" name="%(auth_assgnd_grp)s" class="atm_mp_chck_bx aivw" type="checkbox"></span></div>
+				<ul id="instance_data_%(auth_assgnd_grp)s" class="viz_compare_ul_all_instncs">
+				</ul>
+				<br class="clearfloat" />
+		</div>
+		<!-- #########################  content for all instances above ################################################################### -->
+	</div>
