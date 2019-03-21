@@ -202,7 +202,7 @@ $(document).on('click','.instnc_actions .rerun_srch', function(){
 	var btnName = $(this).attr('name');
 	var request = $(this).attr('value');
 	var splitArr = btnName.split('_');
-	var instId  = splitArr[2]+'_'+splitArr[3]+'_'+splitArr[4]+'_'+splitArr[5]+'_';
+	var instId  = splitArr[2]+'_'+splitArr[3]+'_'+splitArr[4]+'_'+splitArr[5]+'_'+splitArr[6];
 	$('#adjst_params_'+instId).toggle('fast');
 	if( request == 'Show Rerun Search Form'){
 		$(this).attr('value','Hide Rerun Search Form');
@@ -214,7 +214,7 @@ $(document).on('click','.instnc_actions .rerun_srch', function(){
 $(document).on('click','.instnc_actions .rerun_srch_go', function(){
 	var btnName = $(this).attr('name');
 	var splitArr = btnName.split('_');
-	var instId  = splitArr[3]+'_'+splitArr[4]+'_'+splitArr[5]+'_'+splitArr[6]+'_';
+	var instId  = splitArr[3]+'_'+splitArr[4]+'_'+splitArr[5]+'_'+splitArr[6]+'_'+splitArr[7];
 	var instnc_profile_html = sessPathPrefix+'/'+instId+'/'+instId+'rerun_srch_instnc_profile.html';
 	var rerunSrchFrm = '#rerun_srch_frm_'+instId;
 	var linkRadiiTxtBx = rerunSrchFrm + ' #linkradii_'+instId;
@@ -258,7 +258,7 @@ $(document).on('click','.instnc_actions .rerun_srch_go', function(){
 $(document).on('click','.instnc_actions .rerun_comp_srch_go', function(){	
 	var btnName = $(this).attr('name');
 	var splitArr = btnName.split('_');
-	var instId  = splitArr[4]+'_'+splitArr[5]+'_'+splitArr[6]+'_'+splitArr[7]+'_';
+	var instId  = splitArr[4]+'_'+splitArr[5]+'_'+splitArr[6]+'_'+splitArr[7]+'_'+splitArr[8];
 	var instnc_profile_html = sessPathPrefix+'/'+instId+'/'+instId+'rerun_srch_instnc_profile.html';
 	var rerunSrchFrm = '#rerun_comp_srch_frm_'+instId;
     $(rerunSrchFrm).ajaxSubmit({url: '/service/cc/assign/rerun_instnc_comp_srch', async: false, clearForm: false,
@@ -931,7 +931,7 @@ $(document).on('click','.instnc_actions .edt_nw_lig', function(){
 	var btnName = $(this).attr('name');
 	var request = $(this).attr('value');
 	var splitArr = btnName.split('_');
-	var instId  = splitArr[3]+'_'+splitArr[4]+'_'+splitArr[5]+'_'+splitArr[6]+'_';
+	var instId  = splitArr[3]+'_'+splitArr[4]+'_'+splitArr[5]+'_'+splitArr[6]+'_'+splitArr[7];
 	$('#get_new_cc_id_'+instId).show();
         $('#get_new_image_'+instId).show();
 });
@@ -939,7 +939,7 @@ $(document).on('click','.instnc_actions .edt_nw_lig', function(){
 $(document).on('click','.instnc_actions .create_new_lig_go', function(){
 	var btnName = $(this).attr('name');
 	var splitArr = btnName.split('_');
-	var instId  = splitArr[3]+'_'+splitArr[4]+'_'+splitArr[5]+'_'+splitArr[6]+'_';
+	var instId  = splitArr[3]+'_'+splitArr[4]+'_'+splitArr[5]+'_'+splitArr[6]+'_'+splitArr[7];
         var editorFrm = '#create_new_lig_' + instId + '_frm';
         var targetName = $(editorFrm).attr("target");
         $(editorFrm).ajaxSubmit({url: '/service/cc/edit/launch', async: false, clearForm: false,
@@ -957,7 +957,7 @@ $(document).on('click','.instnc_actions .create_new_lig_go', function(){
 $(document).on('click','.instnc_actions .chop_lig_go', function(){
 	var btnName = $(this).attr('name');
 	var splitArr = btnName.split('_');
-	var instId  = splitArr[2]+'_'+splitArr[3]+'_'+splitArr[4]+'_'+splitArr[5]+'_';
+	var instId  = splitArr[2]+'_'+splitArr[3]+'_'+splitArr[4]+'_'+splitArr[5]+'_'+splitArr[6];
         var chopperFrm = '#chop_lig_' + instId + '_frm';
         var targetName = $(chopperFrm).attr("target");
         $(chopperFrm).ajaxSubmit({url: '/service/cc/chopper/launch', async: false, clearForm: false,
@@ -976,7 +976,7 @@ $(document).on('click','.instnc_actions .get_new_cc_id', function(){
 	var btnName = $(this).attr('name');
 	var btnId = $(this).attr('id');
 	var splitArr = btnName.split('_');
-	var instId  = splitArr[4]+'_'+splitArr[5]+'_'+splitArr[6]+'_'+splitArr[7]+'_';
+	var instId  = splitArr[4]+'_'+splitArr[5]+'_'+splitArr[6]+'_'+splitArr[7]+'_'+splitArr[8];
 	//alert('On clicking Get New CC ID button got instId of:'+instId);
 	var frcAssgnTxtBx = '#frc_assgn_'+instId;
 	var getNewCcIdFrmLctr = '#assgn_new_cc_def_'+instId+'_frm';
@@ -1001,7 +1001,7 @@ $(document).on('click','.instnc_actions .get_new_image', function(){
 	var btnName = $(this).attr('name');
 	var splitArr = btnName.split('_');
 
-	var instId  = splitArr[3]+'_'+splitArr[4]+'_'+splitArr[5]+'_'+splitArr[6]+'_';
+	var instId  = splitArr[3]+'_'+splitArr[4]+'_'+splitArr[5]+'_'+splitArr[6]+'_'+splitArr[7];
         refreshInstImages(instId);
 	var btnId = $(this).attr('id');
         $('#'+btnId).hide();
@@ -1168,7 +1168,7 @@ $(document).on('click','.reload_jmol.exp', function(){
 	var btnName = thisBtn.attr('name');
 	var btnRequest = thisBtn.attr('value');
 	var splitArr = btnName.split('_');
-	var instId  = splitArr[2]+'_'+splitArr[3]+'_'+splitArr[4]+'_'+splitArr[5]+'_';
+	var instId  = splitArr[2]+'_'+splitArr[3]+'_'+splitArr[4]+'_'+splitArr[5]+'_'+splitArr[6];
 	var aivwToken = '';
 	var uniqeId = getUniqueIdForJsmol(instId);
 	var jmolId = 'e'+uniqeId;
@@ -1188,7 +1188,7 @@ $(document).on('click','.reload_jmol.ref', function(){
 	var btnRequest = thisBtn.attr('value');
 	var splitArr = btnName.split('_');
 	var grpId = splitArr[6];
-	var instId  = splitArr[2]+'_'+splitArr[3]+'_'+splitArr[4]+'_'+splitArr[5]+'_';
+	var instId  = splitArr[2]+'_'+splitArr[3]+'_'+splitArr[4]+'_'+splitArr[5]+'_'+splitArr[6];
 	var uniqeId = getUniqueIdForJsmol(instId);
 	var jmolId = 'r'+uniqeId+grpId;
 	var reload_frm = '#reload_jmol_'+instId+grpId+'_frm';
@@ -1217,7 +1217,7 @@ $(document).on('click','.threeD_environ_vw_btn.type1', function(){
 	var btnRequest = thisBtn.attr('value');
 	var splitArr = btnName.split('_');
 	var grpId = splitArr[6];
-	var instId  = splitArr[4]+'_'+splitArr[5]+'_'+splitArr[6]+'_'+splitArr[7]+'_';
+	var instId  = splitArr[4]+'_'+splitArr[5]+'_'+splitArr[6]+'_'+splitArr[7]+'_'+splitArr[8];
 	//alert("button clicked and instId is: "+instId);
 	var aivwToken = '';
 	var bIsAllInstVw = false;
@@ -1287,7 +1287,7 @@ $(document).on('click','.threeD_environ_vw_btn.lbls_on_off', function(){
 	var btnName = thisBtn.attr('name');
 	var btnRequest = thisBtn.attr('value');
 	var splitArr = btnName.split('_');
-	var instId  = splitArr[4]+'_'+splitArr[5]+'_'+splitArr[6]+'_'+splitArr[7]+'_';
+	var instId  = splitArr[4]+'_'+splitArr[5]+'_'+splitArr[6]+'_'+splitArr[7]+'_'+splitArr[8];
 	var uniqeId = getUniqueIdForJsmol(instId);
 	var jmolId;
 	var aivwToken = '';
