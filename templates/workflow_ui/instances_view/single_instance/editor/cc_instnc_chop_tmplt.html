@@ -50,6 +50,7 @@
     	   jQuery.chemPath="/chemeditor/";
            jQuery.cifEdit.pdbId = '%(pdbid)s';
            jQuery.cifEdit.annotator = '%(annotator)s';
+           jQuery.cifEdit.processing_site = '%(processing_site)s';
            jQuery.cifEdit.ccModuleFlag = true;
            	var sessionId 	= '%(sessionid)s';
 			var instanceId	= '%(instanceid)s';
@@ -61,6 +62,9 @@
 			$('#chemWin1').chemWin({edit:{posy:100,width:700},jmol:{posy:100,posx:715,width:600},
                                   file:{posx:10,posy:645,width:1300,height:200/*hide:true*/},         	  
                                       comp:{hide:true},
+                                      audit:{hide:true},
+                                      synonym:{hide:true},
+                                      related:{hide:true},
          	                      atoms:{posx:10,posy:890,width:1300,height:200/*,hide:true*/},
          	                      bonds:{posx:10,posy:1135,width:1300,height:200/*,hide:true*/},
          	                      view:{diagram:{edit:{lock:true}/*CTM-51,readOnly:true*/},
@@ -71,7 +75,7 @@
          	                      afterLoad:jQuery.chemChopper.autoSelectPeptide,
          	                      afterInit:function(){
                                                            jQuery.chemViews.cifEditControls('chemWin1',
-                                                               {NewCode:true,Update:true,CheckDuplicate:true,Audit:true});
+                                                               {NewCode:true,Update:true,CheckDuplicate:true,Audit:false,SetParent:true,CommittoCVS:true});
                                                            jQuery.chemDiagram.modeSelect('chemEdit_chemView_chemWin1');
                                                            jQuery.chemWin.loadCifUrl('chemWin1',cifUrl,instanceId);
                                                            jQuery.chemChopper.enableChop("chemWin1");
@@ -127,8 +131,8 @@
 
 <!-- #footer begins -->
 	<br/>
-	<div style="margin-top:1700px" id="footer">
-   		<p>&copy; 2012 wwPDB Chemical Component Chopper Module V0.01</p>
+	<div style="margin-top:1310px" id="footer">
+   		<p>&copy; 2019 wwPDB Chemical Component Editor Module Chopper V0.01</p>
 	</div>
 <!-- #footer ends above -->
 </div>
