@@ -76,10 +76,16 @@ $(document).ready(function() {
            showJmolm:true,           
            atoms:{posx:2,posy:1165,width:1200,height:200},
            bonds:{posx:2,posy:1410,width:1200,height:200},
-           file:{posx:2,posy:1655,width:1200,height:150}, 
+           audit:{posx:2,posy:1655,width:1200,height:200},
+           file:{posx:2,posy:1900,width:1200,height:150}, 
+           synonym:{posx:2,posy:2095,width:1200,height:200},
+           related:{posx:2,posy:2340,width:1200,height:200},
            view:{compModel:jQuery.cifEdit.compCompModel,
                  atomModel:jQuery.cifEdit.compAtomModel,
                  bondModel:jQuery.cifEdit.compBondModel,
+                 auditModel:jQuery.cifEdit.compAuditModel,
+                 synonymModel:jQuery.cifEdit.compSynonymModel,
+                 relatedModel:jQuery.cifEdit.compRelatedModel,
                  hydrogensjmm:false,
                  hydrogensjm:false,
                  jmolMode:'3di',
@@ -87,11 +93,11 @@ $(document).ready(function() {
            control:{load:false,upload:false,align2d:true,addhydro:true,align3d:false,reset:true},            
            afterLoad:jQuery.cifEdit.newCodeAssigned('chemWin'),
            afterInit:function() {
-              jQuery.chemViews.cifEditControls('chemWin');
+              jQuery.chemViews.cifEditControls('chemWin',{NewCode:true,Update:true,CheckDuplicate:true,Audit:false,SetParent:true,CommittoCVS:true});
               jQuery.chemWin.loadCifUrl('chemWin',cifUrl,instanceId);
               $('#chemWinLoading').hide();
               $('#help_link').html('<span style="display:inline;" class="ui-icon ui-icon-info">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>');
-              var wnds=["Edit","Comp","Jmolm","Jmol","Atoms","Bonds","File"];
+              var wnds=["Edit","Comp","Jmolm","Jmol","Atoms","Bonds","Audit","File","Synonym","Related"];
               var wpos={Jmolm:"top",Jmol:"top"};
               var wwdth={Comp:300,Jmolm:300,Jmol:300};
               var iconWinFocus=function(wm){
@@ -154,8 +160,8 @@ $(document).ready(function() {
 <!-- #mainContent ends above -->
 <!-- #footer begins -->
 	<br/>
-	<div style="margin-top:1700px" id="footer">
-   		<p>&copy; 2010 wwPDB Chemical Component Editor Module Editor V0.01</p>
+	<div style="margin-top:2455px" id="footer">
+   		<p>&copy; 2019 wwPDB Chemical Component Editor Module Editor V0.01</p>
 	</div>
 <!-- #footer ends above -->
 </div>

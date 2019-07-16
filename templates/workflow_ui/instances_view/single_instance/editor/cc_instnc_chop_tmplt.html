@@ -59,19 +59,25 @@
 			var sessPathPrefix = '%(session_url_prefix)s';
 			var cifUrl = '%(session_url_prefix)s/%(instanceid)s.cif';
 			$('#chemWin1').chemWin({edit:{posy:100,width:700},jmol:{posy:100,posx:715,width:600},
-                                  file:{posx:10,posy:645,width:1300,height:200/*hide:true*/},         	  
+                                  file:{posx:10,posy:645,width:1200,height:200/*hide:true*/},         	  
                                       comp:{hide:true},
-         	                      atoms:{posx:10,posy:890,width:1300,height:200/*,hide:true*/},
-         	                      bonds:{posx:10,posy:1135,width:1300,height:200/*,hide:true*/},
+         	                      atoms:{posx:10,posy:890,width:1200,height:200/*,hide:true*/},
+         	                      bonds:{posx:10,posy:1135,width:1200,height:200/*,hide:true*/},
+                                      audit:{posx:2,posy:1380,width:1200,height:200},
+                                      synonym:{posx:2,posy:1625,width:1200,height:200},
+                                      related:{posx:2,posy:1870,width:1200,height:200},
          	                      view:{diagram:{edit:{lock:true}/*CTM-51,readOnly:true*/},
              	                      atomModel:jQuery.chemChopper.ccompAtomModel,
              	                      bondModel:jQuery.chemChopper.ccompBondModel,
+                                      auditModel:jQuery.cifEdit.compAuditModel,
+                                      synonymModel:jQuery.cifEdit.compSynonymModel,
+                                      relatedModel:jQuery.cifEdit.compRelatedModel,
              	                      defaultFileFormat:'mmCif'},
          	                      control:{align2d:false,addhydro:false,align3d:false,load:true,upload:true},
          	                      afterLoad:jQuery.chemChopper.autoSelectPeptide,
          	                      afterInit:function(){
                                                            jQuery.chemViews.cifEditControls('chemWin1',
-                                                               {NewCode:true,Update:true,CheckDuplicate:true,Audit:true});
+                                                               {NewCode:true,Update:true,CheckDuplicate:true,Audit:false,CommittoCVS:true});
                                                            jQuery.chemDiagram.modeSelect('chemEdit_chemView_chemWin1');
                                                            jQuery.chemWin.loadCifUrl('chemWin1',cifUrl,instanceId);
                                                            jQuery.chemChopper.enableChop("chemWin1");
@@ -127,7 +133,7 @@
 
 <!-- #footer begins -->
 	<br/>
-	<div style="margin-top:1700px" id="footer">
+	<div style="margin-top:2055px" id="footer">
    		<p>&copy; 2012 wwPDB Chemical Component Chopper Module V0.01</p>
 	</div>
 <!-- #footer ends above -->
