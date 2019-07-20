@@ -63,15 +63,17 @@
                                       comp:{hide:true},
          	                      atoms:{posx:10,posy:890,width:1200,height:200/*,hide:true*/},
          	                      bonds:{posx:10,posy:1135,width:1200,height:200/*,hide:true*/},
-                                      audit:{posx:2,posy:1380,width:1200,height:200},
-                                      synonym:{posx:2,posy:1625,width:1200,height:200},
-                                      related:{posx:2,posy:1870,width:1200,height:200},
+                                      audit:{posx:10,posy:1380,width:1200,height:200},
+                                      synonym:{posx:10,posy:1625,width:1200,height:200},
+                                      related:{posx:10,posy:2115,width:1200,height:200},
+                                      relatedatom:{posx:10,posy:1870,width:1200,height:200},
          	                      view:{diagram:{edit:{lock:true}/*CTM-51,readOnly:true*/},
              	                      atomModel:jQuery.chemChopper.ccompAtomModel,
              	                      bondModel:jQuery.chemChopper.ccompBondModel,
                                       auditModel:jQuery.cifEdit.compAuditModel,
                                       synonymModel:jQuery.cifEdit.compSynonymModel,
                                       relatedModel:jQuery.cifEdit.compRelatedModel,
+                                      relatedAtomModel:jQuery.cifEdit.atomRelatedModel,
              	                      defaultFileFormat:'mmCif'},
          	                      control:{align2d:false,addhydro:false,align3d:false,load:true,upload:true},
          	                      afterLoad:jQuery.chemChopper.autoSelectPeptide,
@@ -133,7 +135,7 @@
 
 <!-- #footer begins -->
 	<br/>
-	<div style="margin-top:2055px" id="footer">
+	<div style="margin-top:2300px" id="footer">
    		<p>&copy; 2012 wwPDB Chemical Component Chopper Module V0.01</p>
 	</div>
 <!-- #footer ends above -->
