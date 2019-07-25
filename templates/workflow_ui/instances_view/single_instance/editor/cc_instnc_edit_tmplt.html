@@ -95,7 +95,7 @@ $(document).ready(function() {
            control:{load:false,upload:false,align2d:true,addhydro:true,align3d:false,reset:true},            
            afterLoad:jQuery.cifEdit.newCodeAssigned('chemWin'),
            afterInit:function() {
-              jQuery.chemViews.cifEditControls('chemWin',{NewCode:true,Update:true,CheckDuplicate:true,Audit:false,SetParent:true,CommittoCVS:true});
+              jQuery.chemViews.cifEditControls('chemWin',{NewCode:true,Save:true,Update:true,CheckDuplicate:true,Audit:false,SetParent:true,CommittoCVS:true});
               jQuery.chemWin.loadCifUrl('chemWin',cifUrl,instanceId);
               $('#chemWinLoading').hide();
               $('#help_link').html('<span style="display:inline;" class="ui-icon ui-icon-info">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>');
