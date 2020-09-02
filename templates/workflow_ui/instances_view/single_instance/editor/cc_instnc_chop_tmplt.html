@@ -34,6 +34,7 @@
 
     <script type="text/javascript" src="/chemeditor/jquery.chemViews.js"> </script>
     <script type="text/javascript" src="/chemeditor/jquery.chemAjax.js"> </script>
+    <script type="text/javascript">jQuery.chemAjax.getEnumeration();</script>
     <script type="text/javascript" src="/chemeditor/jquery.chemWin.js"> </script>
     <script type="text/javascript" src="/chemeditor/jquery.cifEdit.js"> </script>
     <script type="text/javascript" src="/chemeditor/jquery.chemChopper.js"> </script>
@@ -65,13 +66,15 @@
          	                      bonds:{posx:10,posy:1135,width:1200,height:200/*,hide:true*/},
                                       audit:{posx:10,posy:1380,width:1200,height:200},
                                       synonym:{posx:10,posy:1625,width:1200,height:200},
+                                      feature:{posx:10,posy:1870,width:1200,height:200},
                                       related:{posx:10,posy:2115,width:1200,height:200},
-                                      relatedatom:{posx:10,posy:1870,width:1200,height:200},
+                                      relatedatom:{posx:10,posy:2360,width:1200,height:200},
          	                      view:{diagram:{edit:{lock:true}/*CTM-51,readOnly:true*/},
              	                      atomModel:jQuery.chemChopper.ccompAtomModel,
              	                      bondModel:jQuery.chemChopper.ccompBondModel,
                                       auditModel:jQuery.cifEdit.compAuditModel,
                                       synonymModel:jQuery.cifEdit.compSynonymModel,
+                                      featureModel:jQuery.cifEdit.compFeatureModel,
                                       relatedModel:jQuery.cifEdit.compRelatedModel,
                                       relatedAtomModel:jQuery.cifEdit.atomRelatedModel,
              	                      defaultFileFormat:'mmCif'},

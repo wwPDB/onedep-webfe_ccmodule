@@ -20,6 +20,8 @@
 </script>
 <script type="text/javascript" src="/js/jquery-11/core/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="/js/jquery/plugins/jquery.form.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery-11/plugins/spin.js"></script>
+<script type="text/javascript" src="/assets/js/jquery-11/plugins/jquery.spin.js"></script>
 <script type="text/javascript" src="/ccmodule/js/cc-main.js"></script>
 </head>
 <body class="oneColLiqCtrHdr">
@@ -63,6 +65,8 @@
 					<input type="hidden" name="classID" id="classid" value="%(classid)s" />
 					<input type="hidden" name="filesource" id="filesource" value="%(filesource)s" />
 				</form>
+				<!-- progress spinner -->
+				<div id="progress-dialog"><div id="loadingcontent"><p id="loadingspinner">Data being processed.</p></div></div>
 				<h4>Batch Search Summary for Deposition Data Set : &nbsp;&nbsp;&nbsp;&nbsp; <span style="font-weight: normal;">%(identifier)s</span></h4>
 				<h4>Entry Title : &nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight: normal;">%(entry_title)s</span></h4>
 				<br class="clearfloat" />

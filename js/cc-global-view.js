@@ -14,6 +14,21 @@ JavaScript supporting Ligand Module web interface
 2017-04-11, RPS: Updates to accommodate identification of ligands selected by depositor as "ligands of interest"
 ****************************************************************************************************************/
 ///////////////////// FUNCTION DEFINITIONS - Global Batch Search Summary View ///////////////////////////////////////////
+
+var progressWaiting=false;
+
+function progressStart() {
+    if (!progressWaiting) {
+        $("#progress-dialog").fadeIn('slow').spin("large", "black");
+        progressWaiting=true;
+    }
+}
+
+function progressEnd() {
+    $("#progress-dialog").fadeOut('fast').spin(false);
+    progressWaiting=false;
+}
+
 function applyBeautyTips() {
 	$('.cmpst_scr').bt({positions: ['left', 'bottom'],ajaxPath: '/ccmodule/cc_help.html div#cmpst_score',ajaxOpts:{dataType:'html'},trigger: 'hover',
 		width: 600,centerPointX: .9,spikeLength: 20,spikeGirth: 10,padding: 15,cornerRadius: 25,fill: '#FFF',
@@ -189,6 +204,7 @@ $('#savedone').click(function() {
 	if( fsrc.startsWith("wf")){
 		$('#hlprfrm').ajaxSubmit({url: exit_finished_URL, clearForm: false,
             beforeSubmit: function (formData, jqForm, options) {
+                progressStart();
             	numToAssign = unassignedInstncsHandler();
         	    if( numToAssign > 0 ){
         	    	alert("Assignment status has changed for one or more ligand instances. Finish action being canceled. Please see updated status info on this page and check your work.");
@@ -196,7 +212,8 @@ $('#savedone').click(function() {
         	    }
         	    formData.push({"name": "sessionid", "value": sessionID});
             }, success: function() {
-				alert("Work will be saved and Ligand Processing now complete.");
+                progressEnd();
+			// alert("Work will be saved and Ligand Processing now complete.");
                 closeWindow();
             }
         });
@@ -217,8 +234,10 @@ $('#saveunfinished').click(function() {
 	if( fsrc.startsWith("wf")){
 		$('#hlprfrm').ajaxSubmit({url: exit_not_finished_URL, clearForm: false,
             beforeSubmit: function (formData, jqForm, options) {
+                progressStart();
                 formData.push({"name": "sessionid", "value": sessionID});
             }, success: function() {
+                progressEnd();
 				alert("Work will be saved and can be resumed at a later point.");
                 closeWindow();
             }
