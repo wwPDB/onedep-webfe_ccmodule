@@ -224,7 +224,7 @@ $('#savedone').click(function() {
 	    	alert("Assignment status has changed for one or more ligand instances. Finish action being canceled./nPlease see updated status info on this page and check your work.");
 	    	return false;
 	    }
-    	alert("Save (Done)");
+    	// alert("Save (Done)");
 		checkval=0;
     	$('html').html('')
 	}
@@ -238,13 +238,13 @@ $('#saveunfinished').click(function() {
                 formData.push({"name": "sessionid", "value": sessionID});
             }, success: function() {
                 progressEnd();
-				alert("Work will be saved and can be resumed at a later point.");
+				// alert("Work will be saved and can be resumed at a later point.");
                 closeWindow();
             }
         });
 	}
 	else{
-    	alert("Save (Unfinished)");
+    	// alert("Save (Unfinished)");
 		checkval=0;
     	$('html').html('')
 	}
