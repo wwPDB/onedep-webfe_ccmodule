@@ -979,15 +979,25 @@ $(document).on('click','.instnc_actions .get_new_cc_id', function(){
 	var instId  = splitArr[4]+'_'+splitArr[5]+'_'+splitArr[6]+'_'+splitArr[7]+'_'+splitArr[8];
 	//alert('On clicking Get New CC ID button got instId of:'+instId);
 	var frcAssgnTxtBx = '#frc_assgn_'+instId;
+        var frcAssgnAllTxtBx = '#frc_assgn_'+splitArr[6];
 	var getNewCcIdFrmLctr = '#assgn_new_cc_def_'+instId+'_frm';
 	var newCcId = '';
 	$(getNewCcIdFrmLctr).ajaxSubmit({url: getNewCcIdUrl, async: false, clearForm: false,
         success: function(jsonObj) {
             newCcId = jsonObj.statuscode;
             if( newCcId != 'NONE'){
-            	alert('New ID "'+newCcId+'" has been created and now appears in the textbox for Force Assignment.');
+            	// alert('New ID "'+newCcId+'" has been created and now appears in the textbox for Force Assignment.');
                 $(frcAssgnTxtBx).attr('value',newCcId);
+                $(frcAssgnAllTxtBx).attr('value',newCcId);
                 $('#'+btnId).hide();
+                var txt = $('#cvs_commit_ccid_list').text();
+                if (txt == '') {
+                    $('#cvs_commit_ccid_list').text(newCcId);
+                } else if (txt.indexOf(newCcId) == -1) {
+                    txt += ","+newCcId;
+                    $('#cvs_commit_ccid_list').text(txt);
+                }
+                $('#cvs_commit_ccid_div').show();
             }
             else{
                 alert('New ID not yet created.');

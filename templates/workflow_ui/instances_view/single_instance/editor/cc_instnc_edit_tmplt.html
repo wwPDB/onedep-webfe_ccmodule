@@ -55,12 +55,14 @@ $(document).ready(function() {
         jQuery.cifEdit.instanceId = '%(instanceid)s';
         jQuery.cifEdit.relatedInstanceIds = '%(related_instanceids)s';
         jQuery.cifEdit.identifier = '%(identifier)s';
+        jQuery.cifEdit.fileSource = '%(filesource)s';
         jQuery.cifEdit.pdbId = '%(pdbid)s';
         jQuery.cifEdit.annotator = '%(annotator)s';
         jQuery.cifEdit.subpath = 'assign';
         jQuery.cifEdit.filextension = 'cif';
         jQuery.cifEdit.genimageflag = 'yes';
         jQuery.cifEdit.ccModuleFlag = true;
+        jQuery.cifEdit.getNewCodeFlag = 'yes';
         var sessionId   = '%(sessionid)s';
         var instanceId  = '%(instanceid)s';
         var fileSource  = '%(filesource)s';
@@ -135,7 +137,8 @@ $(document).ready(function() {
       jQuery.cifEdit.getCommitCode=function(newccid) {
          // alert("Any edits of "+newccid+" are not saved in the CVS in this test version. Some things may not work for now");
          var commit_url='/service/cc/assign/view/instance/new_ccid_defined?instanceid='+instanceId+'&newccid='+newccid+'&sessionid='+sessionId+
-                        '&filesource='+fileSource+'&instance='+instance+'&identifier='+identifier;
+                        '&filesource='+fileSource+'&identifier='+identifier;
+                        // '&filesource='+fileSource+'&instance='+instance+'&identifier='+identifier;
          $.ajax({async: false, url: commit_url});
          $('#assgn_new_cc_def_'+instanceId+' input[name="get_new_cc_id_'+instanceId+'"]',window.opener.document).click();
          window.close();

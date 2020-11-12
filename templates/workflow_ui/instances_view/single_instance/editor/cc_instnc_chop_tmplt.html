@@ -48,18 +48,25 @@
 
     <script type="text/javascript">
        $(document).ready(function(){
-    	   jQuery.chemPath="/chemeditor/";
+           jQuery.chemPath="/chemeditor/";
+           jQuery.cifEdit.sessionId  = '%(sessionid)s';
+           jQuery.cifEdit.instanceId = '%(instanceid)s';
+           jQuery.cifEdit.identifier = '%(identifier)s';
+           jQuery.cifEdit.fileSource = '%(filesource)s';
            jQuery.cifEdit.pdbId = '%(pdbid)s';
            jQuery.cifEdit.annotator = '%(annotator)s';
            jQuery.cifEdit.ccModuleFlag = true;
-           	var sessionId 	= '%(sessionid)s';
-			var instanceId	= '%(instanceid)s';
-			var fileSource  = '%(filesource)s';
-	        var instance    = '%(instance)s'; //wf instance ID
-			var depDatasetId = '%(depositionid)s';
-			var sessPathPrefix = '%(session_url_prefix)s';
-			var cifUrl = '%(session_url_prefix)s/%(instanceid)s.cif';
-			$('#chemWin1').chemWin({edit:{posy:100,width:700},jmol:{posy:100,posx:715,width:600},
+           jQuery.cifEdit.getNewCodeFlag = 'yes';
+           var sessionId = '%(sessionid)s';
+           var instanceId = '%(instanceid)s';
+           var fileSource  = '%(filesource)s';
+           var instance    = '%(instance)s'; //wf instance ID
+           var identifier  = '%(identifier)s';
+           var depDatasetId = '%(depositionid)s';
+           var sessPathPrefix = '%(session_url_prefix)s';
+           var cifUrl = '%(session_url_prefix)s/%(instanceid)s.cif';
+
+           $('#chemWin1').chemWin({edit:{posy:100,width:700},jmol:{posy:100,posx:715,width:600},
                                   file:{posx:10,posy:645,width:1200,height:200/*hide:true*/},         	  
                                       comp:{hide:true},
          	                      atoms:{posx:10,posy:890,width:1200,height:200/*,hide:true*/},
@@ -90,6 +97,13 @@
          	                                           //$('#uploadCifButton_chemWin1').click(function(){jQuery.chemChopper.enableChop("chemWin1")});
          	                                           }});      	      	  
         });       
+        jQuery.cifEdit.getCommitCode=function(newccid) {
+           var commit_url='/service/cc/assign/view/instance/new_ccid_defined?instanceid='+instanceId+'&newccid='+newccid+'&sessionid='+sessionId+
+                          '&filesource='+fileSource+'&identifier='+identifier;
+           $.ajax({async: false, url: commit_url});
+           $('#assgn_new_cc_def_'+instanceId+' input[name="get_new_cc_id_'+instanceId+'"]',window.opener.document).click();
+           window.close();
+        }
     </script>
  </head>
  <body>
