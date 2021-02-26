@@ -222,7 +222,7 @@ $(document).on('click','.instnc_actions .rerun_srch_go', function(){
 	var linkRadiiErrMsg = rerunSrchFrm + ' #linkradii_errmsg_'+instId;
 	var bondRadiiErrMsg = rerunSrchFrm + ' #bondradii_errmsg_'+instId;
 	var rerunSrchFrmErrMsg = rerunSrchFrm + ' #adjst_params_errmsg_'+instId;
-    $(rerunSrchFrm).ajaxSubmit({url: rerunInstncSrchUrl, async: false, 
+    $(rerunSrchFrm).ajaxSubmit({url: rerunInstncSrchUrl, async: true, 
 		type: 'post', clearForm: false,
         beforeSubmit: function (formData, jqForm, options) {
         	var linkRadiiVal = $(linkRadiiTxtBx).val();
@@ -261,7 +261,7 @@ $(document).on('click','.instnc_actions .rerun_comp_srch_go', function(){
 	var instId  = splitArr[4]+'_'+splitArr[5]+'_'+splitArr[6]+'_'+splitArr[7]+'_'+splitArr[8];
 	var instnc_profile_html = sessPathPrefix+'/'+instId+'/'+instId+'rerun_srch_instnc_profile.html';
 	var rerunSrchFrm = '#rerun_comp_srch_frm_'+instId;
-    $(rerunSrchFrm).ajaxSubmit({url: '/service/cc/assign/rerun_instnc_comp_srch', async: false, clearForm: false,
+    $(rerunSrchFrm).ajaxSubmit({url: '/service/cc/assign/rerun_instnc_comp_srch', async: true, clearForm: false,
         beforeSubmit: function (formData, jqForm, options) {
 		$('#'+instId).toggle('slow');
                 formData.push({"name": "sessionid", "value": sessionID});
@@ -311,7 +311,7 @@ $(document).on('click','.allinst_assgn_actions .rerun_srch_go', function(){
     	instIds += ((instIds.length > 0) ? ',' : '') + $(this).html();
 		//alert("Value of instId #"+ instIdCnt + ": " + $(this).html() );
     });
-    $(rerunSrchFrm).ajaxSubmit({url: rerunEntityGrpSrchUrl, async: false, clearForm: false,
+    $(rerunSrchFrm).ajaxSubmit({url: rerunEntityGrpSrchUrl, async: true, clearForm: false,
         beforeSubmit: function (formData, jqForm, options) {
     		var linkRadiiVal = $(linkRadiiTxtBx).val();
     		var bondRadiiVal = $(bondRadiiTxtBx).val();
@@ -579,7 +579,7 @@ $(document).on('click','.allinst_assgn_actions .commit_assgn', function(){
 		if( request == 'Assign'){
 			if( frcAssgnMode == 'yes' ){
 				disableCntrls('validate');
-				$.ajax({type: 'POST', url: validateCcIdUrl, async: false,
+				$.ajax({type: 'POST', url: validateCcIdUrl, async: true,
 					   data: 'instance='+instance+'&identifier='+depId+'&filesource='+fileSource+'&sessionid='+sessionID+'&auth_assgn_grp='+authAssgnGrp+'&ccid='+ccIdAssgnd+'&instidlist='+instIdList+"&instncmode=all&vldtmode=full",
 					   beforeSend: function (){
 							//disableCntrls('#'+authAssgnGrp+'_inneraccordion','input',true);
@@ -879,7 +879,7 @@ $(document).on('click','.instnc_actions .commit_assgn', function(){
 		if( request == 'Assign'){
 			if( frcAssgnMode == 'yes' ){
 				disableCntrls('validate');
-				$.ajax({type: 'POST', url: validateCcIdUrl, async: false,
+				$.ajax({type: 'POST', url: validateCcIdUrl, async: true,
 					   data: 'instance='+instance+'&identifier='+depId+'&filesource='+fileSource+'&sessionid='+sessionID+'&ccid='+ccIdAssgnd+'&instidlist='+instid+"&instncmode=single&vldtmode=full",
 					   beforeSend: function (){
 							var answer = confirm('Warning: You are forcing assignment of the chemical component(s) in question to "'+ccIdAssgnd+'". Please confirm.');
@@ -942,7 +942,7 @@ $(document).on('click','.instnc_actions .create_new_lig_go', function(){
 	var instId  = splitArr[3]+'_'+splitArr[4]+'_'+splitArr[5]+'_'+splitArr[6]+'_'+splitArr[7];
         var editorFrm = '#create_new_lig_' + instId + '_frm';
         var targetName = $(editorFrm).attr("target");
-        $(editorFrm).ajaxSubmit({url: '/service/cc/edit/launch', async: false, clearForm: false,
+        $(editorFrm).ajaxSubmit({url: '/service/cc/edit/launch', async: true, clearForm: false,
              beforeSubmit: function (formData, jqForm, options) {
                   formData.push({"name": "pdbid", "value": pdbId}, {"name": "annotator", "value": annotator});
              },
@@ -960,7 +960,7 @@ $(document).on('click','.instnc_actions .chop_lig_go', function(){
 	var instId  = splitArr[2]+'_'+splitArr[3]+'_'+splitArr[4]+'_'+splitArr[5]+'_'+splitArr[6];
         var chopperFrm = '#chop_lig_' + instId + '_frm';
         var targetName = $(chopperFrm).attr("target");
-        $(chopperFrm).ajaxSubmit({url: '/service/cc/chopper/launch', async: false, clearForm: false,
+        $(chopperFrm).ajaxSubmit({url: '/service/cc/chopper/launch', async: true, clearForm: false,
              beforeSubmit: function (formData, jqForm, options) {
                   formData.push({"name": "pdbid", "value": pdbId}, {"name": "annotator", "value": annotator});
              },
@@ -982,7 +982,7 @@ $(document).on('click','.instnc_actions .get_new_cc_id', function(){
         var frcAssgnAllTxtBx = '#frc_assgn_'+splitArr[6];
 	var getNewCcIdFrmLctr = '#assgn_new_cc_def_'+instId+'_frm';
 	var newCcId = '';
-	$(getNewCcIdFrmLctr).ajaxSubmit({url: getNewCcIdUrl, async: false, clearForm: false,
+	$(getNewCcIdFrmLctr).ajaxSubmit({url: getNewCcIdUrl, async: true, clearForm: false,
         success: function(jsonObj) {
             newCcId = jsonObj.statuscode;
             if( newCcId != 'NONE'){
@@ -1393,7 +1393,7 @@ function getNewCandidate(newCandidateFrm,hitList,candiList){
 	var instId = $('input[name=instanceid]',newCandidateFrm).val();
 	var refId = ($('input[name=ccid]',newCandidateFrm).val()).toUpperCase();
 	var tblLctr = '#'+instId+'_t';
-	newCandidateFrm.ajaxSubmit({url: getNewCandidateUrl, async: false, clearForm: false,
+	newCandidateFrm.ajaxSubmit({url: getNewCandidateUrl, async: true, clearForm: false,
                 beforeSubmit: function (formData, jqForm, options) {
                    formData.push({ 'name' : 'displayhitlist', 'value' : hitList });
                    formData.push({ 'name' : 'displaycandidatelist', 'value' : candiList });
@@ -1443,7 +1443,7 @@ $(document).on('submit','form.add_new_candidate', function(event){
 		var dataToSend = $this.serialize();
 		//dataToSend += '&ccid='+newCandId+'&vldtmode=simple';
 		dataToSend += '&vldtmode=simple';
-		$.ajax({type: 'POST', url: validateCcIdUrl, async: false,
+		$.ajax({type: 'POST', url: validateCcIdUrl, async: true,
 			   data: dataToSend,
 			   success: function(jsonObj) {
                                   if (jsonObj.errorflag) {

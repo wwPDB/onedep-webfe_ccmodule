@@ -111,10 +111,10 @@ $(document).ready(function() {
             alert(errtxt);
         }
     });
-	$.ajax({url: '/ccmodule/js/jquery/ui-src/jquery-ui-1.10.3.custom.min.js', async: false, dataType: 'script'});
-    $.ajax({url: '/js/jquery/plugins/jquery.form.min.js', async: false, dataType: 'script'});
-    $.ajax({url: '/applets/'+JMOL_VRSN+'/jsmol/JSmol.min.nojq.js', async: false, dataType: 'script'});
-    $.ajax({url: '/js/jquery/plugins-src/jquery.bt.v097.min.js', async: false, dataType: 'script'});
+	$.ajax({url: '/ccmodule/js/jquery/ui-src/jquery-ui-1.10.3.custom.min.js', async: true, dataType: 'script'});
+    $.ajax({url: '/js/jquery/plugins/jquery.form.min.js', async: true, dataType: 'script'});
+    $.ajax({url: '/applets/'+JMOL_VRSN+'/jsmol/JSmol.min.nojq.js', async: true, dataType: 'script'});
+    $.ajax({url: '/js/jquery/plugins-src/jquery.bt.v097.min.js', async: true, dataType: 'script'});
     
     ///////////////////////////////////////////BEGIN: CHECK FOR CCID REQUEST FROM PRIOR PAGE //////////////////////////////////////////////////
     /*
@@ -131,7 +131,7 @@ $(document).ready(function() {
 			ccId = splitArr[i];
 			if( ccId.length > 0 ){
 				var dataToSend = 'ccid='+ccId+'&vldtmode=simple';
-				$.ajax({type: 'GET',url: URL_VALIDATE_CCID, async: false,
+				$.ajax({type: 'GET',url: URL_VALIDATE_CCID, async: true,
 					   data: dataToSend,
 					   success: function(jsonObj) {
 							if (jsonObj.errorflag) {
@@ -301,8 +301,8 @@ $(document).ready(function() {
 		if( typeof(SESSION_ID) != "undefined" && SESSION_ID.length > 0 ){
 			dataToSend += '&sessionid='+SESSION_ID;
 		}
-		//$('#add_chemcomp_frm').ajaxSubmit({url: URL_VIEW_CHEM_COMP, async: false, clearForm: false,  data: dataToSend,
-		$.ajax({type: 'GET', url: URL_VIEW_CHEM_COMP, async: false, data: dataToSend,
+		//$('#add_chemcomp_frm').ajaxSubmit({url: URL_VIEW_CHEM_COMP, async: true, clearForm: false,  data: dataToSend,
+		$.ajax({type: 'GET', url: URL_VIEW_CHEM_COMP, async: true, data: dataToSend,
 			success: function(jsonObj) {
 				//alert("in getChemComp success function.");
 				SESSION_ID = jsonObj.sessionid;
@@ -473,7 +473,7 @@ $(document).ready(function() {
 			if( ccId.length > 0 && !alrdyRqstd(ccId) ){
 				CC_IDS_REQD.push(ccId);
 				var dataToSend = 'ccid='+ccId+'&vldtmode=simple';
-				$.ajax({type: 'GET',url: URL_VALIDATE_CCID, async: false,
+				$.ajax({type: 'GET',url: URL_VALIDATE_CCID, async: true,
 					   data: dataToSend,
 					   success: function(jsonObj) {
 							if (jsonObj.errorflag) {

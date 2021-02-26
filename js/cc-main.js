@@ -107,13 +107,13 @@ $(document).ready(function() {
 	        alert(errtxt);
 	    }
 	});
-	$.ajax({url: '/ccmodule/js/jquery/ui-src/jquery-ui-1.10.3.custom.min.js', async: false, dataType: 'script'});
-	$.ajax({url: '/js/jquery/plugins/jquery.form.min.js', async: false, dataType: 'script'});
-	$.ajax({url: '/ccmodule/js/jquery/plugins/jquery.paginate.my.js', async: false, dataType: 'script'});
-	$.ajax({url: '/js/jquery/plugins-src/jquery.bt.v097.min.js', async: false, dataType: 'script'});
-	$.ajax({url: '/applets/'+JMOL_VRSN+'/jsmol/JSmol.min.nojq.js', async: false, dataType: 'script'});
-	$.ajax({url: '/ccmodule/js/cc-global-view.js', async: false, dataType: 'script'});
-	$.ajax({url: '/ccmodule/js/cc-instance-view.js', async: false, dataType: 'script'});
+	$.ajax({url: '/ccmodule/js/jquery/ui-src/jquery-ui-1.10.3.custom.min.js', async: true, dataType: 'script'});
+	$.ajax({url: '/js/jquery/plugins/jquery.form.min.js', async: true, dataType: 'script'});
+	$.ajax({url: '/ccmodule/js/jquery/plugins/jquery.paginate.my.js', async: true, dataType: 'script'});
+	$.ajax({url: '/js/jquery/plugins-src/jquery.bt.v097.min.js', async: true, dataType: 'script'});
+	$.ajax({url: '/applets/'+JMOL_VRSN+'/jsmol/JSmol.min.nojq.js', async: true, dataType: 'script'});
+	$.ajax({url: '/ccmodule/js/cc-global-view.js', async: true, dataType: 'script'});
+	$.ajax({url: '/ccmodule/js/cc-instance-view.js', async: true, dataType: 'script'});
 	$('#help_batch_smmry_vw').bt({positions: ['left', 'bottom'],ajaxPath: '/ccmodule/cc_help.html div#summary',ajaxOpts:{dataType:'html'},trigger: 'click',
 		width: 600,centerPointX: .9,spikeLength: 20,spikeGirth: 10,padding: 15,cornerRadius: 25,fill: '#FFF',
 		strokeStyle: '#ABABAB',strokeWidth: 1});

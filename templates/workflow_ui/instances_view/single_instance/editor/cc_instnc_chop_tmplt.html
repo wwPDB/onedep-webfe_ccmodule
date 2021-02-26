@@ -67,16 +67,17 @@
            var cifUrl = '%(session_url_prefix)s/%(instanceid)s.cif';
 
            $('#chemWin1').chemWin({edit:{posy:100,width:700},jmol:{posy:100,posx:715,width:600},
-                                  file:{posx:10,posy:645,width:1200,height:200/*hide:true*/},         	  
-                                      comp:{hide:true},
-         	                      atoms:{posx:10,posy:890,width:1200,height:200/*,hide:true*/},
-         	                      bonds:{posx:10,posy:1135,width:1200,height:200/*,hide:true*/},
-                                      audit:{posx:10,posy:1380,width:1200,height:200},
-                                      synonym:{posx:10,posy:1625,width:1200,height:200},
-                                      feature:{posx:10,posy:1870,width:1200,height:200},
-                                      related:{posx:10,posy:2115,width:1200,height:200},
-                                      relatedatom:{posx:10,posy:2360,width:1200,height:200},
+                                  file:{posx:10,posy:645,width:700,height:250/*hide:true*/},         	  
+                                      comp:{posx:715,posy:645,width:500,height:250/*hide:true*/},
+         	                      atoms:{posx:10,posy:940,width:1200,height:200/*,hide:true*/},
+         	                      bonds:{posx:10,posy:1185,width:1200,height:200/*,hide:true*/},
+                                      audit:{posx:10,posy:1430,width:1200,height:200},
+                                      synonym:{posx:10,posy:1675,width:1200,height:200},
+                                      feature:{posx:10,posy:1920,width:1200,height:200},
+                                      related:{posx:10,posy:2165,width:1200,height:200},
+                                      relatedatom:{posx:10,posy:2410,width:1200,height:200},
          	                      view:{diagram:{edit:{lock:true}/*CTM-51,readOnly:true*/},
+                                      compModel:jQuery.cifEdit.compCompModel,
              	                      atomModel:jQuery.chemChopper.ccompAtomModel,
              	                      bondModel:jQuery.chemChopper.ccompBondModel,
                                       auditModel:jQuery.cifEdit.compAuditModel,
@@ -152,9 +153,11 @@
 
 <!-- #footer begins -->
 	<br/>
+<!--
 	<div style="margin-top:2300px" id="footer">
    		<p>&copy; 2012 wwPDB Chemical Component Chopper Module V0.01</p>
 	</div>
+-->
 <!-- #footer ends above -->
 </div>
 <!-- #container ends above-->
