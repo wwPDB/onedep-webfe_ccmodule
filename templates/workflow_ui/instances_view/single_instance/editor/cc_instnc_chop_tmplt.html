@@ -105,6 +105,81 @@
            $('#assgn_new_cc_def_'+instanceId+' input[name="get_new_cc_id_'+instanceId+'"]',window.opener.document).click();
            window.close();
         }
+
+jQuery.chemChopper.addNewChemWin=function(mol) {
+	var nId=jQuery.chemChopper.cWinId;
+	var formula=mol.formula();
+        mol.chemWinId=nId;
+	$('#chemWinSelector a').removeClass('chemWinSelectorOn');
+	$('#chemWinCtrlBar').append(
+			' <span id="chemWinPart'+mol.orderId+'">'+
+			'<a href="javascript:void(0)" class="chemWinSeqCtrl" onclick="jQuery.chemChopper.movePrevSeq('+mol.orderId+')">&lt;&lt;</a>'+			
+			'<a class="notMatched chemWinSelectorTab" style="color:DarkSlateGray;background-color:'+mol.markColor+'" id="chemWinToggle'+nId+'" '+
+			   'href="javascript:void(0)" onclick="jQuery.chemChopper.toggleChemWin('+nId+')">'+
+			' Part '+jQuery.chemChopper.cWinId+'</a>'+
+			'<a href="javascript:void(0)" class="chemWinSeqCtrl" onclick="jQuery.chemChopper.moveAfterSeq('+mol.orderId+')">&gt;&gt;</a>'+
+			'<a href="javascript:void(0)" class="chemWinBreakCtrl" '+
+                        ' onclick="jQuery.chemChopper.markBreak('+mol.orderId+')" title="Mark (or clear) the component as an entity break point">&nbsp;</a>'+
+                        '<div class="chemWinBreakType" style="position:absolute;display:none;" onmouseover="clearTimeout(jQuery.chemChopper.subPolyTimeout)">'+
+                        '<select class="chemWinTypeSelect" onclick="jQuery.chemChopper.changePolymerType('+mol.orderId+')">'+
+                        '<option>polymer</option><option>non-polymer</option></select>'+
+                        '<div onclick="jQuery.chemChopper.hideSubPolymerTypes(true)" style="text-align:right;cursor:pointer;font-size:8px">close</div></div>'+
+			'</span>'
+	);
+	$('#chemContent').append('<div class="chemWin" id="chemWin'+nId+'"></div>');
+	$('#chemWin'+nId).chemWin({
+		savePositions:false,
+                edit:{posy:100,width:700},jmol:{posy:100,posx:715,width:600},
+                file:{posx:10,posy:645,width:700,height:250/*hide:true*/},         	  
+                comp:{posx:715,posy:645,width:500,height:250/*hide:true*/},
+         	atoms:{posx:10,posy:940,width:1200,height:200/*,hide:true*/},
+         	bonds:{posx:10,posy:1185,width:1200,height:200/*,hide:true*/},
+                audit:{posx:10,posy:1430,width:1200,height:200},
+                synonym:{posx:10,posy:1675,width:1200,height:200},
+                feature:{posx:10,posy:1920,width:1200,height:200},
+                related:{posx:10,posy:2165,width:1200,height:200},
+                relatedatom:{posx:10,posy:2410,width:1200,height:200},
+		view:{diagram:{edit:{molecule:mol},noClear:true,
+                      fragmentsArray:jQuery.chemChopper.leavingFragments},defaultFileFormat:'mmCif',
+                      compModel:jQuery.cifEdit.compCompModel,
+             	      atomModel:jQuery.chemChopper.ccompAtomModel,
+             	      bondModel:jQuery.chemChopper.ccompBondModel,
+                      auditModel:jQuery.cifEdit.compAuditModel,
+                      synonymModel:jQuery.cifEdit.compSynonymModel,
+                      featureModel:jQuery.cifEdit.compFeatureModel,
+                      relatedModel:jQuery.cifEdit.compRelatedModel,
+                      relatedAtomModel:jQuery.cifEdit.atomRelatedModel
+                },
+		control:{hide:false,align2d:false,addhydro:false,align3d:false,load:false,reset:false},
+		afterInit:function(){
+			$('#chemControl_chemWin'+nId).append(
+                                        '<span style="display:none" id="altOptionsSpan'+nId+'">'+
+                                        '  <select id="altOptions'+nId+'">'+
+                                        '  </select>'+
+					'  <input type="button" value="Match Alternative" onclick="jQuery.chemChopper.forceMatch(\'altOptions\','+nId+')"/>'+
+                                        '</span>'+
+					'<input type="textbox" id="forceMatchId'+nId+'" value="" size="3"/>'+					
+					'<input type="button" value="Force Match" onclick="jQuery.chemChopper.forceMatch(\'forceMatchId\','+nId+')"/>'+
+					'<input type="button" value="Retry Match" onclick="jQuery.chemChopper.tryToMatch('+nId+')"/>'+
+					' <span id="verifyCtrl'+nId+'"> Accept match:'+
+					'  <input id="verifyCheckbox'+nId+'" type="checkbox" onchange="jQuery.chemChopper.verifyMatch('+nId+')"/>'+
+					' </span>'+
+					' <span style="margin-left:30px" id="parentCtrl'+nId+'"> Parent Component:'+
+					'  <input id="parentId'+nId+'" type="input" size="3"/>'+
+					'  <input id="parentIdSet'+nId+'" type="button" value="Set" onclick="jQuery.chemChopper.setParent('+nId+')"/>'+	
+					'  <input id="useNamesSet'+nId+'" type="button" value="Use names" onclick="jQuery.chemChopper.useNames('+nId+')"/>'+
+					' </span>'+
+					' <span style="font-family:sans-serif;font-size:13px" id="exactMatches'+nId+'"></span>'+
+					' <span style="font-family:sans-serif;font-size:13px" id="closeMatches'+nId+'"></span>'
+			);
+                        jQuery.chemViews.cifEditControls('chemWin'+nId,{NewCode:true,Update:true,CheckDuplicate:true,Audit:false,CommittoCVS:true});
+			jQuery.chemChopper.tryToMatch(nId,true);
+	               // jQuery.chemChopper.toggleChemWin(1);    
+		        $('#chemWin'+nId).chemWinShow(false);
+		}});
+		$('#chemWin'+nId).chemWinShow(false);
+	jQuery.chemChopper.cWinId++;           
+}
     </script>
  </head>
  <body>
