@@ -126,7 +126,6 @@ function toggleChemCompDisplay(sInstId,sRefId,sCntxt,bShow){
 						var uniqeId = getUniqueIdForJsmol(sInstId);
 						if( $(this).hasClass("ref") ){
 							refCcId = $(this).attr('name');
-							// loadFilePath = sessPathPrefix+'/rfrnc_reports/'+refCcId+'/'+refCcId+'_ideal.cif';
 							loadFilePath = '/service/cc_lite/report/file?identifier=' + depId + '&source=ccd&ligid=' + refCcId + '&file=' + refCcId + '_ideal.cif'
 							refThreeDdivId = 'threeD_'+sInstId+'_'+refCcId;
 							
@@ -141,7 +140,6 @@ function toggleChemCompDisplay(sInstId,sRefId,sCntxt,bShow){
 						}
 						else if( $(this).hasClass("exp") ){
 							authAssgndId = $(this).attr('name');
-							// loadFilePath = sessPathPrefix+'/'+sInstId+'/report/'+authAssgndId+'_model.cif';
 							loadFilePath = '/service/cc_lite/report/file?identifier=' + depId + '&source=author&ligid=' + sInstId + '&file=' + authAssgndId + '_model.cif'
 							expThreeDdivId = 'threeD_'+sInstId;
 							
@@ -684,7 +682,6 @@ $(document).on('click','.all_instances .threeD_chck_bx', function(){
 			//invoke jsmol for experimental data
 			if( !( $('#allinst_e'+uniqeId+'_appletinfotablediv').length ) ){
 				loadFilePath = '/service/cc_lite/report/file?identifier=' + depId + '&source=author&ligid=' + instid + '&file=' + refid + '_model.cif'
-				// loadFilePath = sessPathPrefix+'/'+instid+'/report/'+refid+'_model.cif';
 
 				loadFileJsmol("allinst_e"+uniqeId,expThreeDdivId,loadFilePath,"default");
 				$('#allinst_e'+uniqeId+"_appletinfotablediv").css({'padding-left':'0px', 'border-style':'none'});
@@ -1049,7 +1046,6 @@ $(document).on('click','.single_instance .threeD_chck_bx', function(){
 			var thisId = $(this).attr('id');
 			if( $(this).hasClass("ref") ){
 				refCcId = $(this).attr('name');
-				// loadFilePath = sessPathPrefix+'/rfrnc_reports/'+refCcId+'/'+refCcId+'_ideal.cif';
 				loadFilePath = '/service/cc_lite/report/file?identifier=' + depId + '&source=ccd&ligid=' + refCcId + '&file=' + refCcId + '_ideal.cif'
 				refThreeDdivId = 'threeD_'+instid+'_'+refCcId;
 				jmolHtmlUrl = sessPathPrefix +'/'+instid+'/'+refCcId+'_ref_jmol.html';
@@ -1070,7 +1066,6 @@ $(document).on('click','.single_instance .threeD_chck_bx', function(){
 			}
 			else if( $(this).hasClass("exp") ){
 				authAssgndId = $(this).attr('name');
-				// loadFilePath = sessPathPrefix+'/'+instid+'/report/'+authAssgndId+'_model.cif';
 				loadFilePath = '/service/cc_lite/report/file?identifier=' + depId + '&source=author&ligid=' + instid + '&file=' + authAssgndId + '_model.cif'
 				
 				expThreeDdivId = 'threeD_'+instid;
