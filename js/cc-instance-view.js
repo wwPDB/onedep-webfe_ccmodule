@@ -88,6 +88,18 @@ function getUniqueIdForJsmol(sInstId){
 	return sInstId.split("_")[1]+sInstId.split("_")[2]+sInstId.split("_")[3];
 }
 
+function isAnnotation(fileSource) {
+	var isAnnot = false;
+	if (fileSource == 'wf-archive' ||
+			fileSource == 'wf_archive' ||
+			fileSource == 'wf-instance' ||
+			fileSource == 'wf_instance') {
+				isAnnot = true;
+			}
+
+	return isAnnot;
+}
+
 function toggleChemCompDisplay(sInstId,sRefId,sCntxt,bShow){
 	var id_1, id_2, jmolHtmlSuffix, atmMpHtmlSuffix;
 	if( sCntxt == SNGL_INSTNC ){
@@ -127,7 +139,7 @@ function toggleChemCompDisplay(sInstId,sRefId,sCntxt,bShow){
 						if( $(this).hasClass("ref") ){
 							refCcId = $(this).attr('name');
 
-							if (depId == 'TMP_ID') {
+							if (depId == 'TMP_ID' || isAnnotation(fileSource) == true) {
 								loadFilePath = sessPathPrefix+'/rfrnc_reports/'+refCcId+'/'+refCcId+'_ideal.cif';
 							} else {
 								loadFilePath = '/service/cc_lite/report/file?identifier=' + depId + '&source=ccd&ligid=' + refCcId + '&file=' + refCcId + '_ideal.cif';
@@ -147,7 +159,7 @@ function toggleChemCompDisplay(sInstId,sRefId,sCntxt,bShow){
 						else if( $(this).hasClass("exp") ){
 							authAssgndId = $(this).attr('name');
 
-							if (depId == 'TMP_ID') {
+							if (depId == 'TMP_ID' || isAnnotation(fileSource) == true) {
 								loadFilePath = sessPathPrefix+'/'+sInstId+'/report/'+authAssgndId+'_model.cif';
 							} else {
 								loadFilePath = '/service/cc_lite/report/file?identifier=' + depId + '&source=author&ligid=' + sInstId + '&file=' + authAssgndId + '_model.cif';
@@ -693,7 +705,7 @@ $(document).on('click','.all_instances .threeD_chck_bx', function(){
 			
 			//invoke jsmol for experimental data
 			if( !( $('#allinst_e'+uniqeId+'_appletinfotablediv').length ) ){
-				if (depId == 'TMP_ID') {
+				if (depId == 'TMP_ID' || isAnnotation(fileSource) == true) {
 					loadFilePath = sessPathPrefix+'/'+instid+'/report/'+refid+'_model.cif';
 				} else {
 					loadFilePath = '/service/cc_lite/report/file?identifier=' + depId + '&source=author&ligid=' + instid + '&file=' + refid + '_model.cif';
@@ -1063,7 +1075,7 @@ $(document).on('click','.single_instance .threeD_chck_bx', function(){
 			if( $(this).hasClass("ref") ){
 				refCcId = $(this).attr('name');
 
-				if (depId == 'TMP_ID') {
+				if (depId == 'TMP_ID' || isAnnotation(fileSource) == true) {
 					loadFilePath = sessPathPrefix+'/rfrnc_reports/'+refCcId+'/'+refCcId+'_ideal.cif';
 				} else {
 					loadFilePath = '/service/cc_lite/report/file?identifier=' + depId + '&source=ccd&ligid=' + refCcId + '&file=' + refCcId + '_ideal.cif';
@@ -1089,7 +1101,7 @@ $(document).on('click','.single_instance .threeD_chck_bx', function(){
 			else if( $(this).hasClass("exp") ){
 				authAssgndId = $(this).attr('name');
 
-				if (depId == 'TMP_ID') {
+				if (depId == 'TMP_ID' || isAnnotation(fileSource) == true) {
 					loadFilePath = sessPathPrefix+'/'+instid+'/report/'+authAssgndId+'_model.cif';
 				} else {
 					loadFilePath = '/service/cc_lite/report/file?identifier=' + depId + '&source=author&ligid=' + instid + '&file=' + authAssgndId + '_model.cif';
