@@ -93,7 +93,8 @@ function isAnnotation(fileSource) {
 	if (fileSource == 'wf-archive' ||
 			fileSource == 'wf_archive' ||
 			fileSource == 'wf-instance' ||
-			fileSource == 'wf_instance') {
+			fileSource == 'wf_instance' ||
+			fileSource == '') {
 				isAnnot = true;
 			}
 
