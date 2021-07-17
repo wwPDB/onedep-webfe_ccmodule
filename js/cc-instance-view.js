@@ -604,7 +604,7 @@ $(document).on('click','.allinst_assgn_actions .commit_assgn', function(){
 		if( request == 'Assign'){
 			if( frcAssgnMode == 'yes' ){
 				disableCntrls('validate');
-				$.ajax({type: 'POST', url: validateCcIdUrl, async: true,
+				$.ajax({type: 'POST', url: validateCcIdUrl, async: false,
 					   data: 'instance='+instance+'&identifier='+depId+'&filesource='+fileSource+'&sessionid='+sessionID+'&auth_assgn_grp='+authAssgnGrp+'&ccid='+ccIdAssgnd+'&instidlist='+instIdList+"&instncmode=all&vldtmode=full",
 					   beforeSend: function (){
 							//disableCntrls('#'+authAssgnGrp+'_inneraccordion','input',true);
@@ -909,7 +909,7 @@ $(document).on('click','.instnc_actions .commit_assgn', function(){
 		if( request == 'Assign'){
 			if( frcAssgnMode == 'yes' ){
 				disableCntrls('validate');
-				$.ajax({type: 'POST', url: validateCcIdUrl, async: true,
+				$.ajax({type: 'POST', url: validateCcIdUrl, async: false,
 					   data: 'instance='+instance+'&identifier='+depId+'&filesource='+fileSource+'&sessionid='+sessionID+'&ccid='+ccIdAssgnd+'&instidlist='+instid+"&instncmode=single&vldtmode=full",
 					   beforeSend: function (){
 							var answer = confirm('Warning: You are forcing assignment of the chemical component(s) in question to "'+ccIdAssgnd+'". Please confirm.');
