@@ -119,16 +119,20 @@ $(document).ready(function() {
                   $('#help_link_'+wnm+'').click(iconWinFocus(wnm));
               }
               
-              // dirty calculation to get the proper position for the update button
-              // getting the last window (chemRelatedAtom_chemWin_window), its position and
-              // its height and placing the button after that
-              contentSize += $('#chemRelatedAtom_chemWin_window').position().top +
+              if ($('#chemRelatedAtom_chemWin_window').length) {
+                contentSize += $('#chemRelatedAtom_chemWin_window').position().top +
                 $('#chemRelatedAtom_chemWin_window').height() +
                 $('.window-titleBar').height() +
                 $('.window-statusBar').height() + 10;
 
-              $('#footerToolbar').css('top', contentSize + 'px');
-              $('#footer').css('margin-top', contentSize + 'px');
+                $('#footerToolbar').css('top', contentSize + 'px');
+                $('#footer').css('margin-top', contentSize + 'px');
+              } else {
+                // if we don't find the RelatedAtom window, instead of placing the
+                // button relative to the windows, we place it relative to the top
+                // of the page, as it is done with the footer itself
+                $('#footerToolbar').css('margin-top', '2650px');
+              }
 
               $.getScript('/js/jquery/plugins-src/jquery.bt.v097.min.js', function() {
                 $('#help_link').bt({positions: ['left', 'bottom'],ajaxPath: '/ccmodule/cc_edit_help.html div#summary', ajaxOpts:{dataType:'html'},trigger: 'click', 
@@ -181,7 +185,7 @@ $(document).ready(function() {
 <!-- #mainContent ends above -->
 <!-- #footer begins -->
 	<br/>
-    <div style="position: absolute; left:2px;" id="footerToolbar"></div>
+  <div style="position: absolute; left:2px;" id="footerToolbar"></div>
 	<div style="margin-top:2700px" id="footer">
    		<p>&copy; 2019 wwPDB Chemical Component Editor Module Editor V0.01</p>
 	</div>
