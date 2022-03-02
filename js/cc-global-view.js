@@ -126,6 +126,22 @@ function doCheck(semaphore) {
     
 }
 
+function loadSummaryData() {
+	$(loadGlblSmmryFrmLctr).ajaxSubmit({url: loadBatchDataURL, async: true, clearForm: false,
+		target: '#rslts',
+		success: function() {
+			$("#saveunfinished").removeAttr('disabled');
+			$(".instance_search_ui").removeAttr('disabled');
+			$("#reload").removeAttr('disabled');
+			unassignedInstncsHandler();
+			applyBeautyTips();
+		},
+		error: function() {
+			$('.errmsg').html(errStyle + 'Failed to load ligand summary data.' + '<br />\n').show();
+		}
+	});
+}
+
 function loadInstanceSearchView() {
 	activeCCid = 1;
 	$('#batch_summary_vw').hide();
@@ -194,7 +210,8 @@ function loadInstanceSearchView() {
 ///////////////////// END OF FUNCTION DEFINITIONS - Global Batch Search Summary View /////////////////////////////////////////
 
 //////////////////// FUNCTION CALLS - Global Batch Search Summary View //////////////////////////////////////////////////////
-getCcBatchRslts();
+// getCcBatchRslts();
+loadSummaryData();
 //////////////////// END OF FUNCTION CALLS - Global Batch Search Summary View ///////////////////////////////////////////////
 
 //////////////////// EVENT HANDLERS - Global Batch Search Summary View //////////////////////////////////////////////////////

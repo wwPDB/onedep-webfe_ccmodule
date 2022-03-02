@@ -126,7 +126,8 @@ function toggleChemCompDisplay(sInstId,sRefId,sCntxt,bShow){
 						var uniqeId = getUniqueIdForJsmol(sInstId);
 						if( $(this).hasClass("ref") ){
 							refCcId = $(this).attr('name');
-							loadFilePath = sessPathPrefix+'/rfrnc_reports/'+refCcId+'/'+refCcId+'_ideal.cif';
+							loadFilePath = '/service/cc/report/file?identifier=' + depId + '&instance=' + instance + '&source=ccd&ligid=' + refCcId + '&file=' + refCcId + '_ideal.cif';
+							// loadFilePath = sessPathPrefix+'/rfrnc_reports/'+refCcId+'/'+refCcId+'_ideal.cif';
 							refThreeDdivId = 'threeD_'+sInstId+'_'+refCcId;
 							
 							//invoke jsmol for dictionary reference
@@ -140,7 +141,8 @@ function toggleChemCompDisplay(sInstId,sRefId,sCntxt,bShow){
 						}
 						else if( $(this).hasClass("exp") ){
 							authAssgndId = $(this).attr('name');
-							loadFilePath = sessPathPrefix+'/'+sInstId+'/report/'+authAssgndId+'_model.cif';
+							loadFilePath = '/service/cc/report/file?identifier=' + depId + '&instance=' + instance + '&source=author&ligid=' + sInstId + '&file=' + authAssgndId + '_model.cif';
+							// loadFilePath = sessPathPrefix+'/'+sInstId+'/report/'+authAssgndId+'_model.cif';
 							expThreeDdivId = 'threeD_'+sInstId;
 							
 							//invoke jsmol for experimental data
@@ -681,7 +683,8 @@ $(document).on('click','.all_instances .threeD_chck_bx', function(){
 			
 			//invoke jsmol for experimental data
 			if( !( $('#allinst_e'+uniqeId+'_appletinfotablediv').length ) ){
-				loadFilePath = sessPathPrefix+'/'+instid+'/report/'+refid+'_model.cif';
+				loadFilePath = '/service/cc/report/file?identifier=' + depId + '&instance=' + instance + '&source=author&ligid=' + instid + '&file=' + refid + '_model.cif';
+				// loadFilePath = sessPathPrefix+'/'+instid+'/report/'+refid+'_model.cif';
 				loadFileJsmol("allinst_e"+uniqeId,expThreeDdivId,loadFilePath,"default");
 				$('#allinst_e'+uniqeId+"_appletinfotablediv").css({'padding-left':'0px', 'border-style':'none'});
 				$('#allinst_e'+uniqeId+"_appletdiv").css({'padding-left':'0px', 'border-style':'none'});
@@ -1045,7 +1048,8 @@ $(document).on('click','.single_instance .threeD_chck_bx', function(){
 			var thisId = $(this).attr('id');
 			if( $(this).hasClass("ref") ){
 				refCcId = $(this).attr('name');
-				loadFilePath = sessPathPrefix+'/rfrnc_reports/'+refCcId+'/'+refCcId+'_ideal.cif';
+				loadFilePath = '/service/cc/report/file?identifier=' + depId + '&instance=' + instance + '&source=ccd&ligid=' + refCcId + '&file=' + refCcId + '_ideal.cif';
+				// loadFilePath = sessPathPrefix+'/rfrnc_reports/'+refCcId+'/'+refCcId+'_ideal.cif';
 				refThreeDdivId = 'threeD_'+instid+'_'+refCcId;
 				jmolHtmlUrl = sessPathPrefix +'/'+instid+'/'+refCcId+'_ref_jmol.html';
 				
@@ -1065,7 +1069,8 @@ $(document).on('click','.single_instance .threeD_chck_bx', function(){
 			}
 			else if( $(this).hasClass("exp") ){
 				authAssgndId = $(this).attr('name');
-				loadFilePath = sessPathPrefix+'/'+instid+'/report/'+authAssgndId+'_model.cif';
+				loadFilePath = '/service/cc/report/file?identifier=' + depId + '&instance=' + instance + '&source=author&ligid=' + instid + '&file=' + authAssgndId + '_model.cif';
+				// loadFilePath = sessPathPrefix+'/'+instid+'/report/'+authAssgndId+'_model.cif';
 				expThreeDdivId = 'threeD_'+instid;
 				jmolHtmlUrl = sessPathPrefix + '/' + instid +'/'+instid+'instnc_jmol_instVw.html';
 				
@@ -1402,9 +1407,9 @@ function getNewCandidate(newCandidateFrm,hitList,candiList){
         	if( status == '0' ){
         		toggleChemCompDisplay(instId,refId,SNGL_INSTNC,true);
     			$('input[name=ccid]',newCandidateFrm).val('');
-    			$(tblLctr+" tr.add_new_candidate").show();
-            	$(tblLctr+' tr:last').after('<tr><td class="entityid"><a href="/ccmodule/cc-view.html?ccid='+refId+'" target="_blank">'+refId+'</a></td><td class="assignas_rdio_btn">Must Force Assign</td><td class="score">n.a.</td><td class="vizcmp_chck_bx"><input id="viz_cmp_'+instId+'_'+refId+'" name="'+instId+'" class="vizcmp_chck_bx" type="checkbox" value="'+refId+'" checked="checked"></td></tr>');
-                        refreshInstImages(instId);
+    			// $(tblLctr+" tr.add_new_candidate").show();
+            	// $(tblLctr+' tr:last').after('<tr><td class="entityid"><a href="/ccmodule/cc-view.html?ccid='+refId+'" target="_blank">'+refId+'</a></td><td class="assignas_rdio_btn">Must Force Assign</td><td class="score">n.a.</td><td class="vizcmp_chck_bx"><input id="viz_cmp_'+instId+'_'+refId+'" name="'+instId+'" class="vizcmp_chck_bx" type="checkbox" value="'+refId+'" checked="checked"></td></tr>');
+                //         refreshInstImages(instId);
         	}
         	else{
         		if( status == '1'){
