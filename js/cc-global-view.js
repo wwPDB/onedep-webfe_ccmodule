@@ -210,7 +210,11 @@ function loadInstanceSearchView() {
 ///////////////////// END OF FUNCTION DEFINITIONS - Global Batch Search Summary View /////////////////////////////////////////
 
 //////////////////// FUNCTION CALLS - Global Batch Search Summary View //////////////////////////////////////////////////////
-loadSummaryData();
+if (depId == null || depId === 'TMP_ID' || fileSource === '') {
+	getCcBatchRslts();
+} else {
+	loadSummaryData();
+}
 //////////////////// END OF FUNCTION CALLS - Global Batch Search Summary View ///////////////////////////////////////////////
 
 //////////////////// EVENT HANDLERS - Global Batch Search Summary View //////////////////////////////////////////////////////
