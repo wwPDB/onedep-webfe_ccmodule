@@ -231,14 +231,16 @@ $('#savedone').click(function() {
         	    	return false;
         	    }
         	    formData.push({"name": "sessionid", "value": sessionID});
-            }, success: function() {
+            }, success: function(jsonObj) {
                 progressEnd();
-			// alert("Work will be saved and Ligand Processing now complete.");
-                closeWindow();
+                if (jsonObj.errorflag) {
+                     alert(jsonObj.errortext);
+                } else {
+                     closeWindow();
+                }
             }
         });
-	}
-	else{
+	} else{
    		numToAssign = unassignedInstncsHandler();
 	    if( numToAssign > 0 ){
 	    	alert("Assignment status has changed for one or more ligand instances. Finish action being canceled./nPlease see updated status info on this page and check your work.");

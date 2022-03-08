@@ -88,6 +88,19 @@ function getUniqueIdForJsmol(sInstId){
 	return sInstId.split("_")[1]+sInstId.split("_")[2]+sInstId.split("_")[3];
 }
 
+function isAnnotation(fileSource) {
+	var isAnnot = false;
+	if (fileSource == 'wf-archive' ||
+			fileSource == 'wf_archive' ||
+			fileSource == 'wf-instance' ||
+			fileSource == 'wf_instance' ||
+			fileSource == '') {
+				isAnnot = true;
+			}
+
+	return isAnnot;
+}
+
 function toggleChemCompDisplay(sInstId,sRefId,sCntxt,bShow){
 	var id_1, id_2, jmolHtmlSuffix, atmMpHtmlSuffix;
 	if( sCntxt == SNGL_INSTNC ){
@@ -580,7 +593,7 @@ $(document).on('click','.allinst_assgn_actions .commit_assgn', function(){
 		if( request == 'Assign'){
 			if( frcAssgnMode == 'yes' ){
 				disableCntrls('validate');
-				$.ajax({type: 'POST', url: validateCcIdUrl, async: true,
+				$.ajax({type: 'POST', url: validateCcIdUrl, async: false,
 					   data: 'instance='+instance+'&identifier='+depId+'&filesource='+fileSource+'&sessionid='+sessionID+'&auth_assgn_grp='+authAssgnGrp+'&ccid='+ccIdAssgnd+'&instidlist='+instIdList+"&instncmode=all&vldtmode=full",
 					   beforeSend: function (){
 							//disableCntrls('#'+authAssgnGrp+'_inneraccordion','input',true);
@@ -880,7 +893,7 @@ $(document).on('click','.instnc_actions .commit_assgn', function(){
 		if( request == 'Assign'){
 			if( frcAssgnMode == 'yes' ){
 				disableCntrls('validate');
-				$.ajax({type: 'POST', url: validateCcIdUrl, async: true,
+				$.ajax({type: 'POST', url: validateCcIdUrl, async: false,
 					   data: 'instance='+instance+'&identifier='+depId+'&filesource='+fileSource+'&sessionid='+sessionID+'&ccid='+ccIdAssgnd+'&instidlist='+instid+"&instncmode=single&vldtmode=full",
 					   beforeSend: function (){
 							var answer = confirm('Warning: You are forcing assignment of the chemical component(s) in question to "'+ccIdAssgnd+'". Please confirm.');

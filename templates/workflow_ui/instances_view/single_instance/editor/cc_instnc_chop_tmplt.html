@@ -47,6 +47,8 @@
     </style>
 
     <script type="text/javascript">
+       var contentSize = 0;
+
        $(document).ready(function(){
            jQuery.chemPath="/chemeditor/";
            jQuery.cifEdit.sessionId  = '%(sessionid)s';
@@ -94,6 +96,21 @@
                                                            jQuery.chemDiagram.modeSelect('chemEdit_chemView_chemWin1');
                                                            jQuery.chemWin.loadCifUrl('chemWin1',cifUrl,instanceId);
                                                            jQuery.chemChopper.enableChop("chemWin1");
+
+                                                           if ($('#chemRelatedAtom_chemWin_window').length) {
+                                                                   contentSize += $('#chemRelatedAtom_chemWin_window').position().top +
+                                                                   $('#chemRelatedAtom_chemWin_window').height() +
+                                                                   $('.window-titleBar').height() +
+                                                                   $('.window-statusBar').height() + 10;
+                                                                   $('#footerToolbar').css('top', contentSize + 'px');
+                                                                   $('#footer').css('margin-top', contentSize + 'px');
+                                                           } else {
+                                                             // if we don't find the RelatedAtom window, instead of placing the
+                                                             // button relative to the windows, we place it relative to the top
+                                                             // of the page, as it is done with the footer itself
+                                                             $('#footerToolbar').css('margin-top', '2650px');
+                                                           }
+
          	                                           //$('#loadCifButton_chemWin1').click(function(){jQuery.chemChopper.enableChop("chemWin1")});
          	                                           //$('#uploadCifButton_chemWin1').click(function(){jQuery.chemChopper.enableChop("chemWin1")});
          	                                           }});      	      	  
@@ -228,6 +245,7 @@ jQuery.chemChopper.addNewChemWin=function(mol) {
 
 <!-- #footer begins -->
 	<br/>
+  <div style="position: absolute; left:2px;" id="footerToolbar"></div>
 <!--
 	<div style="margin-top:2300px" id="footer">
    		<p>&copy; 2012 wwPDB Chemical Component Chopper Module V0.01</p>
