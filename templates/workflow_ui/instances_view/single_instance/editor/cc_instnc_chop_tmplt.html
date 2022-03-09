@@ -117,7 +117,7 @@
         });       
         jQuery.cifEdit.getCommitCode=function(newccid) {
            var commit_url='/service/cc/assign/view/instance/new_ccid_defined?instanceid='+instanceId+'&newccid='+newccid+'&sessionid='+sessionId+
-                          '&filesource='+fileSource+'&identifier='+identifier;
+                          '&filesource='+fileSource+'&identifier='+identifier+'&instance='+instance;
            $.ajax({async: false, url: commit_url});
            $('#assgn_new_cc_def_'+instanceId+' input[name="get_new_cc_id_'+instanceId+'"]',window.opener.document).click();
            window.close();

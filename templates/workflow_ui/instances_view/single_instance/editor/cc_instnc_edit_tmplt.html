@@ -37,7 +37,7 @@
 <script type="text/javascript" src="/ccmodule/editor/jquery.chemAjax.js"> </script>
 <script type="text/javascript">jQuery.chemAjax.getEnumeration();</script>
 <script type="text/javascript" src="/ccmodule/editor/jquery.chemWin.js"> </script>
-<script type="text/javascript" src="/ccmodule/editor/jquery.cifEdit.js?v=20210628"> </script>
+<script type="text/javascript" src="/ccmodule/editor/jquery.cifEdit.js?v=20220309"> </script>
 
 <style type="text/css">
        .ui-jqgrid-title, .ui-jqgrid-sortable, .ui-jqgrid-btable {font-size:13px;font-family:Sans-serif}
@@ -57,6 +57,7 @@ $(document).ready(function() {
         jQuery.cifEdit.relatedInstanceIds = '%(related_instanceids)s';
         jQuery.cifEdit.identifier = '%(identifier)s';
         jQuery.cifEdit.fileSource = '%(filesource)s';
+        jQuery.cifEdit.instance = '%(instance)s';
         jQuery.cifEdit.pdbId = '%(pdbid)s';
         jQuery.cifEdit.annotator = '%(annotator)s';
         jQuery.cifEdit.subpath = 'assign';
@@ -154,7 +155,7 @@ $(document).ready(function() {
       jQuery.cifEdit.getCommitCode=function(newccid) {
          // alert("Any edits of "+newccid+" are not saved in the CVS in this test version. Some things may not work for now");
          var commit_url='/service/cc/assign/view/instance/new_ccid_defined?instanceid='+instanceId+'&newccid='+newccid+'&sessionid='+sessionId+
-                        '&filesource='+fileSource+'&identifier='+identifier;
+                        '&filesource='+fileSource+'&identifier='+identifier+'&instance='+instance;
                         // '&filesource='+fileSource+'&instance='+instance+'&identifier='+identifier;
          $.ajax({async: false, url: commit_url});
          $('#assgn_new_cc_def_'+instanceId+' input[name="get_new_cc_id_'+instanceId+'"]',window.opener.document).click();
