@@ -322,8 +322,8 @@ $(document).on('click','.allinst_assgn_actions .rerun_srch_go', function(){
 	var instIdCnt = 0;
 	$(instIdsLctr).each(function() {
     	instIdCnt++;
-    	instIds += ((instIds.length > 0) ? ',' : '') + $(this).html();
-		//alert("Value of instId #"+ instIdCnt + ": " + $(this).html() );
+    	instIds += ((instIds.length > 0) ? ',' : '') + $(this).attr('title'); // $(this).html();
+		//alert("Value of instId #"+ instIdCnt + ": " + $(this).attr('title'); // $(this).html() );
     });
     $(rerunSrchFrm).ajaxSubmit({url: rerunEntityGrpSrchUrl, async: true, clearForm: false,
         beforeSubmit: function (formData, jqForm, options) {
@@ -418,7 +418,7 @@ $(document).on('click','.allinst_assgn_actions .commit_assgn', function(){
 	var instAssgnChngCnt = 0;
 	var instIdList = '';
 	$(batchRsltsTbl+' tr.c_'+authAssgnGrp+' .instanceid').each( function() {
-		var instId = $(this).html();
+		var instId = $(this).attr('title'); // $(this).html();
 		instAssgnChngCnt++;
     	instIdList += ((instIdList.length > 0) ? ',' : '') + instId;
 	});
@@ -528,7 +528,7 @@ $(document).on('click','.allinst_assgn_actions .commit_assgn', function(){
 						$(this).html('<span class="ccid_assgnmnt">'+ccIdAssgnd+'</span>');
 					});
 					$(batchRsltsTbl+' tr.c_'+authAssgnGrp+' .instanceid').each( function() {
-						var instId = $(this).html();
+						var instId = $(this).attr('title'); // $(this).html();
 						$(glblBatchRsltsTbl+' tr.c_'+authAssgnGrp+' .assgnmnt_status.'+instId).each( function() {
 							$(this).html(ccIdAssgnd);
 						});
@@ -559,7 +559,7 @@ $(document).on('click','.allinst_assgn_actions .commit_assgn', function(){
 			$(this).html('Not Assigned');
 		});
 		$(batchRsltsTbl+' tr.c_'+authAssgnGrp+' .instanceid').each( function() {
-			var instId = $(this).html();
+			var instId = $(this).attr('title'); // $(this).html();
 			$(glblBatchRsltsTbl+' tr.c_'+authAssgnGrp+' .assgnmnt_status.'+instId).each( function() {
 				$(this).html('Not Assigned');
 			});
