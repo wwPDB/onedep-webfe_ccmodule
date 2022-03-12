@@ -184,9 +184,14 @@ function toggleChemCompDisplay(sInstId,sRefId,sCntxt,bShow){
 
 function refreshImage(id, attr_tag){ 
         var source = $(id).attr(attr_tag);
-        source = source.split("?", 1);
         d = new Date();
-        $(id).attr(attr_tag, source + '?' + d.getTime());
+
+		if (depId == null || depId === 'TMP_ID' || fileSource === '') {
+			source = source.split("?", 1);
+        	$(id).attr(attr_tag, source + '?' + d.getTime());
+		} else {
+			$(id).attr(attr_tag, source + '&t=' + d.getTime());
+		}
 }
 
 function refreshInstImages(instId){
