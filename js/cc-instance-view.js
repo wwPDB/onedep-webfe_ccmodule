@@ -116,7 +116,7 @@ function toggleChemCompDisplay(sInstId,sRefId,sCntxt,bShow){
 		atmMpHtmlSuffix = 'instnc_atm_mp_li.html';
 	}
 	var ulElemLocator = ' #instance_data_' + id_1;
-	var liElemUrl = sessPathPrefix + '/' + sInstId +'/'+id_2+'_viz_cmp_li.html';
+	var liElemUrl = '/service/cc/report/file?identifier=' + depId + '&instance=' + instance + '&source=report&ligid=' + sInstId + '&file=' + id_2 + '_viz_cmp_li.html';
 	var liElemLocator = ' #vizcmp_' + id_1 + '_' + id_2;
 	//alert('Length of '+liElemLocator+' is : '+$(liElemLocator).length );
 	if( $(liElemLocator).length == 0){
@@ -128,8 +128,8 @@ function toggleChemCompDisplay(sInstId,sRefId,sCntxt,bShow){
 			var twoDdivElemLocator = liElemLocator + ' div.twoDviz';
 			var threeDdivElemLocator = liElemLocator + ' div.threeDviz';
 			var atmMpDivElemLocator = liElemLocator + ' div.atm_mp';
-			var jmolHtmlUrl = sessPathPrefix + '/' + sInstId +'/'+id_2+jmolHtmlSuffix;
-			var atmMpHtmlUrl = sessPathPrefix +'/'+sInstId+'/'+id_2+atmMpHtmlSuffix;
+			var jmolHtmlUrl = '/service/cc/report/file?identifier=' + depId + '&instance=' + instance + '&source=report&ligid=' + sInstId + '&file=' + id_2 + jmolHtmlSuffix;
+			var atmMpHtmlUrl = '/service/cc/report/file?identifier=' + depId + '&instance=' + instance + '&source=report&ligid=' + sInstId + '&file=' + id_2 + atmMpHtmlSuffix;
 			$(twoDdivElemLocator).css('display', twoDchecked ? 'block' : 'none');
 			
 			if(threeDchecked){
@@ -154,7 +154,6 @@ function toggleChemCompDisplay(sInstId,sRefId,sCntxt,bShow){
 						else if( $(this).hasClass("exp") ){
 							authAssgndId = $(this).attr('name');
 							loadFilePath = '/service/cc/report/file?identifier=' + depId + '&instance=' + instance + '&source=report&ligid=' + sInstId + '&file=' + authAssgndId + '_model.cif&sessionid=' + sessionID;
-							// loadFilePath = sessPathPrefix+'/'+sInstId+'/report/'+authAssgndId+'_model.cif';
 							expThreeDdivId = 'threeD_'+sInstId;
 							
 							//invoke jsmol for experimental data
@@ -234,7 +233,7 @@ $(document).on('click','.instnc_actions .rerun_srch_go', function(){
 	var btnName = $(this).attr('name');
 	var splitArr = btnName.split('_');
 	var instId  = splitArr[3]+'_'+splitArr[4]+'_'+splitArr[5]+'_'+splitArr[6]+'_'+splitArr[7];
-	var instnc_profile_html = sessPathPrefix+'/'+instId+'/'+instId+'rerun_srch_instnc_profile.html';
+	var instnc_profile_html = '/service/cc/report/file?identifier=' + depId + '&instance=' + instance + '&source=report&ligid=' + instId + '&file=' + instId + 'rerun_srch_instnc_profile.html';
 	var rerunSrchFrm = '#rerun_srch_frm_'+instId;
 	var linkRadiiTxtBx = rerunSrchFrm + ' #linkradii_'+instId;
 	var bondRadiiTxtBx = rerunSrchFrm + ' #bondradii_'+instId;
@@ -278,7 +277,7 @@ $(document).on('click','.instnc_actions .rerun_comp_srch_go', function(){
 	var btnName = $(this).attr('name');
 	var splitArr = btnName.split('_');
 	var instId  = splitArr[4]+'_'+splitArr[5]+'_'+splitArr[6]+'_'+splitArr[7]+'_'+splitArr[8];
-	var instnc_profile_html = sessPathPrefix+'/'+instId+'/'+instId+'rerun_srch_instnc_profile.html';
+	var instnc_profile_html = '/service/cc/report/file?identifier=' + depId + '&instance=' + instance + '&source=report&ligid=' + instId + '&file=' + instId + 'rerun_srch_instnc_profile.html';
 	var rerunSrchFrm = '#rerun_comp_srch_frm_'+instId;
     $(rerunSrchFrm).ajaxSubmit({url: '/service/cc/assign/rerun_instnc_comp_srch', async: true, clearForm: false,
         beforeSubmit: function (formData, jqForm, options) {
@@ -312,7 +311,7 @@ $(document).on('click','.allinst_assgn_actions .rerun_srch_go', function(){
 	var btnName = $(this).attr('name');
 	var splitArr = btnName.split('_');
 	var grpId  = splitArr[3];
-	var grp_profile_html = sessPathPrefix+'/entity_grp_rerun_srchs/'+grpId+'/'+grpId+'_rerun_srch_entitygrp_profile.html';
+	var grp_profile_html = '/service/cc/report/file?identifier=' + depId + '&instance=' + instance + '&source=report&ligid=' + grpId + '&file=' + grpId + '_rerun_srch_entitygrp_profile.html';
 	//alert('form is: '+$('#rerun_srch_frm_'+instId));
 	//alert('form name is: '+$('#rerun_srch_frm_'+instId).attr('name'));
 	var grpTblLctr = '#allinst_match_tbl_'+grpId;
@@ -667,7 +666,7 @@ $(document).on('click','.all_instances .atm_mp_chck_bx', function(){
 	$(atmMpDivElemLocator).each( function(n) {
 		instid = $(this).attr('name');
 		if( $(this).hasClass("exp") ){
-			atmMpHtmlUrl = sessPathPrefix + '/' + instid +'/'+instid+'instnc_atm_mp_li.html';
+			atmMpHtmlUrl = '/service/cc/report/file?identifier=' + depId + '&instance=' + instance + '&source=report&ligid=' + instid + '&file=' + instid + 'instnc_atm_mp_li.html';
 		}
 		if( $(this).length < 100 ){
 			$(this).children('ul').load(atmMpHtmlUrl);
@@ -696,7 +695,7 @@ $(document).on('click','.all_instances .threeD_chck_bx', function(){
 		if(checked){
 			var expThreeDdivId = 'allinst_threeD_'+instid;
 			var uniqeId = getUniqueIdForJsmol(instid);
-			jmolHtmlUrl = sessPathPrefix + '/' + instid +'/'+instid+'instnc_jmol_allInstVw.html';
+			jmolHtmlUrl = '/service/cc/report/file?identifier=' + depId + '&instance=' + instance + '&source=report&ligid=' + instid + '&file=' + instid + 'instnc_jmol_allInstVw.html';
 			
 			//invoke jsmol for experimental data
 			if( !( $('#allinst_e'+uniqeId+'_appletinfotablediv').length ) ){
@@ -1066,7 +1065,7 @@ $(document).on('click','.single_instance .threeD_chck_bx', function(){
 				refCcId = $(this).attr('name');
 				loadFilePath = '/service/cc/report/file?identifier=' + depId + '&instance=' + instance + '&source=ccd&ligid=' + refCcId + '&file=' + refCcId + '_ideal.cif&sessionid=' + sessionID;
 				refThreeDdivId = 'threeD_'+instid+'_'+refCcId;
-				jmolHtmlUrl = sessPathPrefix +'/'+instid+'/'+refCcId+'_ref_jmol.html';
+				jmolHtmlUrl = '/service/cc/report/file?identifier=' + depId + '&instance=' + instance + '&source=ccd&ligid=' + instid + '&file=' + refCcId + '_ref_jmol.html';
 				
 				//invoke jsmol for dictionary reference
 				if( !($('#r'+uniqeId+refCcId+'_appletinfotablediv').length ) ) {
@@ -1086,7 +1085,7 @@ $(document).on('click','.single_instance .threeD_chck_bx', function(){
 				authAssgndId = $(this).attr('name');
 				loadFilePath = '/service/cc/report/file?identifier=' + depId + '&instance=' + instance + '&source=report&ligid=' + instid + '&file=' + authAssgndId + '_model.cif&sessionid=' + sessionID;
 				expThreeDdivId = 'threeD_'+instid;
-				jmolHtmlUrl = sessPathPrefix + '/' + instid +'/'+instid+'instnc_jmol_instVw.html';
+				jmolHtmlUrl = '/service/cc/report/file?identifier=' + depId + '&instance=' + instance + '&source=report&ligid=' + instid + '&file=' + instid + 'instnc_jmol_instVw.html';
 				
 				//invoke jsmol for experimental data
 				if( !( $('#e'+uniqeId+'_appletinfotablediv').length ) ){
@@ -1134,10 +1133,10 @@ $(document).on('click','.single_instance .atm_mp_chck_bx', function(){
 	$(atmMpDivElemLocator).each( function(n) {
 		if( $(this).hasClass("ref") ){
 			refid = $(this).attr('name');
-			atmMpHtmlUrl = sessPathPrefix +'/'+instid+'/'+refid+'_ref_atm_mp_li.html';
+			atmMpHtmlUrl = '/service/cc/report/file?identifier=' + depId + '&instance=' + instance + '&source=report&ligid=' + instid + '&file=' + refid + '_ref_atm_mp_li.html';
 		}
 		else if( $(this).hasClass("exp") ){
-			atmMpHtmlUrl = sessPathPrefix + '/' + instid +'/'+instid+'instnc_atm_mp_li.html';
+			atmMpHtmlUrl = '/service/cc/report/file?identifier=' + depId + '&instance=' + instance + '&source=report&ligid=' + instid + '&file=' + instid + 'instnc_atm_mp_li.html';
 		}
 		if( $(this).length < 100 ){
 			$(this).children('ul').load(atmMpHtmlUrl);
