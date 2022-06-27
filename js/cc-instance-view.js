@@ -1420,9 +1420,9 @@ function getNewCandidate(newCandidateFrm,hitList,candiList){
         	if( status == '0' ){
         		toggleChemCompDisplay(instId,refId,SNGL_INSTNC,true);
     			$('input[name=ccid]',newCandidateFrm).val('');
-    			// $(tblLctr+" tr.add_new_candidate").show();
-            	// $(tblLctr+' tr:last').after('<tr><td class="entityid"><a href="/ccmodule/cc-view.html?ccid='+refId+'" target="_blank">'+refId+'</a></td><td class="assignas_rdio_btn">Must Force Assign</td><td class="score">n.a.</td><td class="vizcmp_chck_bx"><input id="viz_cmp_'+instId+'_'+refId+'" name="'+instId+'" class="vizcmp_chck_bx" type="checkbox" value="'+refId+'" checked="checked"></td></tr>');
-                //         refreshInstImages(instId);
+    			$(tblLctr+" tr.add_new_candidate").show();
+            	$(tblLctr+' tr:last').after('<tr><td class="entityid"><a href="/ccmodule/cc-view.html?ccid='+refId+'" target="_blank">'+refId+'</a></td><td class="assignas_rdio_btn">Must Force Assign</td><td class="score">n.a.</td><td class="vizcmp_chck_bx"><input id="viz_cmp_'+instId+'_'+refId+'" name="'+instId+'" class="vizcmp_chck_bx" type="checkbox" value="'+refId+'" checked="checked"></td></tr>');
+                        refreshInstImages(instId);
         	}
         	else{
         		if( status == '1'){
