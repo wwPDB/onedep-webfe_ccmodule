@@ -143,7 +143,7 @@ function loadInstanceSearchView() {
     			$('#help_instnc_srch_vw').bt({positions: ['left', 'bottom'],ajaxPath: '/ccmodule/cc_help.html div#instance',ajaxOpts:{dataType:'html'},trigger: 'click',
     				width: 600,centerPointX: .9,spikeLength: 20,spikeGirth: 10,padding: 15,cornerRadius: 25,fill: '#FFF',
     				strokeStyle: '#ABABAB',strokeWidth: 1});
-    			$('#pagi').paginate({count: $('.tabscount').size(), start:activeCCid, display:6, border:true, border_color:'#BEF8B8',
+    			$('#pagi').paginate({count: $('.tabscount').size(), start:activeCCid, display:15, border:true, border_color:'#BEF8B8',
     				text_color:'#68BA64', background_color:'#E3F2E1', border_hover_color:'#68BA64', text_hover_color:'black',
     				background_hover_color:'#CAE6C6', images:false, mouse:'press', onChange:function(page){
     					$('._current').removeClass('_current').slideUp('slow');
