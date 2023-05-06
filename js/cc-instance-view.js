@@ -388,7 +388,7 @@ $(document).on('click','.allinst_assgn_actions .rerun_srch_go', function(){
 });
 $(document).on('keyup','.allinst_assgn_actions .frc_assgn', function(){
 	var frcAssgnTxtBxId = $(this).attr('id');
-	limitChars(frcAssgnTxtBxId, 3);
+	limitChars(frcAssgnTxtBxId, max_ccd_width);
 	var refid = $(this).attr('name');
 	var tblLctr = '#'+refid+'_t';
 	var frcAssgnVlu = $(this).val();
@@ -739,7 +739,7 @@ $(document).on('click','.all_instances .twoD_chck_bx', function(){
 });
 $(document).on('keyup','.instnc_actions .frc_assgn', function(){
 	var frcAssgnTxtBxId = $(this).attr('id');
-	limitChars(frcAssgnTxtBxId, 3);
+	limitChars(frcAssgnTxtBxId, max_ccd_width);
 	var instid = $(this).attr('name');
 	var tblLctr = '#'+instid+'_t';
 	var frcAssgnVlu = $(this).val();
@@ -1426,7 +1426,7 @@ $(document).on('click','.dscrptr_vw_btn', function(){
 $(document).on('keyup','input.add_new_candidate:text', function(event){
 	var addNonCandTxtBxId = $(this).attr('id');
 	var instId = $(this).attr('name');
-	limitChars(addNonCandTxtBxId, 3);
+	limitChars(addNonCandTxtBxId, max_ccd_width);
 	if(event.keyCode == 13){
 	    //$('add_new_candidate_frm_'+instId).submit();
 	}

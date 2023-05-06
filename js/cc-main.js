@@ -83,6 +83,8 @@ var checked = false;
 var allchecked = {};
 var loadGlblSmmryFrmLctr = '#load_smmry_frm';
 var JMOL_VRSN = 'jmol-latest';
+var max_ccd_width = 3;
+
 $(document).ready(function() {	
 	$(document).ajaxError(function(e, x, settings, exception) {
 	    try {
