@@ -175,14 +175,14 @@ jQuery.chemChopper.addNewChemWin=function(mol) {
                                         '  </select>'+
 					'  <input type="button" value="Match Alternative" onclick="jQuery.chemChopper.forceMatch(\'altOptions\','+nId+')"/>'+
                                         '</span>'+
-					'<input type="textbox" id="forceMatchId'+nId+'" value="" size="3"/>'+					
+					'<input type="textbox" id="forceMatchId'+nId+'" value="" size="%(max_ccd_width)s"/>'+					
 					'<input type="button" value="Force Match" onclick="jQuery.chemChopper.forceMatch(\'forceMatchId\','+nId+')"/>'+
 					'<input type="button" value="Retry Match" onclick="jQuery.chemChopper.tryToMatch('+nId+')"/>'+
 					' <span id="verifyCtrl'+nId+'"> Accept match:'+
 					'  <input id="verifyCheckbox'+nId+'" type="checkbox" onchange="jQuery.chemChopper.verifyMatch('+nId+')"/>'+
 					' </span>'+
 					' <span style="margin-left:30px" id="parentCtrl'+nId+'"> Parent Component:'+
-					'  <input id="parentId'+nId+'" type="input" size="3"/>'+
+					'  <input id="parentId'+nId+'" type="input" size="%(max_ccd_width)s"/>'+
 					'  <input id="parentIdSet'+nId+'" type="button" value="Set" onclick="jQuery.chemChopper.setParent('+nId+')"/>'+	
 					'  <input id="useNamesSet'+nId+'" type="button" value="Use names" onclick="jQuery.chemChopper.useNames('+nId+')"/>'+
 					' </span>'+

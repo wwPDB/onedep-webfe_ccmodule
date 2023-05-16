@@ -10,7 +10,7 @@
 				</table>
 				<br />
 				<form name="add_new_candidate_frm_%(instanceid)s" id="add_new_candidate_frm_%(instanceid)s" class="add_new_candidate" method="post">
-					<span id="add_new_candidate" class="fltlft">Enter chem component ID to add other candidate to Comparison Panel below: <input type="text" size="3" name="ccid" id="ccid_add_new_candidate_%(instanceid)s" class="add_new_candidate c_%(auth_assgnd_grp)s" value="" style="text-transform: uppercase;"/></span>
+					<span id="add_new_candidate" class="fltlft">Enter chem component ID to add other candidate to Comparison Panel below: <input type="text" size="%(max_ccd_width)s" name="ccid" id="ccid_add_new_candidate_%(instanceid)s" class="add_new_candidate c_%(auth_assgnd_grp)s" value="" style="text-transform: uppercase;"/></span>
 					<input type="hidden" name="instanceid" id="instanceid_add_new_candidate_%(instanceid)s" value="%(instanceid)s" />
 					<input type="hidden" name="sessionid" id="sessionid_add_new_candidate_%(instanceid)s" value="%(sessionid)s" />
 					<input type="hidden" name="identifier" id="identifier_add_new_candidate_%(instanceid)s" value="%(identifier)s" />
@@ -23,7 +23,7 @@
 			</div>
 			<div class="instnc_actions fltlft c_%(auth_assgnd_grp)s">
 				<div class="forceassign strong">
-					Force Assign as: <input type="text" size="3" name="%(instanceid)s" id="frc_assgn_%(instanceid)s" class="frc_assgn c_%(auth_assgnd_grp)s" value="" %(disabled)s >
+					Force Assign as: <input type="text" size="%(max_ccd_width)s" name="%(instanceid)s" id="frc_assgn_%(instanceid)s" class="frc_assgn c_%(auth_assgnd_grp)s" value="" %(disabled)s >
 				</div>
 				<br />
 				<form name="rerun_srch_frm_%(instanceid)s" id="rerun_srch_frm_%(instanceid)s" class="rerun_srch_frm" method="post">
