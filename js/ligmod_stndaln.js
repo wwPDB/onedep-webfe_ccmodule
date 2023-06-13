@@ -162,7 +162,7 @@ $(document).ready(function() {
     	return this.indexOf(str) == 0;
     };
     function getSessPathPrefix(){
-    	return '/sessions/'+SESSION_ID;
+    	return '/sessions/'+SESSION_ID+'/assign';
     }
     function getQuerystring(key, default_)
     /*************************************************************

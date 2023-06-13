@@ -107,6 +107,8 @@ function doCheck(semaphore) {
 			            	$(".instance_search_ui").removeAttr('disabled');
 			            	$("#reload").removeAttr('disabled');
 			            	unassignedInstncsHandler();
+                                        $('#help_batch_smmry_vw').bt({positions: ['left', 'bottom'],ajaxPath: '/ccmodule/cc_help.html div#summary',ajaxOpts:{dataType:'html'},trigger: 'click',
+                                            width: 600,centerPointX: .9,spikeLength: 20,spikeGirth: 10,padding: 15,cornerRadius: 25,fill: '#FFF', strokeStyle: '#ABABAB',strokeWidth: 1});
 			            	applyBeautyTips();
 						}
 					});
@@ -178,7 +180,7 @@ function loadInstanceSearchView() {
     		    	$('#help_instnc_srch_vw').hide();
     		    	unassignedInstncsHandler();
     		    	$("#batch_summary_vw").show();
-        			$("#help_batch_smmry_vw").show();
+        		$("#help_batch_smmry_vw").show();
     		    });
     		    applyBeautyTips();
     			/*
