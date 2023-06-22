@@ -19,6 +19,9 @@
 				<tr>
 					<th class="" colspan="2" style="padding: 8px 2px;">Depositor Provided Information&nbsp;&nbsp;&nbsp;<a target="_blank" href="/service/cc/assign/view/dpstr_info?auth_assgnd_grp=%(auth_assgnd_grp)s&identifier=%(depositionid)s&instance=%(instance)s&filesource=%(filesource)s&sessionid=%(sessionid)s">View in new window</a></th>
 				</tr>
+                                <tr class=""%(dpstr_restraint_img_pth_displ)s">
+                                        <th class="dpstr_info_hdr_cll">2D Image</th><td><img src="%(dpstr_restraint_img_pth)s" height="300" width="300"></td>
+				</tr>
 				<tr class="%(dpstr_info_alt_comp_id_displ)s">
 					<th class="dpstr_info_hdr_cll">Alternate ID</th><td title="%(dpstr_info_alt_comp_id)s">%(dpstr_info_alt_comp_id)s</td>
 				</tr>
@@ -87,6 +90,19 @@
 					<span class="fltrgt"><input id="rerun_srch_go_%(auth_assgnd_grp)s" name="rerun_srch_go_%(auth_assgnd_grp)s" value="Submit" class="rerun_srch_go c_%(auth_assgnd_grp)s" type="button" %(disabled)s ></span>
 				</div>
 			</form>
+
+                        <br class="clearfloat" />
+                        <br />
+                        <form name="create_new_lig_%(auth_assgnd_grp)s_frm" id="create_new_lig_%(auth_assgnd_grp)s_frm" class="create_new_lig_frm %(author_info_display_class)s" target="_blank" method="post">
+                                <input type="hidden" name="sessionid" id="sessionid" value="%(sessionid)s" />
+                                <input type="hidden" name="instanceid" id="instance1" value="%(auth_assgnd_grp)s" />
+                                <input type="hidden" name="depositionid" id="depositionid" value="%(depositionid)s" />
+                                <input type="hidden" name="filesource" id="filesource" value="%(filesource)s" />
+                                <input type="hidden" name="instance" id="instance" value="%(instance)s" />
+                                <input type="hidden" name="identifier" id="identifier" value="%(identifier)s" />
+                                <input style="display: inline;" id="edt_nw_lig_%(auth_assgnd_grp)s" name="edt_nw_lig_%(auth_assgnd_grp)s" value="Create New Ligand Based on Author's Restraints Info" class="edt_nw_lig create_new_lig_go c_%(auth_assgnd_grp)s" type="button" />
+                        </form>
+
 			<br class="clearfloat"/>
 			<p><input style="display: inline;" id="commit_assgn_%(auth_assgnd_grp)s" name="%(auth_assgnd_grp)s" value="%(assgn_lbl)s" class="commit_assgn c_%(auth_assgnd_grp)s fltrgt" type="submit" %(assgn_disabled)s></p>
 		</div>

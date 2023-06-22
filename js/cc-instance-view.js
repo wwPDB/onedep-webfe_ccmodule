@@ -966,11 +966,15 @@ $(document).on('click','.instnc_actions .edt_nw_lig', function(){
         $('#get_new_image_'+instId).show();
 });
 
-$(document).on('click','.instnc_actions .create_new_lig_go', function(){
+// $(document).on('click','.instnc_actions .create_new_lig_go', function(){
+$(document).on('click', '.create_new_lig_go', function() {
 	var btnName = $(this).attr('name');
 	var splitArr = btnName.split('_');
 	var instId  = splitArr[3]+'_'+splitArr[4]+'_'+splitArr[5]+'_'+splitArr[6]+'_'+splitArr[7];
-        var editorFrm = '#create_new_lig_' + instId + '_frm';
+        // var editorFrm = '#create_new_lig_' + instId + '_frm';
+        var editorFrm = '#create_new_lig';
+        for (var i = 3; i < splitArr.length; ++i) editorFrm += '_' + splitArr[i];
+        editorFrm += '_frm';
         var targetName = $(editorFrm).attr("target");
         $(editorFrm).ajaxSubmit({url: '/service/cc/edit/launch', async: true, clearForm: false,
              beforeSubmit: function (formData, jqForm, options) {
