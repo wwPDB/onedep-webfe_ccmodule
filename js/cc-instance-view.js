@@ -589,6 +589,10 @@ $(document).on('click','.allinst_assgn_actions .commit_assgn', function(){
 	if( typeof(frcAssgnVlu) == "undefined" || frcAssgnVlu.length == 0 ){
 		ccIdAssgnd = assgnTblVlu;
 	}
+        else if (frcAssgnVlu.length == 4) {
+            alert('Invalid ID: ' + frcAssgnVlu);
+            return;
+        }
 	else{
 		ccIdAssgnd = frcAssgnVlu;
 		frcAssgnMode = 'yes';
@@ -899,6 +903,10 @@ $(document).on('click','.instnc_actions .commit_assgn', function(){
 	if( typeof(frcAssgnVlu) == "undefined" || frcAssgnVlu.length == 0 ){
 		ccIdAssgnd = assgnTblVlu;
 	}
+        else if (frcAssgnVlu.length == 4) {
+            alert('Invalid ID: ' + frcAssgnVlu);
+            return;
+        }
 	else{
 		//alert('Using force assign value!');
 		ccIdAssgnd = frcAssgnVlu;
@@ -1485,6 +1493,9 @@ $(document).on('submit','form.add_new_candidate', function(event){
 	$('input[name=ccid]',$this).val(newCandId);
 	//$('input[name=ccid]',$this).attr('disabled','disabled');
 	if( newCandId.length > 0 ){
+            if ( newCandId.length == 4 ) {
+                alert('Invalid ID: ' + newCandId);
+            } else {
 	        $('span.prcssng_msg',$this).show();
 		var dataToSend = $this.serialize();
 		//dataToSend += '&ccid='+newCandId+'&vldtmode=simple';
@@ -1501,6 +1512,7 @@ $(document).on('submit','form.add_new_candidate', function(event){
 		});
 		//$('input[name=ccid]',$this).removeAttr('disabled');
 		$('span.prcssng_msg',$this).hide();
+            }
 	} else alert('Please input chemcal component ID');
 });
 //////////////////////END: EVENT HANDLERS - Instance Search View //////////////////////////////////////////////////////
