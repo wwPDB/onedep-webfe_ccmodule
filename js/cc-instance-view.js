@@ -1014,6 +1014,38 @@ $(document).on('click','.instnc_actions .chop_lig_go', function(){
         });
 });
 
+$(document).on('click','.allinst_assgn_actions .get_new_cc_id', function(){
+	var btnName = $(this).attr('name');
+	var btnId = $(this).attr('id');
+	var splitArr = btnName.split('_');
+	var instId  = splitArr[4];
+	var frcAssgnTxtBx = '#frc_assgn_'+instId;
+	var getNewCcIdFrmLctr = '#assgn_new_cc_def_'+instId+'_frm';
+	var newCcId = '';
+	$(getNewCcIdFrmLctr).ajaxSubmit({url: getNewCcIdUrl, async: true, clearForm: false,
+        success: function(jsonObj) {
+            newCcId = jsonObj.statuscode;
+            if( newCcId != 'NONE'){
+            	// alert('New ID "'+newCcId+'" has been created and now appears in the textbox for Force Assignment.');
+                $(frcAssgnTxtBx).attr('value',newCcId);
+                $('#'+btnId).hide();
+                var txt = $('#cvs_commit_ccid_list').text();
+                if (txt == '') {
+                    $('#cvs_commit_ccid_list').text(newCcId);
+                } else if (txt.indexOf(newCcId) == -1) {
+                    txt += ","+newCcId;
+                    $('#cvs_commit_ccid_list').text(txt);
+                }
+                $('#cvs_commit_ccid_div').show();
+            }
+            else{
+                alert('New ID not yet created.');
+            }
+        }
+	});
+    return false;
+}); 
+
 $(document).on('click','.instnc_actions .get_new_cc_id', function(){
 	var btnName = $(this).attr('name');
 	var btnId = $(this).attr('id');

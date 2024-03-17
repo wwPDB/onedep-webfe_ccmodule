@@ -104,6 +104,21 @@
                         </form>
 
 			<br class="clearfloat"/>
+			<br />
+			<div id="assgn_new_cc_def_%(auth_assgnd_grp)s" class="assgn_new_cc_def">
+				<form id="assgn_new_cc_def_%(auth_assgnd_grp)s_frm" >
+					<input type="hidden" name="sessionid" id="sessionid_assgn_new_cc" value="%(sessionid)s" />
+      				<input type="hidden" name="instanceid" id="instance1_assgn_new_cc" value="%(auth_assgnd_grp)s" />
+					<input type="hidden" name="depositionid" id="depositionid_assgn_new_cc" value="%(depositionid)s" />
+					<input type="hidden" name="filesource" id="filesource_assgn_new_cc" value="%(filesource)s" />
+					<input type="hidden" name="instance" id="instance_assgn_new_cc" value="%(instance)s" />
+					<input type="hidden" name="identifier" id="identifier_assgn_new_cc" value="%(identifier)s" />
+					<br class="clearfloat"/>
+					<input id="get_new_cc_id_%(auth_assgnd_grp)s" name="get_new_cc_id_%(auth_assgnd_grp)s" value="Get New CC ID" class="get_new_cc_id c_%(auth_assgnd_grp)s s fltrgt displaynone" type="button" >
+				</form>
+			</div>
+
+			<br class="clearfloat"/>
 			<p><input style="display: inline;" id="commit_assgn_%(auth_assgnd_grp)s" name="%(auth_assgnd_grp)s" value="%(assgn_lbl)s" class="commit_assgn c_%(auth_assgnd_grp)s fltrgt" type="submit" %(assgn_disabled)s></p>
 		</div>
 		<br class="clearfloat"/>
