@@ -556,6 +556,7 @@ $(document).on('click','.allinst_assgn_actions .commit_assgn', function(){
 					numAssgndInGrp = numAssgndInGrp + instAssgnChngCnt;
 					$('#'+authAssgnGrp+'_assgn_cnt').html(numAssgndInGrp);
 					disableCntrls('assign');
+                                        if ("warnMsg" in jsonOBJ) alert(jsonOBJ.warnMsg);
                                }
                                updateAssignState();
 	                   }
@@ -872,6 +873,8 @@ $(document).on('click','.instnc_actions .commit_assgn', function(){
                                if (jsonOBJ.errorflag) {
                                     assgnActnCancld = true;
                                     alert(jsonOBJ.errortext);
+                               } if ("warnMsg" in jsonOBJ) {
+                                    alert(jsonOBJ.warnMsg);
                                }
 			   }
 		});
