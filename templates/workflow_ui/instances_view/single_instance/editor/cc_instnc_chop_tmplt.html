@@ -3,8 +3,7 @@
  <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="author" content="Dimitris Dimitropoulos"/>
-	
-	<link rel="stylesheet" type="text/css" media="all" href="/ccmodule/styles/oneColLiqCtrHdr.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="/ccmodule/styles/oneColLiqCtrHdr.css" />
     <link href="/chemeditor/css/ui.jqgrid.css" rel="stylesheet" type="text/css"/> 
     <link href="/chemeditor/css/redmond/jquery-ui-1.8.2.custom.css" rel="stylesheet" type="text/css"/>
     <link href="/chemeditor/css/jquery.windows-engine.css" rel="stylesheet" type="text/css"/>
@@ -44,6 +43,9 @@
     <style type="text/css"> 
        .ui-jqgrid-title, .ui-jqgrid-sortable, .ui-jqgrid-btable {font-size:13px;font-family:Sans-serif}
        .ui-jqgrid-btable {border:solid 1px gray}
+       input[type="text"] {background:white;font-family:"Courier New",Courier,monospace;font-size:12px;
+                           color:black;border-bottom:solid 1px #AAAAAA;border-right:solid 1px #AAAAAA;}
+       table td {text-align:left;}
     </style>
 
     <script type="text/javascript">
@@ -68,52 +70,56 @@
            var sessPathPrefix = '%(session_url_prefix)s';
            var cifUrl = '%(session_url_prefix)s/%(instanceid)s.cif';
 
-           $('#chemWin1').chemWin({edit:{posy:100,width:700},jmol:{posy:100,posx:715,width:600},
-                                  file:{posx:10,posy:645,width:700,height:250/*hide:true*/},         	  
-                                      comp:{posx:715,posy:645,width:500,height:250/*hide:true*/},
-         	                      atoms:{posx:10,posy:940,width:1200,height:200/*,hide:true*/},
-         	                      bonds:{posx:10,posy:1185,width:1200,height:200/*,hide:true*/},
-                                      audit:{posx:10,posy:1430,width:1200,height:200},
-                                      synonym:{posx:10,posy:1675,width:1200,height:200},
-                                      feature:{posx:10,posy:1920,width:1200,height:200},
-                                      related:{posx:10,posy:2165,width:1200,height:200},
-                                      relatedatom:{posx:10,posy:2410,width:1200,height:200},
-         	                      view:{diagram:{edit:{lock:true}/*CTM-51,readOnly:true*/},
-                                      compModel:jQuery.cifEdit.compCompModel,
-             	                      atomModel:jQuery.chemChopper.ccompAtomModel,
-             	                      bondModel:jQuery.chemChopper.ccompBondModel,
-                                      auditModel:jQuery.cifEdit.compAuditModel,
-                                      synonymModel:jQuery.cifEdit.compSynonymModel,
-                                      featureModel:jQuery.cifEdit.compFeatureModel,
-                                      relatedModel:jQuery.cifEdit.compRelatedModel,
-                                      relatedAtomModel:jQuery.cifEdit.atomRelatedModel,
-             	                      defaultFileFormat:'mmCif'},
-         	                      control:{align2d:false,addhydro:false,align3d:false,load:true,upload:true},
-         	                      afterLoad:jQuery.chemChopper.autoSelectPeptide,
-         	                      afterInit:function(){
-                                                           jQuery.chemViews.cifEditControls('chemWin1',
-                                                               {NewCode:true,Update:true,CheckDuplicate:true,Audit:false,CommittoCVS:true});
-                                                           jQuery.chemDiagram.modeSelect('chemEdit_chemView_chemWin1');
-                                                           jQuery.chemWin.loadCifUrl('chemWin1',cifUrl,instanceId);
-                                                           jQuery.chemChopper.enableChop("chemWin1");
+           $('#chemWin1').chemWin({
+              edit:{posx:10,posy:100,width:700},
+              jmol:{posx:715,posy:100,width:500},
+              file:{posx:10,posy:645,width:700,height:250},                  
+              comp:{posx:715,posy:645,width:500,height:250},
+              atoms:{posx:10,posy:940,width:1200,height:200},
+              bonds:{posx:10,posy:1185,width:1200,height:200},
+              audit:{posx:10,posy:1430,width:1200,height:200},
+              synonym:{posx:10,posy:1675,width:1200,height:200},
+              pcm:{posx:10,posy:1920,width:1200,height:200},
+              feature:{posx:10,posy:2165,width:1200,height:200},
+              related:{posx:10,posy:2410,width:1200,height:200},
+              relatedatom:{posx:10,posy:2655,width:1200,height:200},
+              view:{diagram:{edit:{lock:true}},
+                    compModel:jQuery.cifEdit.compCompModel,
+                    atomModel:jQuery.chemChopper.ccompAtomModel,
+                    bondModel:jQuery.chemChopper.ccompBondModel,
+                    auditModel:jQuery.cifEdit.compAuditModel,
+                    synonymModel:jQuery.cifEdit.compSynonymModel,
+                    pcmModel:jQuery.cifEdit.pcmModel,
+                    featureModel:jQuery.cifEdit.compFeatureModel,
+                    relatedModel:jQuery.cifEdit.compRelatedModel,
+                    relatedAtomModel:jQuery.cifEdit.atomRelatedModel,
+                    defaultFileFormat:'mmCif'},
+              control:{align2d:false,addhydro:false,align3d:false,load:true,upload:true},
+              afterLoad:jQuery.chemChopper.autoSelectPeptide,
+              afterInit:function(){
+                    jQuery.chemViews.cifEditControls('chemWin1',{NewCode:true,Update:true,CheckDuplicate:true,Audit:false,CommittoCVS:true});
+                    jQuery.chemDiagram.modeSelect('chemEdit_chemView_chemWin1');
+                    jQuery.chemWin.loadCifUrl('chemWin1',cifUrl,instanceId);
+                    jQuery.chemChopper.enableChop("chemWin1");
 
-                                                           if ($('#chemRelatedAtom_chemWin_window').length) {
-                                                                   contentSize += $('#chemRelatedAtom_chemWin_window').position().top +
-                                                                   $('#chemRelatedAtom_chemWin_window').height() +
-                                                                   $('.window-titleBar').height() +
-                                                                   $('.window-statusBar').height() + 10;
-                                                                   $('#footerToolbar').css('top', contentSize + 'px');
-                                                                   $('#footer').css('margin-top', contentSize + 'px');
-                                                           } else {
-                                                             // if we don't find the RelatedAtom window, instead of placing the
-                                                             // button relative to the windows, we place it relative to the top
-                                                             // of the page, as it is done with the footer itself
-                                                             $('#footerToolbar').css('margin-top', '2650px');
-                                                           }
+                    if ($('#chemRelatedAtom_chemWin1_window').length) {
+                         contentSize += $('#chemRelatedAtom_chemWin1_window').position().top +
+                         $('#chemRelatedAtom_chemWin1_window').height() +
+                         $('.window-titleBar').height() +
+                         $('.window-statusBar').height() + 10;
+                         $('#footerToolbar').css('top', contentSize + 'px');
+                         $('#footer').css('margin-top', contentSize + 'px');
+                    } else {
+                         // if we don't find the RelatedAtom window, instead of placing the
+                         // button relative to the windows, we place it relative to the top
+                         // of the page, as it is done with the footer itself
+                         $('#footerToolbar').css('margin-top', '2650px');
+                    }
 
-         	                                           //$('#loadCifButton_chemWin1').click(function(){jQuery.chemChopper.enableChop("chemWin1")});
-         	                                           //$('#uploadCifButton_chemWin1').click(function(){jQuery.chemChopper.enableChop("chemWin1")});
-         	                                           }});      	      	  
+                    // $('#loadCifButton_chemWin1').click(function(){jQuery.chemChopper.enableChop("chemWin1")});
+                    // $('#uploadCifButton_chemWin1').click(function(){jQuery.chemChopper.enableChop("chemWin1")});
+              }
+           });
         });       
         jQuery.cifEdit.getCommitCode=function(newccid) {
            var commit_url='/service/cc/assign/view/instance/new_ccid_defined?instanceid='+instanceId+'&newccid='+newccid+'&sessionid='+sessionId+
@@ -145,17 +151,19 @@ jQuery.chemChopper.addNewChemWin=function(mol) {
 	);
 	$('#chemContent').append('<div class="chemWin" id="chemWin'+nId+'"></div>');
 	$('#chemWin'+nId).chemWin({
-		savePositions:false,
-                edit:{posy:100,width:700},jmol:{posy:100,posx:715,width:600},
-                file:{posx:10,posy:645,width:700,height:250/*hide:true*/},         	  
-                comp:{posx:715,posy:645,width:500,height:250/*hide:true*/},
-         	atoms:{posx:10,posy:940,width:1200,height:200/*,hide:true*/},
-         	bonds:{posx:10,posy:1185,width:1200,height:200/*,hide:true*/},
+                savePositions:false,
+                edit:{posx:10,posy:100,width:700},
+                jmol:{posx:715,posy:100,width:500},
+                file:{posx:10,posy:645,width:700,height:250},
+                comp:{posx:715,posy:645,width:500,height:250},
+                atoms:{posx:10,posy:940,width:1200,height:200},
+                bonds:{posx:10,posy:1185,width:1200,height:200},
                 audit:{posx:10,posy:1430,width:1200,height:200},
                 synonym:{posx:10,posy:1675,width:1200,height:200},
-                feature:{posx:10,posy:1920,width:1200,height:200},
-                related:{posx:10,posy:2165,width:1200,height:200},
-                relatedatom:{posx:10,posy:2410,width:1200,height:200},
+                pcm:{posx:10,posy:1920,width:1200,height:200},
+                feature:{posx:10,posy:2165,width:1200,height:200},
+                related:{posx:10,posy:2410,width:1200,height:200},
+                relatedatom:{posx:10,posy:2655,width:1200,height:200},
 		view:{diagram:{edit:{molecule:mol},noClear:true,
                       fragmentsArray:jQuery.chemChopper.leavingFragments},defaultFileFormat:'mmCif',
                       compModel:jQuery.cifEdit.compCompModel,
@@ -163,6 +171,7 @@ jQuery.chemChopper.addNewChemWin=function(mol) {
              	      bondModel:jQuery.chemChopper.ccompBondModel,
                       auditModel:jQuery.cifEdit.compAuditModel,
                       synonymModel:jQuery.cifEdit.compSynonymModel,
+                      pcmModel:jQuery.cifEdit.pcmModel,
                       featureModel:jQuery.cifEdit.compFeatureModel,
                       relatedModel:jQuery.cifEdit.compRelatedModel,
                       relatedAtomModel:jQuery.cifEdit.atomRelatedModel
